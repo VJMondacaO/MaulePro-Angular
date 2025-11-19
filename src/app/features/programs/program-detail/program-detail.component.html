@@ -1,0 +1,365 @@
+<!-- Página de Detalle de Programa -->
+<div *ngIf="!loading && program" class="program-detail-page">
+  <!-- Hero Section con Info del Programa -->
+  <section class="program-detail-hero">
+    <div class="hero-content-wrapper">
+      <div class="grid">
+        <!-- Botón Volver -->
+        <div class="col-12 lg:col-2 hero-volver-col">
+          <button 
+            pButton 
+            type="button"
+            label="Volver" 
+            icon="pi pi-chevron-left"
+            iconPos="left"
+            class="btn-volver"
+            [routerLink]="['/home']">
+          </button>
+        </div>
+
+        <!-- Contenido Principal -->
+        <div class="col-12 lg:col-10">
+          <!-- Badges de Estado -->
+          <div class="hero-badges hero-badges-spacing">
+            <p-tag 
+              [value]="getEstadoTagText()" 
+              [severity]="getEstadoTagSeverity()" 
+              styleClass="hero-status-tag">
+            </p-tag>
+            <p-tag 
+              *ngIf="program.fechaCierreFormateada && program.estado === 'open'"
+              [value]="'Cierre de postulación: ' + program.fechaCierreFormateada"
+              severity="danger"
+              icon="pi pi-calendar"
+              styleClass="hero-date-tag">
+            </p-tag>
+            <p-tag 
+              [value]="program.categoria"
+              severity="secondary"
+              styleClass="hero-category-tag">
+            </p-tag>
+          </div>
+
+          <!-- Título y Descripción -->
+          <div class="hero-main-content">
+            <h1 class="hero-title">{{ program.titulo | uppercase }}</h1>
+            <p class="hero-description">{{ program.descripcion }}</p>
+
+            <!-- Información Básica -->
+            <div class="hero-info-grid hero-info-spacing">
+              <div class="hero-info-item">
+                <small class="hero-info-label">Invita:</small>
+                <p-tag [value]="program.invita" severity="contrast" styleClass="info-tag"></p-tag>
+              </div>
+              <div class="hero-info-item">
+                <small class="hero-info-label">Alcance:</small>
+                <p-tag [value]="program.alcance" severity="contrast" styleClass="info-tag"></p-tag>
+              </div>
+              <div class="hero-info-item">
+                <small class="hero-info-label">Categoría:</small>
+                <p-tag [value]="program.categoria" severity="contrast" styleClass="info-tag"></p-tag>
+              </div>
+            </div>
+
+            <!-- Botón Postular -->
+            <div class="hero-action">
+              <button 
+                pButton 
+                type="button"
+                label="Postular" 
+                icon="pi pi-send"
+                iconPos="right"
+                class="btn-postular"
+                (click)="onPostularClick()"
+                *ngIf="program.estado === 'open'">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Detalles -->
+  <section class="program-detail-content">
+    <div class="main-content">
+      <div class="container">
+        <div class="grid">
+          <div class="col-12 lg:col-10 detail-content-offset">
+            
+            <!-- Cards Expandibles (Desktop) -->
+            <div class="detail-cards-desktop detail-cards-desktop-only detail-cards-spacing">
+              <div class="grid">
+                <!-- Card Modalidad -->
+                <div class="col-12 md:col-4">
+                  <p-card>
+                    <div class="detail-card-content">
+                      <h3 class="detail-card-title">Modalidad de postulación</h3>
+                      <p class="detail-card-value">
+                        <i [class]="'pi ' + program.modalidad.icono" class="icon-spacing"></i>
+                        <span class="detail-value-text">{{ program.modalidad.tipo }}</span>
+                      </p>
+                      <hr>
+                      <button 
+                        pButton 
+                        type="button"
+                        label="{{ expandedModalidad ? 'Ver menos' : 'Ver más' }}"
+                        icon="{{ expandedModalidad ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
+                        iconPos="right"
+                        class="btn-detail-expand"
+                        (click)="toggleAccordion('modalidad')">
+                      </button>
+                    </div>
+                  </p-card>
+                </div>
+
+                <!-- Card Tipo Postulante -->
+                <div class="col-12 md:col-4">
+                  <p-card>
+                    <div class="detail-card-content">
+                      <h3 class="detail-card-title">Tipo de Postulante</h3>
+                      <p class="detail-card-value">
+                        <i [class]="'pi ' + program.tipoPostulante.icono" class="icon-spacing"></i>
+                        <span class="detail-value-text">{{ program.tipoPostulante.tipo }}</span>
+                      </p>
+                      <hr>
+                      <button 
+                        pButton 
+                        type="button"
+                        label="{{ expandedTipoPostulante ? 'Ver menos' : 'Ver más' }}"
+                        icon="{{ expandedTipoPostulante ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
+                        iconPos="right"
+                        class="btn-detail-expand"
+                        (click)="toggleAccordion('tipoPostulante')">
+                      </button>
+                    </div>
+                  </p-card>
+                </div>
+
+                <!-- Card Tipo Financiamiento -->
+                <div class="col-12 md:col-4">
+                  <p-card>
+                    <div class="detail-card-content">
+                      <h3 class="detail-card-title">Tipo de Financiamiento</h3>
+                      <p class="detail-card-value">
+                        <i [class]="'pi ' + program.tipoFinanciamiento.icono" class="icon-spacing"></i>
+                        <span class="detail-value-text">{{ program.tipoFinanciamiento.tipo }}</span>
+                      </p>
+                      <hr>
+                      <button 
+                        pButton 
+                        type="button"
+                        label="{{ expandedTipoFinanciamiento ? 'Ver menos' : 'Ver más' }}"
+                        icon="{{ expandedTipoFinanciamiento ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
+                        iconPos="right"
+                        class="btn-detail-expand"
+                        (click)="toggleAccordion('tipoFinanciamiento')">
+                      </button>
+                    </div>
+                  </p-card>
+                </div>
+              </div>
+
+              <!-- Contenido Expandido -->
+              <div class="detail-expanded-content">
+                <!-- Modalidad Expandida -->
+                <div *ngIf="expandedModalidad" class="expanded-card expanded-card-spacing">
+                  <p-card>
+                    <h3>Modalidad de postulación: <span class="detail-value-text">{{ program.modalidad.tipo }}</span></h3>
+                    <p>{{ program.modalidad.descripcion }}</p>
+                    <button 
+                      *ngIf="program.modalidad.linkPostulacion"
+                      pButton 
+                      type="button"
+                      label="Ir a la postulación" 
+                      icon="pi pi-link"
+                      iconPos="right"
+                      class="btn-postular-link"
+                      [routerLink]="[program.modalidad.linkPostulacion]">
+                    </button>
+                  </p-card>
+                </div>
+
+                <!-- Tipo Postulante Expandido -->
+                <div *ngIf="expandedTipoPostulante" class="expanded-card expanded-card-spacing">
+                  <p-card>
+                    <h3>Tipo de Postulante: <span class="detail-value-text">{{ program.tipoPostulante.tipo }}</span></h3>
+                    <p>{{ program.tipoPostulante.descripcion }}</p>
+                  </p-card>
+                </div>
+
+                <!-- Tipo Financiamiento Expandido -->
+                <div *ngIf="expandedTipoFinanciamiento" class="expanded-card expanded-card-spacing">
+                  <p-card>
+                    <h3>Tipo de Financiamiento: <span class="detail-value-text">{{ program.tipoFinanciamiento.tipo }}</span></h3>
+                    <p>{{ program.tipoFinanciamiento.descripcion }}</p>
+                  </p-card>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordions (Mobile) -->
+            <div class="detail-accordions-mobile detail-accordions-mobile-only detail-accordions-spacing">
+              <p-accordion>
+                <p-accordionTab>
+                  <ng-template pTemplate="header">
+                    <i [class]="'pi ' + program.modalidad.icono" class="icon-spacing"></i>
+                    Modalidad de postulación: <span class="detail-value-text ms-1">{{ program.modalidad.tipo }}</span>
+                  </ng-template>
+                  <h3>Modalidad de postulación: <span class="detail-value-text">{{ program.modalidad.tipo }}</span></h3>
+                  <p>{{ program.modalidad.descripcion }}</p>
+                  <button 
+                    *ngIf="program.modalidad.linkPostulacion"
+                    pButton 
+                    type="button"
+                    label="Ir a la postulación" 
+                    icon="pi pi-link"
+                    iconPos="right"
+                    class="btn-postular-link"
+                    [routerLink]="[program.modalidad.linkPostulacion]">
+                  </button>
+                </p-accordionTab>
+
+                <p-accordionTab>
+                  <ng-template pTemplate="header">
+                    <i [class]="'pi ' + program.tipoPostulante.icono" class="icon-spacing"></i>
+                    Tipo de Postulante: <span class="detail-value-text ms-1">{{ program.tipoPostulante.tipo }}</span>
+                  </ng-template>
+                  <h3>Tipo de Postulante: <span class="detail-value-text">{{ program.tipoPostulante.tipo }}</span></h3>
+                  <p>{{ program.tipoPostulante.descripcion }}</p>
+                </p-accordionTab>
+
+                <p-accordionTab>
+                  <ng-template pTemplate="header">
+                    <i [class]="'pi ' + program.tipoFinanciamiento.icono" class="icon-spacing"></i>
+                    Tipo de Financiamiento: <span class="detail-value-text ms-1">{{ program.tipoFinanciamiento.tipo }}</span>
+                  </ng-template>
+                  <h3>Tipo de Financiamiento: <span class="detail-value-text">{{ program.tipoFinanciamiento.tipo }}</span></h3>
+                  <p>{{ program.tipoFinanciamiento.descripcion }}</p>
+                </p-accordionTab>
+              </p-accordion>
+            </div>
+
+            <!-- Tabs con Detalles -->
+            <div class="detail-tabs">
+              <p-tabView>
+                <!-- Tab Requisitos -->
+                <p-tabPanel header="Requisitos">
+                  <h3 class="tab-title">Requisitos de Postulación</h3>
+                  <p *ngIf="program.requisitos.introduccion" class="requisitos-intro">{{ program.requisitos.introduccion }}</p>
+                  <div class="requisitos-list">
+                    <div *ngFor="let item of program.requisitos.items" class="requisito-item requisito-item-spacing">
+                      <strong>{{ item.titulo }}</strong>
+                      <div>{{ item.descripcion }}</div>
+                    </div>
+                  </div>
+                </p-tabPanel>
+
+                <!-- Tab Documentación -->
+                <p-tabPanel header="Documentación">
+                  <h3 class="tab-title">Documentación Necesaria</h3>
+                  <p *ngIf="program.documentacion.introduccion" class="documentos-intro">{{ program.documentacion.introduccion }}</p>
+                  <div class="documentos-list documentos-list-spacing">
+                    <div *ngFor="let item of program.documentacion.items" class="documento-item documento-item-spacing">
+                      <strong>{{ item.titulo }}</strong>
+                      <div>{{ item.descripcion }}</div>
+                    </div>
+                  </div>
+                  <div *ngIf="program.documentacion.documentosDescarga && program.documentacion.documentosDescarga.length > 0" class="documentos-descarga">
+                    <h4 class="documentos-descarga-title">Documentos y Manuales Disponibles</h4>
+                    <p class="documentos-descarga-text">Puedes descargar los siguientes documentos para consulta y referencia:</p>
+                    <div class="documentos-descarga-list">
+                      <div *ngFor="let doc of program.documentacion.documentosDescarga" class="documento-item documento-descarga-item">
+                        <a [href]="doc.url" target="_blank" class="documento-link">
+                          <i class="pi pi-file-pdf documento-link-icon"></i>
+                          <strong>{{ doc.nombre }}</strong>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </p-tabPanel>
+
+                <!-- Tab Evaluación -->
+                <p-tabPanel header="Evaluación">
+                  <h3 class="tab-title">Criterios de Evaluación</h3>
+                  <div *ngFor="let etapa of program.evaluacion.etapas" class="evaluacion-etapa evaluacion-etapa-spacing">
+                    <h4 class="evaluacion-etapa-title"><strong>{{ etapa.titulo }}</strong></h4>
+                    <p *ngIf="etapa.descripcion" class="evaluacion-etapa-desc">{{ etapa.descripcion }}</p>
+                    <div *ngIf="etapa.items" class="evaluacion-list">
+                      <div *ngFor="let item of etapa.items" class="evaluacion-item evaluacion-item-spacing">
+                        <strong>{{ item.titulo }}</strong>
+                        <div>{{ item.descripcion }}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Tabla de Criterios -->
+                  <div *ngIf="program.evaluacion.criterios && program.evaluacion.criterios.length > 0" class="table-responsive table-spacing">
+                    <p-table [value]="program.evaluacion.criterios" [tableStyle]="{'min-width': '50rem'}">
+                      <ng-template pTemplate="header">
+                        <tr>
+                          <th>Criterio</th>
+                          <th class="text-center">Ponderación</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-criterio>
+                        <tr>
+                          <td>{{ criterio.nombre }}</td>
+                          <td class="text-center">{{ criterio.ponderacion }}</td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                  </div>
+
+                  <!-- Notas Importantes -->
+                  <div *ngIf="program.evaluacion.notasImportantes && program.evaluacion.notasImportantes.length > 0" class="notas-importantes">
+                    <h4 class="notas-title"><strong>Notas importantes sobre la evaluación:</strong></h4>
+                    <div class="notas-list">
+                      <div *ngFor="let nota of program.evaluacion.notasImportantes" class="nota-item nota-item-spacing">
+                        {{ nota.descripcion }}
+                      </div>
+                    </div>
+                  </div>
+                </p-tabPanel>
+
+                <!-- Tab Bases -->
+                <p-tabPanel header="Bases">
+                  <h3 class="tab-title">Bases del Concurso</h3>
+                  <div class="bases-list">
+                    <p *ngFor="let base of program.bases.bases" class="base-item">
+                      <strong>{{ base.nombre }}:</strong>
+                      <a [href]="base.url" target="_blank" class="base-link">
+                        <i class="pi pi-download base-link-icon"></i>Descargar
+                      </a>
+                    </p>
+                  </div>
+                </p-tabPanel>
+
+                <!-- Tab Dudas y Consultas -->
+                <p-tabPanel header="Dudas y consultas">
+                  <h3 class="tab-title">Dudas y consultas</h3>
+                  <div class="dudas-content">
+                    <p class="dudas-desc">{{ program.dudasConsultas.descripcion }}</p>
+                    <div *ngIf="program.dudasConsultas.horarios" class="dudas-info">
+                      <strong>Horarios:</strong>
+                      <p>{{ program.dudasConsultas.horarios }}</p>
+                    </div>
+                    <div *ngIf="program.dudasConsultas.contacto" class="dudas-info">
+                      <strong>Contacto:</strong>
+                      <p>{{ program.dudasConsultas.contacto }}</p>
+                    </div>
+                  </div>
+                </p-tabPanel>
+              </p-tabView>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Loading State -->
+<div *ngIf="loading" class="program-detail-loading">
+  <p>Cargando información del programa...</p>
+</div>

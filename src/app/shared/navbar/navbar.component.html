@@ -1,0 +1,70 @@
+<!-- Navbar Maule Pro -->
+<nav class="navbar-maule-pro">
+  <div class="navbar-container">
+    <!-- Logo y Branding Izquierdo -->
+    <div class="navbar-brand">
+      <div class="brand-left">
+        <!-- Logo Gobierno Regional del Maule -->
+        <div class="logo-container">
+          <img 
+            src="assets/images/logo-gore-horizontal-blanco.png" 
+            alt="Gobierno Regional del Maule"
+            class="logo-gore-horizontal">
+        </div>
+      </div>
+      
+      <!-- Maule Pro -->
+      <div class="brand-right">
+        <div class="maule-pro-title">Maule Pro</div>
+        <div class="gobierno-regional">Gobierno Regional del Maule</div>
+      </div>
+    </div>
+    
+    <!-- Botón Menú Hamburguesa (Solo móvil/tablet) -->
+    <button 
+      type="button" 
+      class="btn-menu-toggle"
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="mobileMenuOpen"
+      aria-label="Menú de navegación">
+      <i [class]="mobileMenuOpen ? 'pi pi-times' : 'pi pi-bars'"></i>
+    </button>
+    
+    <!-- Navegación y Acciones Derechas -->
+    <div class="navbar-actions" [class.menu-open]="mobileMenuOpen">
+      <!-- Enlaces de Navegación -->
+      <div class="navbar-links">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Inicio</a>
+        <a routerLink="/nosotros" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Nosotros</a>
+        <a routerLink="/preguntas-frecuentes" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Preguntas Frecuentes</a>
+      </div>
+      
+      <!-- Acciones -->
+      <div class="navbar-buttons">
+        <!-- Accesibilidad -->
+        <button 
+          type="button" 
+          class="btn-accesibilidad"
+          (click)="onAccesibilidadClick()"
+          aria-label="Accesibilidad">
+          <i class="pi pi-universal-access"></i>
+          <span class="btn-accesibilidad-text">Accesibilidad</span>
+        </button>
+        
+        <!-- ClaveÚnica -->
+        <button 
+          pButton 
+          type="button"
+          class="btn-claveunica"
+          (click)="onClaveUnicaClick()"
+          label="ClaveÚnica"
+          icon="pi pi-key">
+        </button>
+      </div>
+    </div>
+    
+    <!-- Overlay para cerrar menú móvil -->
+    <div class="menu-overlay" [class.active]="mobileMenuOpen" (click)="closeMobileMenu()"></div>
+  </div>
+</nav>
+

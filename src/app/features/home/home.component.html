@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="grid">
+    <!-- Hero Section -->
+    <div class="col-12">
+      <app-hero></app-hero>
+    </div>
+
+    <!-- Lista de Programas -->
+    <div class="col-12 mt-4">
+      <div class="section-header mb-4">
+        <div class="flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
+          <h2 class="section-title">Líneas de postulación</h2>
+          <p class="text-muted small mb-0">
+            Mostrando <strong>{{ programas.length }}</strong> programas
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid de Tarjetas de Programa -->
+      <div class="grid programas-grid">
+        <div 
+          class="col-12 md:col-6 lg:col-4" 
+          *ngFor="let programa of programas">
+          <app-card-v7 [program]="programa"></app-card-v7>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

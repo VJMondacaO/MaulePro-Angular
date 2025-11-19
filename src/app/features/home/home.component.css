@@ -1,0 +1,122 @@
+/* ============================================
+   Home Component Styles - Tarjetas de Programa
+   ============================================ */
+
+.programas-grid {
+  gap: 1.5rem;
+}
+
+/* Ajustar gap según breakpoint */
+/* Tablet: 2 columnas */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .programas-grid {
+    gap: 1.25rem;
+  }
+}
+
+/* Desktop: 3 columnas (lg:col-4) */
+@media (min-width: 992px) {
+  .programas-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Desktop grande: ajustar gap si es necesario */
+@media (min-width: 1200px) {
+  .programas-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Asegurar que el contenedor no tenga padding ni max-width que reduzca el espacio */
+:host .container {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Asegurar que el grid use flexbox correctamente (PrimeFlex usa display: flex) */
+.programas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+/* Permitir que PrimeFlex maneje los anchos naturalmente */
+/* Los hijos deben ser flex solo en dirección column para estirar contenido interno */
+/* No interferir con el cálculo de ancho de PrimeFlex */
+.programas-grid > div {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  /* No definir width aquí - dejar que PrimeFlex lo maneje */
+}
+
+.programas-grid > div > app-card-v7 {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.programas-grid > div > app-card-v7 > .card-v7 {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive: Ajustar altura mínima según breakpoint */
+
+/* Móvil: 1 columna (col-12) */
+@media (max-width: 767.98px) {
+  .programas-grid > div {
+    min-height: 600px;
+  }
+  
+  .programas-grid > div > app-card-v7 {
+    min-height: 600px;
+    max-height: 600px;
+  }
+}
+
+/* Tablet: 2 columnas (md:col-6) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Asegurar que PrimeFlex aplique correctamente 2 columnas */
+  .programas-grid > div[class*="md:col-6"] {
+    flex: 0 0 calc((100% - 1.25rem) / 2); /* 2 columnas con 1 gap de 1.25rem */
+    width: calc((100% - 1.25rem) / 2);
+    max-width: calc((100% - 1.25rem) / 2);
+    min-width: 0;
+  }
+  
+  .programas-grid > div {
+    min-height: 620px;
+  }
+  
+  .programas-grid > div > app-card-v7 {
+    min-height: 620px;
+    max-height: 620px;
+  }
+}
+
+/* Desktop: 3 columnas (lg:col-4) - Todas las pantallas desktop */
+@media (min-width: 992px) {
+  /* Forzar 3 columnas usando lg:col-4 */
+  .programas-grid > div[class*="lg:col-4"] {
+    flex: 0 0 calc((100% - 3rem) / 3); /* 3 columnas con 2 gaps de 1.5rem */
+    width: calc((100% - 3rem) / 3);
+    max-width: calc((100% - 3rem) / 3);
+    min-width: 0;
+  }
+  
+  .programas-grid > div {
+    min-height: 640px;
+  }
+  
+  .programas-grid > div > app-card-v7 {
+    min-height: 640px;
+    max-height: 640px;
+  }
+}

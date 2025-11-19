@@ -1,0 +1,440 @@
+/* ============================================
+   Navbar Maule Pro - Diseño basado en imagen
+   ============================================ */
+
+.navbar-maule-pro {
+  background: #0C1B41;
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Brand Izquierdo */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.brand-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 90px;
+}
+
+.logo-gore-horizontal {
+  height: 100%;
+  max-height: 90px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.gobierno-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gobierno-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.maule-box {
+  background: white;
+  color: #0F69C4;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+}
+
+.eslogan {
+  font-size: 0.7rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+/* Brand Derecho */
+.brand-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.maule-pro-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.gobierno-regional {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Botón Menú Hamburguesa */
+.btn-menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+.btn-menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-menu-toggle i {
+  font-size: 1.25rem;
+}
+
+/* Acciones Derechas */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Enlaces de Navegación */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Contenedor de botones */
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.nav-link:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+/* Botón Accesibilidad */
+.btn-accesibilidad {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.btn-accesibilidad:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-accesibilidad i {
+  font-size: 1.1rem;
+}
+
+.btn-accesibilidad-text {
+  display: inline;
+}
+
+/* Overlay para menú móvil */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Botón ClaveÚnica */
+:host ::ng-deep .btn-claveunica {
+  background: #0066CC !important;
+  border: none !important;
+  color: white !important;
+  padding: 0.625rem 1.25rem !important;
+  border-radius: 0.5rem !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+:host ::ng-deep .btn-claveunica:hover {
+  background: #0052CC !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+:host ::ng-deep .btn-claveunica:active {
+  transform: translateY(0);
+}
+
+:host ::ng-deep .btn-claveunica .p-button-icon {
+  margin-right: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .navbar-container {
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+    position: relative;
+  }
+  
+  .logo-container {
+    height: 80px;
+  }
+  
+  .logo-gore-horizontal {
+    max-height: 80px;
+  }
+  
+  .brand-right {
+    margin-left: 0.75rem;
+    padding-left: 0.75rem;
+  }
+  
+  .maule-pro-title {
+    font-size: 1.25rem;
+  }
+  
+  /* Mostrar botón menú hamburguesa */
+  .btn-menu-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+  
+  /* Ocultar menú por defecto en tablet */
+  .navbar-actions {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 320px;
+    max-width: 85vw;
+    background: #0C1B41;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 5rem 1.5rem 2rem;
+    gap: 2rem;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  
+  .navbar-actions.menu-open {
+    right: 0;
+  }
+  
+  .navbar-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .nav-link {
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+  
+  .navbar-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  .btn-accesibilidad {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .btn-accesibilidad-text {
+    display: inline;
+  }
+  
+  :host ::ng-deep .btn-claveunica {
+    width: 100% !important;
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.9rem !important;
+    justify-content: center !important;
+  }
+  
+  /* Mostrar overlay en tablet/móvil */
+  .menu-overlay {
+    display: block;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .navbar-container {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+  
+  .navbar-brand {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .brand-left {
+    flex-shrink: 0;
+  }
+  
+  .brand-right {
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .maule-pro-title {
+    font-size: 1.1rem;
+  }
+  
+  .gobierno-regional {
+    font-size: 0.7rem;
+  }
+  
+  .logo-container {
+    height: 70px;
+  }
+  
+  .logo-gore-horizontal {
+    max-height: 70px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navbar-container {
+    padding: 0.625rem 0.75rem;
+  }
+  
+  .logo-container {
+    height: 60px;
+  }
+  
+  .logo-gore-horizontal {
+    max-height: 60px;
+  }
+  
+  .maule-pro-title {
+    font-size: 1rem;
+  }
+  
+  .gobierno-regional {
+    font-size: 0.65rem;
+  }
+  
+  .brand-right {
+    margin-left: 0.375rem;
+    padding-left: 0.375rem;
+  }
+  
+  /* Ajustar ancho del menú lateral en móviles pequeños */
+  .navbar-actions {
+    width: 280px;
+    max-width: 90vw;
+  }
+}
+

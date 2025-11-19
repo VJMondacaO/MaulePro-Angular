@@ -1,0 +1,116 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ProgramsService } from '../programs.service';
+import { ProgramDetailData } from '../program-detail.types';
+
+// PrimeNG Components
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { TagModule } from 'primeng/tag';
+import { TabViewModule } from 'primeng/tabview';
+import { AccordionModule } from 'primeng/accordion';
+import { TableModule } from 'primeng/table';
+
+@Component({
+  selector: 'app-program-detail',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    CardModule,
+    ButtonModule,
+    TagModule,
+    TabViewModule,
+    AccordionModule,
+    TableModule
+  ],
+  templateUrl: './program-detail.component.html',
+  styleUrl: './program-detail.component.css'
+})
+export class ProgramDetailComponent implements OnInit {
+  program: ProgramDetailData | undefined;
+  loading = true;
+  
+  // Estado de los accordions (cards expandibles)
+  expandedModalidad = false;
+  expandedTipoPostulante = false;
+  expandedTipoFinanciamiento = false;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private programsService: ProgramsService
+  ) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        this.loadProgram(id);
+      } else {
+        // Si no hay ID, redirigir al home
+        this.router.navigate(['/home']);
+      }
+    });
+  }
+
+  private loadProgram(id: string): void {
+    this.loading = true;
+    const program = this.programsService.getProgramDetailById(id);
+    
+    if (!program) {
+      // Programa no encontrado, redirigir al home
+      this.router.navigate(['/home']);
+      return;
+    }
+
+    this.program = program;
+    this.loading = false;
+  }
+
+  getEstadoTagSeverity(): 'success' | 'warning' | 'danger' | 'info' {
+    if (!this.program) return 'info';
+    
+    switch (this.program.estado) {
+      case 'open':
+        return 'success';
+      case 'soon':
+        return 'warning';
+      case 'closed':
+        return 'danger';
+      default:
+        return 'info';
+    }
+  }
+
+  getEstadoTagText(): string {
+    if (!this.program) return '';
+    
+    switch (this.program.estado) {
+      case 'open':
+        return 'ABIERTO';
+      case 'soon':
+        return 'PRÓXIMO';
+      case 'closed':
+        return 'CERRADO';
+      default:
+        return '';
+    }
+  }
+
+  onPostularClick(): void {
+    // TODO: Implementar redirección a login o postulación
+    this.router.navigate(['/login']);
+  }
+
+  toggleAccordion(type: 'modalidad' | 'tipoPostulante' | 'tipoFinanciamiento'): void {
+    if (type === 'modalidad') {
+      this.expandedModalidad = !this.expandedModalidad;
+    } else if (type === 'tipoPostulante') {
+      this.expandedTipoPostulante = !this.expandedTipoPostulante;
+    } else {
+      this.expandedTipoFinanciamiento = !this.expandedTipoFinanciamiento;
+    }
+  }
+}

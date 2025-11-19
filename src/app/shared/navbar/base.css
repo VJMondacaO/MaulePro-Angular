@@ -1,0 +1,194 @@
+/* ============================================
+   Estilos Base
+   ============================================ */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+/* Ocultar scrollbar durante la carga */
+html.loading,
+html.loading body {
+    overflow: hidden !important;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #EEEEEE;
+    position: relative;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* Márgenes laterales para el contenido principal */
+main.main-content {
+    padding-top: 2rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Sin margen lateral en móvil - ocupa todo el ancho disponible */
+@media (max-width: 767.98px) {
+    main.main-content {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+}
+
+/* Tablet y Desktop: 15% de margen lateral por cada lado */
+@media (min-width: 768px) {
+    main.main-content {
+        margin-left: 15% !important;
+        margin-right: 15% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 70% !important; /* 100% - 15% - 15% = 70% */
+        max-width: 70% !important;
+    }
+}
+
+/* Justificar todos los textos de contenido */
+p {
+    text-align: justify;
+    text-align-last: left; /* Última línea alineada a la izquierda para evitar espacios grandes */
+    hyphens: auto; /* Separación automática de palabras con guiones */
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    word-spacing: normal; /* Espaciado normal entre palabras */
+    letter-spacing: normal; /* Espaciado normal entre letras */
+}
+
+.lead,
+.text-content,
+article p,
+section p,
+.program-card-body p,
+.program-card-info-item-content,
+.card-body p,
+main p {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    word-spacing: normal;
+    letter-spacing: normal;
+}
+
+/* Excepciones: elementos que NO deben estar justificados */
+.program-card-header,
+.program-card-header *,
+.program-card-header-top,
+.program-card-header-top *,
+h1, h2, h3, h4, h5, h6,
+label,
+input,
+select,
+textarea,
+button,
+a:not(p a),
+li,
+td,
+th {
+    text-align: inherit;
+    hyphens: none;
+}
+
+/* En móvil, reducir justificación o desactivarla para evitar espacios grandes */
+@media (max-width: 768px) {
+    p {
+        text-align: left; /* En móvil, alineación a la izquierda en lugar de justificado */
+        text-align-last: left;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+    }
+    
+    /* Opcional: Justificación más suave en tablet */
+    @media (min-width: 577px) {
+        p {
+            text-align: justify;
+            text-align-last: left;
+            word-spacing: -0.1px; /* Reducir ligeramente el espaciado entre palabras */
+        }
+    }
+}
+
+/* En desktop, justificación completa */
+@media (min-width: 769px) {
+    p {
+        text-align: justify;
+        text-align-last: left;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+    }
+}
+
+/* Ocultar scrollbar visualmente pero mantener funcionalidad */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(0, 102, 204, 0.3);
+    border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 102, 204, 0.5);
+}
+
+/* Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 102, 204, 0.3) transparent;
+}
+
+/* Accesibilidad - Focus visible */
+:focus-visible {
+    outline: 3px solid var(--institucional-azul-claro);
+    outline-offset: 2px;
+}
+
+/* Mejoras de responsividad para móvil */
+@media (max-width: 575.98px) {
+    /* Reducir padding en secciones generales */
+    .section-header {
+        padding: 0;
+    }
+    
+    /* Ajustar espaciado en secciones */
+    .bg-info.bg-opacity-10 {
+        padding: 1rem !important;
+    }
+    
+    /* Reducir márgenes en contenedores */
+    .mb-4 {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .my-4 {
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Grid de cards optimizado para móvil - Ya se maneja en _program-cards.css */
+}
+
