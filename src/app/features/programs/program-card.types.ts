@@ -1,5 +1,5 @@
 /**
- * Interfaz para los datos de la tarjeta de programa
+ * Interfaz para los datos de la card de programa
  */
 export interface ProgramCardData {
   id?: string;

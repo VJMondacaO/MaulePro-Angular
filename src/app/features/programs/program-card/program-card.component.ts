@@ -7,25 +7,14 @@ import { ButtonModule } from 'primeng/button';
 import { ProgramCardData } from '../program-card.types';
 
 @Component({
-  selector: 'app-card-v7',
+  selector: 'app-program-card',
   standalone: true,
   imports: [CommonModule, RouterModule, Card, Tag, ButtonModule],
-  templateUrl: './card-v7.component.html',
-  styleUrl: './card-v7.component.css'
+  templateUrl: './program-card.component.html',
+  styleUrl: './program-card.component.css'
 })
-export class CardV7Component {
+export class ProgramCardComponent {
   @Input() program!: ProgramCardData;
-
-  getDiasRestantes(): number | null {
-    if (!this.program.fechaCierre) return null;
-    const fechaCierre = new Date(this.program.fechaCierre);
-    const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0);
-    fechaCierre.setHours(0, 0, 0, 0);
-    const diferencia = fechaCierre.getTime() - hoy.getTime();
-    const dias = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
-    return dias > 0 ? dias : null;
-  }
 
   getEstadoTag(): string {
     switch (this.program.estado) {
@@ -46,16 +35,19 @@ export class CardV7Component {
 
   getEstadoColor(): string {
     switch (this.program.estado) {
-      case 'open': return '#018484';
-      case 'soon': return '#ffc107';
-      case 'closed': return '#FE6565';
+      case 'open': return '#0066CC'; // Azul para abierta
+      case 'soon': return '#FFC107'; // Amarillo para próxima
+      case 'closed': return '#6C757D'; // Gris para cerrada
       default: return '#999';
     }
   }
 
-  isUrgent(): boolean {
-    const dias = this.getDiasRestantes();
-    return dias !== null && dias <= 30 && dias > 0;
+  getClaseEstado(): string {
+    switch (this.program.estado) {
+      case 'open': return 'estado-abierta';
+      case 'soon': return 'estado-proxima';
+      case 'closed': return 'estado-cerrada';
+      default: return '';
+    }
   }
 }
-

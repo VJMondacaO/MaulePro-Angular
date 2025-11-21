@@ -4,18 +4,37 @@
 
 .program-detail-page {
   min-height: 100vh;
-  background: #f5f7fa;
+  background: #EEEEEE;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: -2rem; /* Eliminar padding-top (1rem) y margin-top (1rem aproximado de my-4) del main-content */
+  position: relative;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Desktop: ajustar para my-4 que puede ser 1.5rem */
+@media (min-width: 576px) {
+  .program-detail-page {
+    margin-top: -2.5rem; /* Eliminar padding-top (1rem) y margin-top (1.5rem de my-4) */
+  }
 }
 
 /* Hero Section */
 .program-detail-hero {
   background: linear-gradient(135deg, #003B8D 0%, #0066CC 50%, #0088FF 100%);
   color: white;
-  padding: 7rem 0 5rem;
+  padding: 4rem 0;
   margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .program-detail-hero::before {
@@ -37,6 +56,35 @@
   padding: 0 1.5rem;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
+}
+
+/* Alinear contenido del hero con el contenido de abajo */
+@media (max-width: 767.98px) {
+  .hero-content-wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .hero-content-wrapper {
+    margin-left: 8%;
+    margin-right: 8%;
+    width: 84%;
+    max-width: 84%;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-content-wrapper {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    max-width: 80%;
+  }
 }
 
 .btn-volver {
@@ -312,17 +360,29 @@
 /* Detail Content Section */
 .program-detail-content {
   padding: 4rem 0;
-  background: #f5f7fa;
+  background: #EEEEEE;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
 }
 
 .main-content {
   max-width: 100%;
   margin: 0 auto;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
 }
 
 .container {
   max-width: 100%;
   padding: 0 1.5rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 .detail-content-offset {
@@ -924,7 +984,7 @@
   justify-content: center;
   font-size: 1.125rem;
   color: #666;
-  background: #f5f7fa;
+  background: #EEEEEE;
 }
 
 .program-detail-loading p {
@@ -986,7 +1046,7 @@
 /* Responsive */
 @media (max-width: 991.98px) {
   .program-detail-hero {
-    padding: 6rem 0 4rem;
+    padding: 4rem 0;
   }
 
   .hero-title {
@@ -1013,7 +1073,7 @@
 
 @media (max-width: 767.98px) {
   .program-detail-hero {
-    padding: 4rem 0 2rem;
+    padding: 2rem 0;
   }
 
   .hero-content-wrapper {

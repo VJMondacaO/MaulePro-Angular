@@ -16,12 +16,12 @@
         </div>
       </div>
 
-      <!-- Grid de Tarjetas de Programa -->
+      <!-- Grid de Cards de Programa -->
       <div class="grid programas-grid">
         <div 
           class="col-12 md:col-6 lg:col-4" 
           *ngFor="let programa of programas">
-          <app-card-v7 [program]="programa"></app-card-v7>
+          <app-program-card [program]="programa"></app-program-card>
         </div>
       </div>
     </div>

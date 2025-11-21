@@ -1,0 +1,88 @@
+<div class="faq-page">
+  <div class="faq-container">
+    <!-- Botón Volver -->
+    <div class="faq-volver">
+      <button 
+        pButton 
+        type="button"
+        label="Volver" 
+        icon="pi pi-chevron-left"
+        iconPos="left"
+        class="btn-volver"
+        [routerLink]="['/home']">
+      </button>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="faq-hero mb-5">
+      <div class="grid">
+        <div class="col-12 lg:col-8">
+          <h1 class="faq-title">Preguntas Frecuentes</h1>
+          <p class="faq-lead">
+            Resuelve dudas comunes sobre requisitos, plazos y el proceso de postulación a los programas y fondos regionales del Gobierno Regional del Maule.
+          </p>
+        </div>
+        <div class="col-12 lg:col-4 text-center faq-icon-wrapper">
+          <i class="pi pi-question-circle faq-icon"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de FAQ -->
+    <section id="faq" class="faq-section">
+      <div class="grid">
+        <div class="col-12 lg:col-8">
+          <h2 class="faq-subtitle">Preguntas frecuentes</h2>
+          <p class="faq-description">Resuelve dudas comunes sobre requisitos, plazos y el proceso de postulación.</p>
+
+          <div class="faq-accordion-wrapper">
+            <p-accordion value="0" expandIcon="pi pi-chevron-down" collapseIcon="pi pi-chevron-up" class="faq-accordion">
+              @for (faq of faqs; track faq.pregunta; let index = $index) {
+                <p-accordion-panel [value]="index.toString()" class="faq-accordion-panel">
+                  <p-accordion-header class="faq-accordion-header">
+                    {{ faq.pregunta }}
+                  </p-accordion-header>
+                  <p-accordion-content>
+                    <div class="faq-accordion-content" [innerHTML]="faq.respuesta"></div>
+                  </p-accordion-content>
+                </p-accordion-panel>
+              }
+            </p-accordion>
+          </div>
+        </div>
+
+        <!-- Lateral: contacto y documentos útiles -->
+        <div class="col-12 lg:col-4">
+          <p-card class="help-card">
+            <h3 class="help-card-title">¿Necesitas más ayuda?</h3>
+            <ul class="help-list">
+              <li class="help-item">
+                <i class="pi pi-file-edit help-icon"></i>
+                <a href="#" class="help-link">Guía de postulación</a>
+              </li>
+              <li class="help-item">
+                <i class="pi pi-file-pdf help-icon"></i>
+                <a href="#" class="help-link">Bases generales</a>
+              </li>
+              <li class="help-item">
+                <i class="pi pi-envelope help-icon"></i>
+                <a href="#" class="help-link">Formulario de contacto</a>
+              </li>
+            </ul>
+            <div class="help-button-wrapper">
+              <button 
+                pButton 
+                type="button"
+                label="Centro de ayuda" 
+                icon="pi pi-life-ring"
+                iconPos="left"
+                class="btn-help-center"
+                outlined>
+              </button>
+            </div>
+          </p-card>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

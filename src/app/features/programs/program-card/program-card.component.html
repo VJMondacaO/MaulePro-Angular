@@ -1,0 +1,49 @@
+<!-- Program Card Component -->
+<article class="program-card" [ngClass]="getClaseEstado()">
+  <p-card [styleClass]="'program-card-wrapper'">
+    <div class="program-card-content">
+      <div class="program-card-header">
+        <p-tag [value]="getEstadoTag()" [severity]="getEstadoSeverity()" styleClass="status-badge"></p-tag>
+      </div>
+      
+      <div class="program-card-body">
+        <h3 class="program-card-title">{{ program.titulo }}</h3>
+        <p class="program-card-description">{{ program.descripcion }}</p>
+        
+        <div class="program-card-features">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="pi pi-users"></i>
+            </div>
+            <div class="feature-content">
+              <strong>Beneficiarios</strong>
+              <span>{{ program.beneficiarios }}</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="pi pi-wallet"></i>
+            </div>
+            <div class="feature-content">
+              <strong>Monto</strong>
+              <span>{{ program.montos }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="program-card-footer">
+        <button 
+          *ngIf="program.rutaDetalles"
+          pButton 
+          type="button" 
+          label="Ver detalles" 
+          icon="pi pi-arrow-right"
+          iconPos="right"
+          [routerLink]="program.rutaDetalles"
+          class="btn-details">
+        </button>
+      </div>
+    </div>
+  </p-card>
+</article>

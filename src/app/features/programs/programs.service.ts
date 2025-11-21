@@ -4,7 +4,7 @@ import { ProgramDetailData } from './program-detail.types';
 
 /**
  * Servicio que contiene todos los datos de los programas
- * AQUÍ ES DONDE AGREGAS MÁS TARJETAS DE PROGRAMA
+ * AQUÍ ES DONDE AGREGAS MÁS CARDS DE PROGRAMA
  */
 @Injectable({
   providedIn: 'root'
@@ -79,8 +79,8 @@ export class ProgramsService {
         montos: '$1.000.000',
         rutaDetalles: '/programas/5'
       }
-      // 👇 AQUÍ AGREGAS MÁS TARJETAS 👇
-      // Ejemplo de cómo agregar una nueva tarjeta:
+      // 👇 AQUÍ AGREGAS MÁS CARDS 👇
+      // Ejemplo de cómo agregar una nueva card:
       // {
       //   id: '6',
       //   titulo: 'Nombre del Nuevo Programa',

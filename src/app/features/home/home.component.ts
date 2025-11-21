@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeroComponent } from './hero/hero.component';
 import { ProgramCardData } from '../programs/program-card.types';
 import { ProgramsService } from '../programs/programs.service';
-import { CardV7Component } from '../programs/card-v7/card-v7.component';
+import { ProgramCardComponent } from '../programs/program-card/program-card.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { CardV7Component } from '../programs/card-v7/card-v7.component';
   imports: [
     CommonModule, 
     HeroComponent, 
-    CardV7Component
+    ProgramCardComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
