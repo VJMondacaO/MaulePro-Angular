@@ -30,7 +30,7 @@ body {
 
 /* Márgenes laterales para el contenido principal */
 main.main-content {
-    padding-top: 1rem;
+    padding-top: 0;
     box-sizing: border-box;
     width: 100%;
     max-width: 100%;

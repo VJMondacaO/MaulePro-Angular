@@ -105,12 +105,30 @@ export class ProgramDetailComponent implements OnInit {
   }
 
   toggleAccordion(type: 'modalidad' | 'tipoPostulante' | 'tipoFinanciamiento'): void {
+    // Verificar si la tarjeta seleccionada ya está abierta
+    let isCurrentlyOpen = false;
     if (type === 'modalidad') {
-      this.expandedModalidad = !this.expandedModalidad;
+      isCurrentlyOpen = this.expandedModalidad;
     } else if (type === 'tipoPostulante') {
-      this.expandedTipoPostulante = !this.expandedTipoPostulante;
+      isCurrentlyOpen = this.expandedTipoPostulante;
     } else {
-      this.expandedTipoFinanciamiento = !this.expandedTipoFinanciamiento;
+      isCurrentlyOpen = this.expandedTipoFinanciamiento;
+    }
+    
+    // Cerrar todas las tarjetas
+    this.expandedModalidad = false;
+    this.expandedTipoPostulante = false;
+    this.expandedTipoFinanciamiento = false;
+    
+    // Si la tarjeta seleccionada estaba cerrada, abrirla
+    if (!isCurrentlyOpen) {
+      if (type === 'modalidad') {
+        this.expandedModalidad = true;
+      } else if (type === 'tipoPostulante') {
+        this.expandedTipoPostulante = true;
+      } else {
+        this.expandedTipoFinanciamiento = true;
+      }
     }
   }
 }

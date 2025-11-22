@@ -7,12 +7,50 @@
 
     <!-- Lista de Programas -->
     <div class="col-12 mt-4">
-      <div class="section-header mb-4">
-        <div class="flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
+      <!-- Panel Integrado: Título, Filtros y Búsqueda -->
+      <div class="programs-header-panel">
+        <div class="panel-header">
           <h2 class="section-title">Líneas de postulación</h2>
-          <p class="text-muted small mb-0">
-            Mostrando <strong>{{ programas.length }}</strong> programas
+          <p class="programs-count">
+            Mostrando <strong>{{ filteredPrograms.length }}</strong> de <strong>{{ programas.length }}</strong> programas
           </p>
+        </div>
+        
+        <div class="panel-filters">
+          <div class="filters-row">
+            <p-dropdown 
+              [options]="estadoOptions" 
+              [(ngModel)]="selectedEstado"
+              (onChange)="filterPrograms()"
+              placeholder="Estado"
+              optionLabel="label"
+              optionValue="value"
+              [showClear]="true"
+              styleClass="filter-dropdown estado-filter">
+            </p-dropdown>
+            
+            <p-dropdown 
+              [options]="tipoFondoOptions" 
+              [(ngModel)]="selectedTipoFondo"
+              (onChange)="filterPrograms()"
+              placeholder="Tipo de Fondo"
+              optionLabel="label"
+              optionValue="value"
+              [showClear]="true"
+              styleClass="filter-dropdown tipo-fondo-filter">
+            </p-dropdown>
+            
+            <span class="p-input-icon-left search-bar">
+              <i class="pi pi-search"></i>
+              <input 
+                type="text" 
+                pInputText 
+                [(ngModel)]="searchTerm"
+                (input)="filterPrograms()"
+                placeholder="Buscar programas..." 
+                class="w-full" />
+            </span>
+          </div>
         </div>
       </div>
 
@@ -20,7 +58,7 @@
       <div class="grid programas-grid">
         <div 
           class="col-12 md:col-6 lg:col-4" 
-          *ngFor="let programa of programas">
+          *ngFor="let programa of filteredPrograms">
           <app-program-card [program]="programa"></app-program-card>
         </div>
       </div>

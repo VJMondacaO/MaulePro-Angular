@@ -1,326 +1,108 @@
 /* ============================================
    FAQ Component Styles
+   Personalización de componentes PrimeNG con Tailwind
    ============================================ */
 
-.faq-page {
-  min-height: 100vh;
-  background: #f5f7fa;
-  padding: 2rem 0;
-}
-
-.faq-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* Botón Volver */
-.faq-volver {
-  margin-bottom: 1.5rem;
-}
-
-:host ::ng-deep .btn-volver {
-  background: white !important;
-  color: #333 !important;
-  border: 1px solid #dee2e6 !important;
-  padding: 0.625rem 1.25rem !important;
+/* Botón Volver - Personalización */
+:host ::ng-deep .boton-volver {
   border-radius: 9999px !important;
   font-weight: 500 !important;
   transition: all 0.3s ease !important;
 }
 
-:host ::ng-deep .btn-volver:hover {
-  background: #f8f9fa !important;
-  border-color: #0066CC !important;
-  color: #0066CC !important;
+:host ::ng-deep .boton-volver:hover {
   transform: translateX(-2px);
 }
 
-/* Hero Section */
-.faq-hero {
-  background: linear-gradient(135deg, #003B8D 0%, #0066CC 100%);
-  color: white;
-  padding: 3rem 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  margin-bottom: 3rem;
-}
-
-@media (min-width: 992px) {
-  .faq-hero {
-    padding: 4rem 3rem;
-  }
-}
-
-.faq-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0 0 1.5rem 0;
-  color: white;
-  line-height: 1.2;
-}
-
-@media (min-width: 992px) {
-  .faq-title {
-    font-size: 3rem;
-  }
-}
-
-.faq-lead {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.95);
-}
-
-@media (min-width: 992px) {
-  .faq-lead {
-    font-size: 1.375rem;
-  }
-}
-
-.faq-icon-wrapper {
-  margin-top: 2rem;
-}
-
-@media (min-width: 992px) {
-  .faq-icon-wrapper {
-    margin-top: 0;
-  }
-}
-
-.faq-icon {
-  font-size: 8rem;
-  color: rgba(255, 255, 255, 0.2);
-  display: inline-block;
-}
-
-@media (max-width: 991.98px) {
-  .faq-icon {
-    font-size: 6rem;
-  }
-}
-
-/* FAQ Section */
-.faq-section {
-  margin-top: 3rem;
-}
-
-.faq-subtitle {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 0 0 0.75rem 0;
-  color: #333;
-}
-
-.faq-description {
-  color: #666;
-  margin: 0 0 2rem 0;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* Accordion */
-.faq-accordion-wrapper {
-  padding: 2rem;
-  border: 1px solid #e9ecef;
-  border-radius: 0.75rem;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-:host ::ng-deep .faq-accordion {
+/* Accordion - Personalización */
+:host ::ng-deep .acordeon-preguntas {
   border: none !important;
   background: transparent !important;
 }
 
-:host ::ng-deep .faq-accordion-panel {
-  border-bottom: 1px solid #e9ecef !important;
+:host ::ng-deep .acordeon-preguntas .p-accordion-tab {
+  border-bottom: 1px solid rgb(229 231 235) !important;
+  margin-bottom: 0 !important;
 }
 
-:host ::ng-deep .faq-accordion-panel:last-child {
+:host ::ng-deep .acordeon-preguntas .p-accordion-tab:last-child {
   border-bottom: none !important;
 }
 
-:host ::ng-deep .faq-accordion-header {
+:host ::ng-deep .dark .acordeon-preguntas .p-accordion-tab {
+  border-color: rgb(55 65 81) !important;
+}
+
+/* Header del accordion */
+:host ::ng-deep .acordeon-preguntas .p-accordion-header {
   background: transparent !important;
-  padding: 1.5rem 0 !important;
-  font-size: 1.05rem !important;
-  font-weight: 600 !important;
-  color: #333 !important;
+}
+
+:host ::ng-deep .acordeon-preguntas .p-accordion-header-link {
+  padding: 1.25rem 0 !important;
   transition: all 0.3s ease !important;
 }
 
-:host ::ng-deep .faq-accordion-header:hover {
-  color: #0066CC !important;
+:host ::ng-deep .acordeon-preguntas .p-accordion-header-link:hover {
+  background: transparent !important;
 }
 
-:host ::ng-deep .faq-accordion-header.p-accordion-header-active {
-  color: #0066CC !important;
+:host ::ng-deep .acordeon-preguntas .p-accordion-header-link:hover .pregunta-encabezado {
+  color: var(--gobierno-azul-principal, #0066CC) !important;
 }
 
-:host ::ng-deep .p-accordioncontent-content {
+:host ::ng-deep .acordeon-preguntas .p-accordion-header.p-highlight .pregunta-encabezado {
+  color: var(--gobierno-azul-principal, #0066CC) !important;
+}
+
+:host ::ng-deep .acordeon-preguntas .p-accordion-content {
   background-color: transparent !important;
+  padding: 0 !important;
   padding-bottom: 0 !important;
-  padding-inline: 0 !important;
 }
 
-.faq-accordion-content {
-  padding: 0 0 1.5rem 0;
-  line-height: 1.75;
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.faq-accordion-content ::ng-deep p {
-  margin: 0;
-  line-height: 1.75;
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.faq-accordion-content ::ng-deep strong {
-  color: #0066CC;
+/* Respuesta contenido - Estilos para HTML interno */
+:host ::ng-deep .respuesta-contenido strong {
+  color: var(--gobierno-azul-principal, #0066CC);
   font-weight: 600;
 }
 
-.faq-accordion-content ::ng-deep em {
-  color: #666;
+:host ::ng-deep .respuesta-contenido em {
   font-style: italic;
 }
 
-/* Help Card */
-:host ::ng-deep .help-card {
-  margin-top: 0 !important;
+/* Tarjeta de Ayuda - Personalización */
+:host ::ng-deep .tarjeta-ayuda .p-card-body {
+  padding: 1.5rem !important;
+  height: 100%;
 }
 
-:host ::ng-deep .help-card .p-card-body {
-  padding: 2rem !important;
-}
-
-:host ::ng-deep .help-card .p-card-content {
+:host ::ng-deep .tarjeta-ayuda .p-card-content {
   padding: 0 !important;
 }
 
-.help-card-title {
-  font-size: 1.125rem;
-  font-weight: 700;
-  margin: 0 0 1.5rem 0;
-  color: #333;
-}
-
-.help-list {
+/* Lista de recursos */
+.lista-recursos {
   list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem 0;
 }
 
-.help-item {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.help-icon {
-  color: #0066CC;
-  font-size: 1.25rem;
-  flex-shrink: 0;
-}
-
-.help-link {
-  color: #0066CC;
+/* Enlaces de recursos */
+.enlace-recurso {
   text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.3s ease;
 }
 
-.help-link:hover {
-  color: #0052CC;
+.enlace-recurso:hover {
   text-decoration: underline;
 }
 
-.help-button-wrapper {
-  width: 100%;
-}
-
-:host ::ng-deep .btn-help-center {
-  width: 100% !important;
-  border-color: #0066CC !important;
-  color: #0066CC !important;
-  font-weight: 600 !important;
-}
-
-:host ::ng-deep .btn-help-center:hover {
-  background: #0066CC !important;
-  color: white !important;
-}
-
-/* Responsive */
-@media (max-width: 991.98px) {
-  .faq-page {
-    padding: 1.5rem 0;
-  }
-
-  .faq-container {
-    padding: 0 1rem;
-  }
-
-  .faq-hero {
-    padding: 2rem 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .faq-title {
-    font-size: 2rem;
-  }
-
-  .faq-lead {
-    font-size: 1.125rem;
-  }
-
-  .faq-section {
-    margin-top: 2rem;
-  }
-
-  :host ::ng-deep .help-card {
-    margin-top: 2rem;
-  }
-}
-
+/* Responsive - Ajustes adicionales si es necesario */
 @media (max-width: 767.98px) {
-  .faq-hero {
-    padding: 1.5rem;
+  :host ::ng-deep .pregunta-encabezado {
+    padding: 1rem 0 !important;
   }
-
-  .faq-title {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .faq-lead {
-    font-size: 1rem;
-  }
-
-  .faq-icon {
-    font-size: 4rem;
-  }
-
-  .faq-subtitle {
-    font-size: 1.5rem;
-  }
-
-  .faq-accordion-wrapper {
-    padding: 1.5rem;
-  }
-
-  :host ::ng-deep .faq-accordion-header {
-    padding: 1.25rem 0 !important;
-    font-size: 1rem !important;
-  }
-
-  .faq-accordion-content {
-    padding: 0 0 1.25rem 0 !important;
+  
+  :host ::ng-deep .pregunta-encabezado span {
+    font-size: 0.95rem !important;
   }
 }
 

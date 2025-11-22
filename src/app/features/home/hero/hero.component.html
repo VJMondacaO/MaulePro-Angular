@@ -1,75 +1,63 @@
 <!-- Hero Section -->
 <div class="hero-wrapper">
-  <div class="hero-container-flex">
-    <!-- Contenido Principal -->
-    <div class="hero-content-wrapper">
-      <div class="hero-content-inner">
-        <div class="hero-text-container">
-          <!-- Badge Institucional -->
-          <div class="hero-badge">
-            <p-tag 
-              value="Gobierno Regional del Maule" 
-              severity="info" 
-              icon="pi-building"
-              styleClass="institucional-badge">
-            </p-tag>
+  <!-- Carrusel de Fondo -->
+  <div class="hero-carousel">
+    <div class="hero-overlay"></div>
+    <p-galleria 
+      [value]="images" 
+      [numVisible]="1" 
+      [circular]="true" 
+      [showItemNavigators]="false" 
+      [showThumbnails]="false" 
+      [showIndicators]="true"
+      [autoPlay]="true"
+      [transitionInterval]="3000"
+      [containerStyle]="{ 'max-width': '100%', 'height': '100%' }"
+      styleClass="hero-galleria">
+      <ng-template #item let-item>
+        <img [src]="item.itemImageSrc" class="hero-carousel-image" />
+      </ng-template>
+    </p-galleria>
+  </div>
+
+  <!-- Contenido Principal -->
+  <div class="hero-content">
+    <div class="hero-content-inner">
+      <!-- Título Principal -->
+      <h1 class="hero-title">
+        <span class="hero-title-line">Portal de Postulación a</span>
+        <span class="hero-title-line hero-title-primary">Programas y Fondos Regionales</span>
+      </h1>
+
+      <!-- Descripción -->
+      <p class="hero-description">
+        Accede a las líneas de financiamiento del <strong>Gobierno Regional del Maule</strong>. 
+        Revisa requisitos, fechas y postula con <strong>ClaveÚnica</strong> cuando el proceso esté abierto.
+      </p>
+
+      <!-- Características -->
+      <div class="hero-features">
+        <div class="feature-item" *ngFor="let feature of features">
+          <div class="feature-icon" [ngClass]="'feature-icon-' + feature.color">
+            <i [class]="feature.icon" class="pi"></i>
           </div>
-
-          <!-- Título Principal -->
-          <h1 class="hero-title">
-            <span class="hero-title-line">Portal de Postulación a</span>
-            <span class="hero-title-line hero-title-primary">Programas y Fondos Regionales</span>
-          </h1>
-
-          <!-- Descripción -->
-          <p class="hero-description">
-            Accede a las líneas de financiamiento del <strong>Gobierno Regional del Maule</strong>. 
-            Revisa requisitos, fechas y postula con <strong>ClaveÚnica</strong> cuando el proceso esté abierto.
-          </p>
-
-          <!-- Características -->
-          <div class="hero-features">
-            <div class="feature-item" *ngFor="let feature of features">
-              <div class="feature-icon" [ngClass]="'feature-icon-' + feature.color">
-                <i [class]="feature.icon" class="pi"></i>
-              </div>
-              <div class="feature-content">
-                <h3 class="feature-title">{{ feature.title }}</h3>
-                <p class="feature-text">{{ feature.description }}</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Botones de Acción -->
-          <div class="hero-buttons">
-            <button 
-              pButton 
-              type="button"
-              label="Ver Programas"
-              icon="pi pi-list"
-              (click)="scrollToPrograms()">
-            </button>
-            <button 
-              pButton 
-              type="button" 
-              outlined
-              label="ClaveÚnica"
-              icon="pi pi-key"
-              (click)="onClaveUnicaClick()">
-            </button>
+          <div class="feature-content">
+            <h3 class="feature-title">{{ feature.title }}</h3>
+            <p class="feature-text">{{ feature.description }}</p>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Imagen -->
-    <div class="hero-image-wrapper">
-      <div class="hero-image-overlay-mobile"></div>
-      <img
-        src="assets/images/descabezado.jpg"
-        alt="Volcán Descabezado - Reserva Nacional Altos de Lircay, Región del Maule"
-        class="hero-image"
-      />
+      <!-- Botones de Acción -->
+      <div class="hero-buttons">
+        <button 
+          pButton 
+          type="button"
+          label="Ver Programas"
+          icon="pi pi-list"
+          (click)="scrollToPrograms()">
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -1,75 +1,75 @@
 <!-- Página de Detalle de Programa -->
-<div *ngIf="!loading && program" class="program-detail-page">
+<div *ngIf="!loading && program" class="min-h-screen bg-gray-100 w-full max-w-full -mt-8 relative box-border overflow-x-hidden">
   <!-- Hero Section con Info del Programa -->
-  <section class="program-detail-hero">
-    <div class="hero-content-wrapper">
-      <div class="grid">
+  <section class="bg-gradient-to-br from-[#003B8D] via-[#0066CC] to-[#0088FF] text-white py-16 mt-0 relative overflow-hidden shadow-lg w-full box-border">
+    <div class="relative z-10 box-border px-6 mx-auto max-w-full w-full md:w-[84%] lg:w-[80%]">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Botón Volver -->
-        <div class="col-12 lg:col-2 hero-volver-col">
+        <div class="lg:col-span-2 mb-6 lg:mb-0">
           <button 
             pButton 
             type="button"
             label="Volver" 
             icon="pi pi-chevron-left"
             iconPos="left"
-            class="btn-volver"
+            class="w-full bg-white/15 hover:bg-white/25 border border-white/30 text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
             [routerLink]="['/home']">
           </button>
         </div>
 
         <!-- Contenido Principal -->
-        <div class="col-12 lg:col-10">
+        <div class="lg:col-span-10">
           <!-- Badges de Estado -->
-          <div class="hero-badges hero-badges-spacing">
+          <div class="flex flex-wrap gap-4 items-center mb-6">
             <p-tag 
               [value]="getEstadoTagText()" 
               [severity]="getEstadoTagSeverity()" 
-              styleClass="hero-status-tag">
+              styleClass="px-6 py-2.5 text-sm font-bold rounded-full shadow-md tracking-wide">
             </p-tag>
             <p-tag 
               *ngIf="program.fechaCierreFormateada && program.estado === 'open'"
               [value]="'Cierre de postulación: ' + program.fechaCierreFormateada"
               severity="danger"
               icon="pi pi-calendar"
-              styleClass="hero-date-tag">
+              styleClass="px-5 py-2.5 text-sm rounded-full shadow-md font-medium">
             </p-tag>
             <p-tag 
               [value]="program.categoria"
               severity="secondary"
-              styleClass="hero-category-tag">
+              styleClass="px-4 py-2 text-xs rounded-full shadow-sm font-medium">
             </p-tag>
           </div>
 
           <!-- Título y Descripción -->
-          <div class="hero-main-content">
-            <h1 class="hero-title">{{ program.titulo | uppercase }}</h1>
-            <p class="hero-description">{{ program.descripcion }}</p>
+          <div class="mt-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-7 text-white tracking-tight drop-shadow-lg">{{ program.titulo | uppercase }}</h1>
+            <p class="text-xl md:text-2xl leading-relaxed mb-10 text-white/95 max-w-[95%] font-normal">{{ program.descripcion }}</p>
 
             <!-- Información Básica -->
-            <div class="hero-info-grid hero-info-spacing">
-              <div class="hero-info-item">
-                <small class="hero-info-label">Invita:</small>
-                <p-tag [value]="program.invita" severity="contrast" styleClass="info-tag"></p-tag>
+            <div class="flex flex-wrap gap-6 items-start mb-6">
+              <div class="flex flex-col gap-2">
+                <small class="block text-white/70 text-sm mb-1">Invita:</small>
+                <p-tag [value]="program.invita" severity="contrast" styleClass="bg-white text-gray-800 px-4 py-2 rounded-lg text-sm shadow-md font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"></p-tag>
               </div>
-              <div class="hero-info-item">
-                <small class="hero-info-label">Alcance:</small>
-                <p-tag [value]="program.alcance" severity="contrast" styleClass="info-tag"></p-tag>
+              <div class="flex flex-col gap-2">
+                <small class="block text-white/70 text-sm mb-1">Alcance:</small>
+                <p-tag [value]="program.alcance" severity="contrast" styleClass="bg-white text-gray-800 px-4 py-2 rounded-lg text-sm shadow-md font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"></p-tag>
               </div>
-              <div class="hero-info-item">
-                <small class="hero-info-label">Categoría:</small>
-                <p-tag [value]="program.categoria" severity="contrast" styleClass="info-tag"></p-tag>
+              <div class="flex flex-col gap-2">
+                <small class="block text-white/70 text-sm mb-1">Categoría:</small>
+                <p-tag [value]="program.categoria" severity="contrast" styleClass="bg-white text-gray-800 px-4 py-2 rounded-lg text-sm shadow-md font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"></p-tag>
               </div>
             </div>
 
             <!-- Botón Postular -->
-            <div class="hero-action">
+            <div class="mt-10">
               <button 
                 pButton 
                 type="button"
                 label="Postular" 
                 icon="pi pi-send"
                 iconPos="right"
-                class="btn-postular"
+                class="px-10 py-4 text-lg font-bold rounded-full bg-white text-[#0066CC] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-gray-50"
                 (click)="onPostularClick()"
                 *ngIf="program.estado === 'open'">
               </button>
@@ -81,133 +81,152 @@
   </section>
 
   <!-- Sección de Detalles -->
-  <section class="program-detail-content">
-    <div class="main-content">
-      <div class="container">
-        <div class="grid">
-          <div class="col-12 lg:col-10 detail-content-offset">
+  <section class="py-16 bg-gray-100 w-full box-border">
+    <div class="max-w-full mx-auto w-full px-6 box-border">
+      <div class="lg:w-10/12 mx-auto">
             
             <!-- Cards Expandibles (Desktop) -->
-            <div class="detail-cards-desktop detail-cards-desktop-only detail-cards-spacing">
-              <div class="grid">
+            <div class="hidden md:block mb-12">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
                 <!-- Card Modalidad -->
-                <div class="col-12 md:col-4">
-                  <p-card>
-                    <div class="detail-card-content">
-                      <h3 class="detail-card-title">Modalidad de postulación</h3>
-                      <p class="detail-card-value">
-                        <i [class]="'pi ' + program.modalidad.icono" class="icon-spacing"></i>
-                        <span class="detail-value-text">{{ program.modalidad.tipo }}</span>
-                      </p>
-                      <hr>
-                      <button 
-                        pButton 
-                        type="button"
-                        label="{{ expandedModalidad ? 'Ver menos' : 'Ver más' }}"
-                        icon="{{ expandedModalidad ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
-                        iconPos="right"
-                        class="btn-detail-expand"
-                        (click)="toggleAccordion('modalidad')">
-                      </button>
+                <div class="flex flex-col h-full">
+                  <p-card styleClass="rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 bg-white h-full flex flex-col">
+                    <div class="text-center flex flex-col gap-5 py-8 px-6 h-full justify-between">
+                      <div class="flex flex-col gap-5">
+                        <h3 class="text-base font-semibold mb-3 text-[#0C1B41]">Modalidad de postulación</h3>
+                        <p class="text-xl font-bold m-0 text-red-600 flex items-center justify-center gap-2">
+                          <i [class]="'pi ' + program.modalidad.icono" class="text-2xl text-red-600"></i>
+                          <span class="text-red-600 flex items-center gap-1.5">
+                            <i *ngIf="program.modalidad.tipo === 'Online'" class="pi pi-wifi text-lg text-red-600"></i>
+                            {{ program.modalidad.tipo }}
+                          </span>
+                        </p>
+                      </div>
+                      <div class="flex flex-col gap-3 mt-auto">
+                        <hr class="my-2 border-none border-t border-gray-300">
+                        <button 
+                          pButton 
+                          type="button"
+                          label="{{ expandedModalidad ? 'Ver menos' : 'Ver más' }}"
+                          icon="{{ expandedModalidad ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
+                          iconPos="right"
+                          class="bg-transparent border-none text-[#0066CC] py-2 px-0 text-sm font-medium transition-all duration-200 hover:text-[#0052CC]"
+                          (click)="toggleAccordion('modalidad')">
+                        </button>
+                      </div>
                     </div>
                   </p-card>
                 </div>
 
                 <!-- Card Tipo Postulante -->
-                <div class="col-12 md:col-4">
-                  <p-card>
-                    <div class="detail-card-content">
-                      <h3 class="detail-card-title">Tipo de Postulante</h3>
-                      <p class="detail-card-value">
-                        <i [class]="'pi ' + program.tipoPostulante.icono" class="icon-spacing"></i>
-                        <span class="detail-value-text">{{ program.tipoPostulante.tipo }}</span>
-                      </p>
-                      <hr>
-                      <button 
-                        pButton 
-                        type="button"
-                        label="{{ expandedTipoPostulante ? 'Ver menos' : 'Ver más' }}"
-                        icon="{{ expandedTipoPostulante ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
-                        iconPos="right"
-                        class="btn-detail-expand"
-                        (click)="toggleAccordion('tipoPostulante')">
-                      </button>
+                <div class="flex flex-col h-full">
+                  <p-card styleClass="rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 bg-white h-full flex flex-col">
+                    <div class="text-center flex flex-col gap-5 py-8 px-6 h-full justify-between">
+                      <div class="flex flex-col gap-5">
+                        <h3 class="text-base font-semibold mb-3 text-[#0C1B41]">Tipo de Postulante</h3>
+                        <p class="text-xl font-bold m-0 text-red-600 flex items-center justify-center gap-2">
+                          <i [class]="'pi ' + program.tipoPostulante.icono" class="text-2xl text-red-600"></i>
+                          <span class="text-red-600">{{ program.tipoPostulante.tipo }}</span>
+                        </p>
+                      </div>
+                      <div class="flex flex-col gap-3 mt-auto">
+                        <hr class="my-2 border-none border-t border-gray-300">
+                        <button 
+                          pButton 
+                          type="button"
+                          label="{{ expandedTipoPostulante ? 'Ver menos' : 'Ver más' }}"
+                          icon="{{ expandedTipoPostulante ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
+                          iconPos="right"
+                          class="bg-transparent border-none text-[#0066CC] py-2 px-0 text-sm font-medium transition-all duration-200 hover:text-[#0052CC]"
+                          (click)="toggleAccordion('tipoPostulante')">
+                        </button>
+                      </div>
                     </div>
                   </p-card>
                 </div>
 
                 <!-- Card Tipo Financiamiento -->
-                <div class="col-12 md:col-4">
-                  <p-card>
-                    <div class="detail-card-content">
-                      <h3 class="detail-card-title">Tipo de Financiamiento</h3>
-                      <p class="detail-card-value">
-                        <i [class]="'pi ' + program.tipoFinanciamiento.icono" class="icon-spacing"></i>
-                        <span class="detail-value-text">{{ program.tipoFinanciamiento.tipo }}</span>
-                      </p>
-                      <hr>
-                      <button 
-                        pButton 
-                        type="button"
-                        label="{{ expandedTipoFinanciamiento ? 'Ver menos' : 'Ver más' }}"
-                        icon="{{ expandedTipoFinanciamiento ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
-                        iconPos="right"
-                        class="btn-detail-expand"
-                        (click)="toggleAccordion('tipoFinanciamiento')">
-                      </button>
+                <div class="flex flex-col h-full">
+                  <p-card styleClass="rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 bg-white h-full flex flex-col">
+                    <div class="text-center flex flex-col gap-5 py-8 px-6 h-full justify-between">
+                      <div class="flex flex-col gap-5">
+                        <h3 class="text-base font-semibold mb-3 text-[#0C1B41]">Tipo de Financiamiento</h3>
+                        <p class="text-xl font-bold m-0 text-red-600 flex items-center justify-center gap-2">
+                          <i [class]="'pi ' + program.tipoFinanciamiento.icono" class="text-2xl text-red-600"></i>
+                          <span class="text-red-600">{{ program.tipoFinanciamiento.tipo }}</span>
+                        </p>
+                      </div>
+                      <div class="flex flex-col gap-3 mt-auto">
+                        <hr class="my-2 border-none border-t border-gray-300">
+                        <button 
+                          pButton 
+                          type="button"
+                          label="{{ expandedTipoFinanciamiento ? 'Ver menos' : 'Ver más' }}"
+                          icon="{{ expandedTipoFinanciamiento ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
+                          iconPos="right"
+                          class="bg-transparent border-none text-[#0066CC] py-2 px-0 text-sm font-medium transition-all duration-200 hover:text-[#0052CC]"
+                          (click)="toggleAccordion('tipoFinanciamiento')">
+                        </button>
+                      </div>
                     </div>
                   </p-card>
                 </div>
               </div>
 
               <!-- Contenido Expandido -->
-              <div class="detail-expanded-content">
+              <div class="mt-6">
                 <!-- Modalidad Expandida -->
-                <div *ngIf="expandedModalidad" class="expanded-card expanded-card-spacing">
-                  <p-card>
-                    <h3>Modalidad de postulación: <span class="detail-value-text">{{ program.modalidad.tipo }}</span></h3>
-                    <p>{{ program.modalidad.descripcion }}</p>
-                    <button 
-                      *ngIf="program.modalidad.linkPostulacion"
-                      pButton 
-                      type="button"
-                      label="Ir a la postulación" 
-                      icon="pi pi-link"
-                      iconPos="right"
-                      class="btn-postular-link"
-                      [routerLink]="[program.modalidad.linkPostulacion]">
-                    </button>
+                <div *ngIf="expandedModalidad" class="mb-6 animacion-deslizar-abajo">
+                  <p-card styleClass="rounded-xl shadow-lg border-2 border-[#0066CC] bg-white">
+                    <div class="py-10 px-10">
+                      <h3 class="text-xl mb-5 text-gray-800 font-bold">Modalidad de postulación: <span class="text-red-600">{{ program.modalidad.tipo }}</span></h3>
+                      <p class="mb-6 leading-relaxed text-gray-600 text-base">{{ program.modalidad.descripcion }}</p>
+                      <button 
+                        *ngIf="program.modalidad.linkPostulacion"
+                        pButton 
+                        type="button"
+                        label="Ir a la postulación" 
+                        icon="pi pi-link"
+                        iconPos="right"
+                        class="mt-6 bg-[#0066CC] border-none px-6 py-3 font-semibold rounded-lg transition-all duration-300 hover:bg-[#0052CC] hover:-translate-y-0.5 hover:shadow-lg"
+                        [routerLink]="[program.modalidad.linkPostulacion]">
+                      </button>
+                    </div>
                   </p-card>
                 </div>
 
                 <!-- Tipo Postulante Expandido -->
-                <div *ngIf="expandedTipoPostulante" class="expanded-card expanded-card-spacing">
-                  <p-card>
-                    <h3>Tipo de Postulante: <span class="detail-value-text">{{ program.tipoPostulante.tipo }}</span></h3>
-                    <p>{{ program.tipoPostulante.descripcion }}</p>
+                <div *ngIf="expandedTipoPostulante" class="mb-6 animacion-deslizar-abajo">
+                  <p-card styleClass="rounded-xl shadow-lg border-2 border-[#0066CC] bg-white">
+                    <div class="py-10 px-10">
+                      <h3 class="text-xl mb-5 text-gray-800 font-bold">Tipo de Postulante: <span class="text-red-600">{{ program.tipoPostulante.tipo }}</span></h3>
+                      <p class="mb-6 leading-relaxed text-gray-600 text-base">{{ program.tipoPostulante.descripcion }}</p>
+                    </div>
                   </p-card>
                 </div>
 
                 <!-- Tipo Financiamiento Expandido -->
-                <div *ngIf="expandedTipoFinanciamiento" class="expanded-card expanded-card-spacing">
-                  <p-card>
-                    <h3>Tipo de Financiamiento: <span class="detail-value-text">{{ program.tipoFinanciamiento.tipo }}</span></h3>
-                    <p>{{ program.tipoFinanciamiento.descripcion }}</p>
+                <div *ngIf="expandedTipoFinanciamiento" class="mb-6 animacion-deslizar-abajo">
+                  <p-card styleClass="rounded-xl shadow-lg border-2 border-[#0066CC] bg-white">
+                    <div class="py-10 px-10">
+                      <h3 class="text-xl mb-5 text-gray-800 font-bold">Tipo de Financiamiento: <span class="text-red-600">{{ program.tipoFinanciamiento.tipo }}</span></h3>
+                      <p class="mb-6 leading-relaxed text-gray-600 text-base">{{ program.tipoFinanciamiento.descripcion }}</p>
+                    </div>
                   </p-card>
                 </div>
               </div>
             </div>
 
             <!-- Accordions (Mobile) -->
-            <div class="detail-accordions-mobile detail-accordions-mobile-only detail-accordions-spacing">
+            <div class="block md:hidden mb-12">
               <p-accordion>
                 <p-accordionTab>
                   <ng-template pTemplate="header">
-                    <i [class]="'pi ' + program.modalidad.icono" class="icon-spacing"></i>
-                    Modalidad de postulación: <span class="detail-value-text ms-1">{{ program.modalidad.tipo }}</span>
+                    <i [class]="'pi ' + program.modalidad.icono" class="mr-2"></i>
+                    Modalidad de postulación: <span class="text-red-600 ml-1">{{ program.modalidad.tipo }}</span>
                   </ng-template>
-                  <h3>Modalidad de postulación: <span class="detail-value-text">{{ program.modalidad.tipo }}</span></h3>
-                  <p>{{ program.modalidad.descripcion }}</p>
+                  <h3 class="text-xl mb-5 text-gray-800 font-bold">Modalidad de postulación: <span class="text-red-600">{{ program.modalidad.tipo }}</span></h3>
+                  <p class="mb-6 leading-relaxed text-gray-600">{{ program.modalidad.descripcion }}</p>
                   <button 
                     *ngIf="program.modalidad.linkPostulacion"
                     pButton 
@@ -215,63 +234,63 @@
                     label="Ir a la postulación" 
                     icon="pi pi-link"
                     iconPos="right"
-                    class="btn-postular-link"
+                    class="mt-6 bg-[#0066CC] border-none px-6 py-3 font-semibold rounded-lg transition-all duration-300 hover:bg-[#0052CC] hover:-translate-y-0.5 hover:shadow-lg"
                     [routerLink]="[program.modalidad.linkPostulacion]">
                   </button>
                 </p-accordionTab>
 
                 <p-accordionTab>
                   <ng-template pTemplate="header">
-                    <i [class]="'pi ' + program.tipoPostulante.icono" class="icon-spacing"></i>
-                    Tipo de Postulante: <span class="detail-value-text ms-1">{{ program.tipoPostulante.tipo }}</span>
+                    <i [class]="'pi ' + program.tipoPostulante.icono" class="mr-2"></i>
+                    Tipo de Postulante: <span class="text-red-600 ml-1">{{ program.tipoPostulante.tipo }}</span>
                   </ng-template>
-                  <h3>Tipo de Postulante: <span class="detail-value-text">{{ program.tipoPostulante.tipo }}</span></h3>
-                  <p>{{ program.tipoPostulante.descripcion }}</p>
+                  <h3 class="text-xl mb-5 text-gray-800 font-bold">Tipo de Postulante: <span class="text-red-600">{{ program.tipoPostulante.tipo }}</span></h3>
+                  <p class="mb-6 leading-relaxed text-gray-600">{{ program.tipoPostulante.descripcion }}</p>
                 </p-accordionTab>
 
                 <p-accordionTab>
                   <ng-template pTemplate="header">
-                    <i [class]="'pi ' + program.tipoFinanciamiento.icono" class="icon-spacing"></i>
-                    Tipo de Financiamiento: <span class="detail-value-text ms-1">{{ program.tipoFinanciamiento.tipo }}</span>
+                    <i [class]="'pi ' + program.tipoFinanciamiento.icono" class="mr-2"></i>
+                    Tipo de Financiamiento: <span class="text-red-600 ml-1">{{ program.tipoFinanciamiento.tipo }}</span>
                   </ng-template>
-                  <h3>Tipo de Financiamiento: <span class="detail-value-text">{{ program.tipoFinanciamiento.tipo }}</span></h3>
-                  <p>{{ program.tipoFinanciamiento.descripcion }}</p>
+                  <h3 class="text-xl mb-5 text-gray-800 font-bold">Tipo de Financiamiento: <span class="text-red-600">{{ program.tipoFinanciamiento.tipo }}</span></h3>
+                  <p class="mb-6 leading-relaxed text-gray-600">{{ program.tipoFinanciamiento.descripcion }}</p>
                 </p-accordionTab>
               </p-accordion>
             </div>
 
             <!-- Tabs con Detalles -->
-            <div class="detail-tabs">
+            <div class="mt-12">
               <p-tabView>
                 <!-- Tab Requisitos -->
                 <p-tabPanel header="Requisitos">
-                  <h3 class="tab-title">Requisitos de Postulación</h3>
-                  <p *ngIf="program.requisitos.introduccion" class="requisitos-intro">{{ program.requisitos.introduccion }}</p>
-                  <div class="requisitos-list">
-                    <div *ngFor="let item of program.requisitos.items" class="requisito-item requisito-item-spacing">
-                      <strong>{{ item.titulo }}</strong>
-                      <div>{{ item.descripcion }}</div>
+                  <h3 class="text-3xl md:text-4xl font-bold mb-8 pb-4 border-b-4 border-[#0066CC] inline-block text-gray-800 relative">Requisitos de Postulación</h3>
+                  <p *ngIf="program.requisitos.introduccion" class="mb-6 text-gray-700">{{ program.requisitos.introduccion }}</p>
+                  <div class="mt-6 flex flex-col gap-4">
+                    <div *ngFor="let item of program.requisitos.items" class="p-6 bg-gradient-to-r from-gray-50 to-white border-l-4 border-[#0066CC] rounded-lg shadow-sm transition-all duration-300 hover:shadow-md hover:translate-x-1 hover:border-[#018484]">
+                      <strong class="block mb-3 text-[#0066CC] text-base font-bold">{{ item.titulo }}</strong>
+                      <div class="text-gray-600 leading-relaxed text-sm">{{ item.descripcion }}</div>
                     </div>
                   </div>
                 </p-tabPanel>
 
                 <!-- Tab Documentación -->
                 <p-tabPanel header="Documentación">
-                  <h3 class="tab-title">Documentación Necesaria</h3>
-                  <p *ngIf="program.documentacion.introduccion" class="documentos-intro">{{ program.documentacion.introduccion }}</p>
-                  <div class="documentos-list documentos-list-spacing">
-                    <div *ngFor="let item of program.documentacion.items" class="documento-item documento-item-spacing">
-                      <strong>{{ item.titulo }}</strong>
-                      <div>{{ item.descripcion }}</div>
+                  <h3 class="text-3xl md:text-4xl font-bold mb-8 pb-4 border-b-4 border-[#0066CC] inline-block text-gray-800 relative">Documentación Necesaria</h3>
+                  <p *ngIf="program.documentacion.introduccion" class="mb-6 text-gray-700">{{ program.documentacion.introduccion }}</p>
+                  <div class="mt-6 flex flex-col gap-4 mb-6">
+                    <div *ngFor="let item of program.documentacion.items" class="p-6 bg-gradient-to-r from-blue-50 to-white border-l-4 border-[#018484] rounded-lg shadow-sm transition-all duration-300 hover:shadow-md hover:translate-x-1 hover:border-[#016666] mb-4">
+                      <strong class="block mb-3 text-[#018484] text-base font-bold">{{ item.titulo }}</strong>
+                      <div class="text-gray-600 leading-relaxed text-sm">{{ item.descripcion }}</div>
                     </div>
                   </div>
-                  <div *ngIf="program.documentacion.documentosDescarga && program.documentacion.documentosDescarga.length > 0" class="documentos-descarga">
-                    <h4 class="documentos-descarga-title">Documentos y Manuales Disponibles</h4>
-                    <p class="documentos-descarga-text">Puedes descargar los siguientes documentos para consulta y referencia:</p>
-                    <div class="documentos-descarga-list">
-                      <div *ngFor="let doc of program.documentacion.documentosDescarga" class="documento-item documento-descarga-item">
-                        <a [href]="doc.url" target="_blank" class="documento-link">
-                          <i class="pi pi-file-pdf documento-link-icon"></i>
+                  <div *ngIf="program.documentacion.documentosDescarga && program.documentacion.documentosDescarga.length > 0" class="mt-8 pt-8 border-t-2 border-gray-200">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-4">Documentos y Manuales Disponibles</h4>
+                    <p class="text-gray-600 mb-6 text-base">Puedes descargar los siguientes documentos para consulta y referencia:</p>
+                    <div class="mt-4 flex flex-col gap-3">
+                      <div *ngFor="let doc of program.documentacion.documentosDescarga" class="mb-2">
+                        <a [href]="doc.url" target="_blank" class="text-[#0066CC] no-underline flex items-center p-4 rounded-lg bg-gray-50 border border-gray-200 transition-all duration-300 hover:bg-[#0066CC] hover:text-white hover:translate-x-1.5 hover:shadow-lg hover:border-[#0066CC] text-base">
+                          <i class="pi pi-file-pdf text-red-600 mr-2 hover:text-white"></i>
                           <strong>{{ doc.nombre }}</strong>
                         </a>
                       </div>
@@ -281,41 +300,41 @@
 
                 <!-- Tab Evaluación -->
                 <p-tabPanel header="Evaluación">
-                  <h3 class="tab-title">Criterios de Evaluación</h3>
-                  <div *ngFor="let etapa of program.evaluacion.etapas" class="evaluacion-etapa evaluacion-etapa-spacing">
-                    <h4 class="evaluacion-etapa-title"><strong>{{ etapa.titulo }}</strong></h4>
-                    <p *ngIf="etapa.descripcion" class="evaluacion-etapa-desc">{{ etapa.descripcion }}</p>
-                    <div *ngIf="etapa.items" class="evaluacion-list">
-                      <div *ngFor="let item of etapa.items" class="evaluacion-item evaluacion-item-spacing">
-                        <strong>{{ item.titulo }}</strong>
-                        <div>{{ item.descripcion }}</div>
+                  <h3 class="text-3xl md:text-4xl font-bold mb-8 pb-4 border-b-4 border-[#0066CC] inline-block text-gray-800 relative">Criterios de Evaluación</h3>
+                  <div *ngFor="let etapa of program.evaluacion.etapas" class="mb-12 p-8 bg-gray-50 rounded-xl border border-gray-200">
+                    <h4 class="text-2xl mb-5 text-[#0066CC] font-bold"><strong>{{ etapa.titulo }}</strong></h4>
+                    <p *ngIf="etapa.descripcion" class="text-gray-600 leading-relaxed mb-4 text-base">{{ etapa.descripcion }}</p>
+                    <div *ngIf="etapa.items" class="mt-6 flex flex-col gap-3">
+                      <div *ngFor="let item of etapa.items" class="p-5 bg-white border-l-4 border-[#018484] rounded-lg shadow-sm transition-all duration-300 hover:shadow-md hover:translate-x-1 mb-2">
+                        <strong class="block mb-2 text-[#018484] text-base font-bold">{{ item.titulo }}</strong>
+                        <div class="text-gray-600 leading-relaxed text-sm">{{ item.descripcion }}</div>
                       </div>
                     </div>
                   </div>
 
                   <!-- Tabla de Criterios -->
-                  <div *ngIf="program.evaluacion.criterios && program.evaluacion.criterios.length > 0" class="table-responsive table-spacing">
-                    <p-table [value]="program.evaluacion.criterios" [tableStyle]="{'min-width': '50rem'}">
+                  <div *ngIf="program.evaluacion.criterios && program.evaluacion.criterios.length > 0" class="mb-6 overflow-x-auto">
+                    <p-table [value]="program.evaluacion.criterios" [tableStyle]="{'min-width': '50rem'}" styleClass="w-full border-collapse border-spacing-0 rounded-xl overflow-hidden shadow-md">
                       <ng-template pTemplate="header">
                         <tr>
-                          <th>Criterio</th>
-                          <th class="text-center">Ponderación</th>
+                          <th class="bg-gradient-to-r from-[#0066CC] to-[#0052CC] text-white font-bold py-5 px-6 border-none text-left text-base tracking-wide">Criterio</th>
+                          <th class="bg-gradient-to-r from-[#0066CC] to-[#0052CC] text-white font-bold py-5 px-6 border-none text-center text-base tracking-wide">Ponderación</th>
                         </tr>
                       </ng-template>
                       <ng-template pTemplate="body" let-criterio>
-                        <tr>
-                          <td>{{ criterio.nombre }}</td>
-                          <td class="text-center">{{ criterio.ponderacion }}</td>
+                        <tr class="hover:bg-gray-50 transition-colors duration-200">
+                          <td class="py-5 px-6 border-none bg-white text-gray-600 border-b border-gray-100">{{ criterio.nombre }}</td>
+                          <td class="py-5 px-6 border-none bg-white text-center font-semibold text-[#0066CC] text-base border-b border-gray-100">{{ criterio.ponderacion }}</td>
                         </tr>
                       </ng-template>
                     </p-table>
                   </div>
 
                   <!-- Notas Importantes -->
-                  <div *ngIf="program.evaluacion.notasImportantes && program.evaluacion.notasImportantes.length > 0" class="notas-importantes">
-                    <h4 class="notas-title"><strong>Notas importantes sobre la evaluación:</strong></h4>
-                    <div class="notas-list">
-                      <div *ngFor="let nota of program.evaluacion.notasImportantes" class="nota-item nota-item-spacing">
+                  <div *ngIf="program.evaluacion.notasImportantes && program.evaluacion.notasImportantes.length > 0" class="mt-10 p-8 bg-gradient-to-br from-yellow-50 to-yellow-100 border-l-4 border-yellow-400 rounded-xl shadow-md">
+                    <h4 class="text-yellow-900 mb-5 text-xl font-bold"><strong>Notas importantes sobre la evaluación:</strong></h4>
+                    <div class="mt-4 flex flex-col gap-3">
+                      <div *ngFor="let nota of program.evaluacion.notasImportantes" class="text-yellow-900 leading-relaxed text-sm pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-2xl before:text-yellow-400 before:font-bold">
                         {{ nota.descripcion }}
                       </div>
                     </div>
@@ -324,12 +343,12 @@
 
                 <!-- Tab Bases -->
                 <p-tabPanel header="Bases">
-                  <h3 class="tab-title">Bases del Concurso</h3>
-                  <div class="bases-list">
-                    <p *ngFor="let base of program.bases.bases" class="base-item">
-                      <strong>{{ base.nombre }}:</strong>
-                      <a [href]="base.url" target="_blank" class="base-link">
-                        <i class="pi pi-download base-link-icon"></i>Descargar
+                  <h3 class="text-3xl md:text-4xl font-bold mb-8 pb-4 border-b-4 border-[#0066CC] inline-block text-gray-800 relative">Bases del Concurso</h3>
+                  <div class="mt-6 flex flex-col gap-4">
+                    <p *ngFor="let base of program.bases.bases" class="m-0 p-5 bg-gradient-to-r from-blue-50 to-white rounded-lg border border-gray-200 shadow-sm transition-all duration-300 hover:shadow-md hover:translate-x-1">
+                      <strong class="text-[#0066CC] text-base font-bold">{{ base.nombre }}:</strong>
+                      <a [href]="base.url" target="_blank" class="text-[#0066CC] no-underline font-semibold inline-flex items-center gap-2 py-1.5 px-3 rounded-md bg-white border border-[#0066CC] transition-all duration-300 hover:bg-[#0066CC] hover:text-white hover:-translate-y-0.5 hover:shadow-lg ml-3">
+                        <i class="pi pi-download mr-1"></i>Descargar
                       </a>
                     </p>
                   </div>
@@ -337,29 +356,30 @@
 
                 <!-- Tab Dudas y Consultas -->
                 <p-tabPanel header="Dudas y consultas">
-                  <h3 class="tab-title">Dudas y consultas</h3>
-                  <div class="dudas-content">
-                    <p class="dudas-desc">{{ program.dudasConsultas.descripcion }}</p>
-                    <div *ngIf="program.dudasConsultas.horarios" class="dudas-info">
-                      <strong>Horarios:</strong>
-                      <p>{{ program.dudasConsultas.horarios }}</p>
+                  <h3 class="text-3xl md:text-4xl font-bold mb-8 pb-4 border-b-4 border-[#0066CC] inline-block text-gray-800 relative">Dudas y consultas</h3>
+                  <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                    <p class="leading-relaxed mb-6 text-gray-600 text-base">{{ program.dudasConsultas.descripcion }}</p>
+                    <div *ngIf="program.dudasConsultas.horarios" class="bg-white p-6 rounded-lg mb-5 border-l-4 border-[#0066CC] shadow-sm">
+                      <strong class="block mb-3 text-[#0066CC] text-lg font-bold">Horarios:</strong>
+                      <p class="text-gray-600 leading-relaxed m-0 text-sm">{{ program.dudasConsultas.horarios }}</p>
                     </div>
-                    <div *ngIf="program.dudasConsultas.contacto" class="dudas-info">
-                      <strong>Contacto:</strong>
-                      <p>{{ program.dudasConsultas.contacto }}</p>
+                    <div *ngIf="program.dudasConsultas.contacto" class="bg-white p-6 rounded-lg mb-5 border-l-4 border-[#0066CC] shadow-sm">
+                      <strong class="block mb-3 text-[#0066CC] text-lg font-bold">Contacto:</strong>
+                      <p class="text-gray-600 leading-relaxed m-0 text-sm">{{ program.dudasConsultas.contacto }}</p>
                     </div>
                   </div>
                 </p-tabPanel>
               </p-tabView>
             </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 </div>
 
 <!-- Loading State -->
-<div *ngIf="loading" class="program-detail-loading">
-  <p>Cargando información del programa...</p>
+<div *ngIf="loading" class="min-h-screen flex items-center justify-center text-lg text-gray-600 bg-gray-100">
+  <p class="flex items-center gap-3 py-8 px-12 bg-white rounded-xl shadow-lg">
+    <span class="w-5 h-5 border-3 border-gray-200 border-t-[#0066CC] rounded-full animate-spin"></span>
+    Cargando información del programa...
+  </p>
 </div>
