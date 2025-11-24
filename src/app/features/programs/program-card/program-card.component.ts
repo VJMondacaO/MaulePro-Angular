@@ -36,7 +36,7 @@ export class ProgramCardComponent {
   getEstadoColor(): string {
     switch (this.program.estado) {
       case 'open': return '#0066CC'; // Azul para abierta
-      case 'soon': return '#FFC107'; // Amarillo para próxima
+      case 'soon': return '#FFE082'; // Amarillo pálido para próxima
       case 'closed': return '#6C757D'; // Gris para cerrada
       default: return '#999';
     }

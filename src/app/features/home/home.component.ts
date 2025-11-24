@@ -40,6 +40,62 @@ export class HomeComponent {
 
   tipoFondoOptions: { label: string; value: string }[] = [];
 
+  incentives = [
+    {
+      icon: 'pi pi-book',
+      title: 'Paso 1: Revisa las bases',
+      description: 'Lee los requisitos del fondo, verifica la eligibilidad de tu institución y los plazos de postulación.'
+    },
+    {
+      icon: 'pi pi-pencil',
+      title: 'Paso 2: Diseña tu proyecto',
+      description: 'Define objetivo, beneficiarios, actividades y presupuesto según el formato solicitado.'
+    },
+    {
+      icon: 'pi pi-upload',
+      title: 'Paso 3: Sube tu postulación',
+      description: 'Completa el formulario en línea y adjunta toda la documentación requerida antes del cierre.'
+    },
+    {
+      icon: 'pi pi-chart-line',
+      title: 'Paso 4: Haz seguimiento',
+      description: 'Revisa el estado de tu proyecto, responde observaciones y consulta los resultados de la evaluación.'
+    }
+  ];
+
+  servicios = [
+    {
+      icon: 'pi pi-sign-in',
+      title: '1. Inicio de Sesión',
+      description: 'Para postular a cualquier programa, debe iniciar sesión con su cuenta institucional o de usuario registrado.'
+    },
+    {
+      icon: 'pi pi-list-check',
+      title: '2. Requisitos de Postulación',
+      description: 'Revise cuidadosamente los requisitos y criterios de admisibilidad antes de comenzar el proceso.'
+    },
+    {
+      icon: 'pi pi-file',
+      title: '3. Documentación Obligatoria',
+      description: 'Prepare la documentación necesaria, tal comoformularios, certificados, anexos y respaldos, según lo indicado en cada programa.'
+    },
+    {
+      icon: 'pi pi-calendar',
+      title: '4. Periodos de Postulación',
+      description: 'Los plazos de postulación pueden variar según el fondo o línea de financiamiento. Verifique las fechas antes de enviar su proyecto.'
+    },
+    {
+      icon: 'pi pi-book',
+      title: '5. Manuales e Instructivos',
+      description: 'Consulte los manuales, guías y documentos de apoyo disponibles en cada sección para completar correctamente su postulación.'
+    },
+    {
+      icon: 'pi pi-question-circle',
+      title: '6. Resolución de Consultas',
+      description: 'Si presenta dudas, puede acceder a canales de ayuda y soporte técnico según cada fondo o etapa del proceso.'
+    }
+  ];
+
   constructor(
     private programsService: ProgramsService,
     private router: Router

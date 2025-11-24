@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ProgramsService } from '../programs.service';
 import { ProgramDetailData } from '../program-detail.types';
 
@@ -40,7 +41,8 @@ export class ProgramDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private programsService: ProgramsService
+    private programsService: ProgramsService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -137,5 +139,19 @@ export class ProgramDetailComponent implements OnInit {
         this.expandedTipoFinanciamiento = true;
       }
     }
+  }
+
+  getHeroBackgroundImage(): SafeStyle {
+    if (this.program?.imagenHero) {
+      // Codificar la ruta de la imagen para URL
+      const imagePath = encodeURI(this.program.imagenHero);
+      const style = `url('${imagePath}')`;
+      return this.sanitizer.bypassSecurityTrustStyle(style);
+    }
+    return this.sanitizer.bypassSecurityTrustStyle('none');
+  }
+
+  hasHeroImage(): boolean {
+    return !!this.program?.imagenHero;
   }
 }

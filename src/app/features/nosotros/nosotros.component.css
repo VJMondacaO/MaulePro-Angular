@@ -483,10 +483,18 @@
   }
 }
 
-.banner-contenido p {
+.banner-contacto .banner-contenido p {
   font-size: 1.125rem;
   color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 2rem 0;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  text-align-last: center;
+  max-width: 100%;
+  padding: 0 1rem;
+  display: block;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
 }
 
 .boton-contacto {

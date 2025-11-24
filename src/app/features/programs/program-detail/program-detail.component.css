@@ -2,6 +2,66 @@
    Program Detail Page Styles - Tailwind + PrimeNG
    ============================================ */
 
+/* Hero Section con imagen de fondo o fondo azul oscuro por defecto */
+.hero-programa {
+  background: linear-gradient(135deg, #001a3d 0%, #002855 50%, #003366 100%);
+}
+
+.hero-with-image {
+  position: relative;
+}
+
+.hero-with-image .hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 40, 100, 0.75) 0%, rgba(0, 60, 140, 0.7) 50%, rgba(0, 80, 180, 0.65) 100%);
+  z-index: 1;
+}
+
+.hero-with-image > div {
+  position: relative;
+  z-index: 2;
+}
+
+/* Botón Postular - Doble ancho */
+:host ::ng-deep .boton-postular {
+  width: auto !important;
+  min-width: 320px !important;
+}
+
+:host ::ng-deep .boton-postular .p-button {
+  width: 100% !important;
+  min-width: 320px !important;
+  padding-left: 3rem !important;
+  padding-right: 3rem !important;
+}
+
+/* Botón Volver Sutil */
+:host ::ng-deep .boton-volver-sutil {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  width: auto !important;
+  display: inline-flex !important;
+}
+
+:host ::ng-deep .boton-volver-sutil:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  transform: translateX(-2px) !important;
+}
+
+:host ::ng-deep .boton-volver-sutil .p-button-icon {
+  font-size: 0.75rem !important;
+}
+
 /* Animación para cards expandidas */
 @keyframes slideDown {
   from {

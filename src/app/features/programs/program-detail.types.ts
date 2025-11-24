@@ -8,6 +8,7 @@ export interface ProgramDetailData extends ProgramCardData {
   invita: string; // Quién invita (ej: "Gobierno Regional del Maule")
   alcance: string; // Alcance geográfico (ej: "Regional")
   fechaCierreFormateada?: string; // Fecha de cierre formateada para mostrar
+  imagenHero?: string; // Ruta de la imagen de fondo para el hero (opcional)
 
   // Detalles del fondo (cards expandibles)
   modalidad: ProgramModalidad;

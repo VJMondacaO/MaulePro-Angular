@@ -72,6 +72,16 @@
 }
 
 /* Tarjeta de Ayuda - Personalización */
+:host ::ng-deep .tarjeta-ayuda {
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 992px) {
+  :host ::ng-deep .tarjeta-ayuda {
+    margin-top: 6rem;
+  }
+}
+
 :host ::ng-deep .tarjeta-ayuda .p-card-body {
   padding: 1.5rem !important;
   height: 100%;
@@ -93,6 +103,23 @@
 
 .enlace-recurso:hover {
   text-decoration: underline;
+}
+
+/* Botón Centro de Ayuda - Estilo negro */
+:host ::ng-deep .boton-centro-ayuda {
+  border-color: #000000 !important;
+  color: #000000 !important;
+  background: transparent !important;
+}
+
+:host ::ng-deep .boton-centro-ayuda:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+:host ::ng-deep .boton-centro-ayuda .p-button-icon {
+  color: inherit !important;
 }
 
 /* Responsive - Ajustes adicionales si es necesario */

@@ -255,6 +255,7 @@ export class ProgramsService {
         categoria: 'Subvenciones y apoyos',
         invita: 'Gobierno Regional del Maule',
         alcance: 'Regional',
+        imagenHero: 'assets/images/fotosproyectos/8 por ciento.JPG',
         modalidad: {
           tipo: 'Online',
           icono: 'pi-laptop',

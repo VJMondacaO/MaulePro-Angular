@@ -61,7 +61,10 @@
           icon="pi pi-arrow-right"
           iconPos="right"
           [routerLink]="program.rutaDetalles"
-          class="btn-details">
+          [class]="'btn-details ' + (program.estado === 'closed' ? 'btn-details-closed' : '')"
+          [style.background-color]="program.estado === 'closed' ? '#6C757D' : (program.estado === 'soon' ? '#FFE082' : null)"
+          [style.border-color]="program.estado === 'closed' ? '#6C757D' : (program.estado === 'soon' ? '#FFE082' : null)"
+          [style.color]="program.estado === 'closed' ? '#FFFFFF' : (program.estado === 'soon' ? '#333' : null)">
         </button>
       </div>
     </div>
