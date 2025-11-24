@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="grid">
+  <div class="w-full">
     <!-- Hero Section -->
-    <div class="col-12">
+    <div class="w-full">
       <app-hero></app-hero>
     </div>
 
     <!-- Lista de Programas -->
-    <div class="col-12 mt-4">
+    <div class="w-full mt-4">
       <!-- Panel Integrado: Título, Filtros y Búsqueda -->
       <div class="programs-header-panel">
         <div class="panel-header">
@@ -63,9 +63,8 @@
       </div>
 
       <!-- Grid de Cards de Programa -->
-      <div class="grid programas-grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-6 programas-grid">
         <div 
-          class="col-12 md:col-6 lg:col-3" 
           *ngFor="let programa of filteredPrograms">
           <app-program-card [program]="programa"></app-program-card>
         </div>
@@ -73,7 +72,7 @@
     </div>
 
     <!-- Sección de Beneficios -->
-    <div class="col-12">
+    <div class="w-full">
       <div class="beneficios-section">
         <h3 class="pasos-titulo">Pasos de Postulación</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -93,7 +92,7 @@
     </div>
 
     <!-- Sección de Servicios -->
-    <div class="col-12">
+    <div class="w-full">
       <div class="servicios-section">
         <h2 class="servicios-titulo">Información para Postulantes</h2>
         <p class="servicios-descripcion">

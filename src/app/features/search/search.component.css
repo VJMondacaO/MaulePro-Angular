@@ -397,25 +397,16 @@
   font-weight: 600;
 }
 
-/* Grid de Programas */
+/* Grid de Programas - Ahora manejado por Tailwind grid-cols-* */
 .programas-grid {
-  display: flex;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-  width: 100% !important;
-  margin: 0 !important;
-  gap: 1.5rem;
+  /* Tailwind maneja el layout con grid-cols-1 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 */
+  /* Solo mantenemos estilos específicos que Tailwind no cubre */
 }
 
+/* Ajustar gap según breakpoint - complemento a Tailwind gap-6 */
 @media (min-width: 768px) and (max-width: 991.98px) {
   .programas-grid {
     gap: 1.25rem;
-  }
-}
-
-@media (min-width: 992px) {
-  .programas-grid {
-    gap: 1.5rem;
   }
 }
 
@@ -425,13 +416,12 @@
   }
 }
 
+/* Altura fija para las cards de programa */
 .programas-grid>div {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   box-sizing: border-box;
-  padding: 0 !important;
-  margin: 0 !important;
   height: 560px;
   max-height: 560px;
 }
@@ -447,42 +437,6 @@
 .programas-grid>div>app-program-card>.program-card {
   width: 100%;
   height: 100%;
-}
-
-/* Responsive Columns */
-@media (max-width: 767.98px) {
-  .programas-grid>div {
-    flex: 0 0 100%;
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .programas-grid>div {
-    /* Gap es 1.25rem. 1 gap = 1.25rem */
-    flex: 0 0 calc((100% - 1.25rem) / 2) !important;
-    width: calc((100% - 1.25rem) / 2) !important;
-    max-width: calc((100% - 1.25rem) / 2) !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .programas-grid>div {
-    /* Gap es 1.5rem. 3 gaps = 4.5rem */
-    flex: 0 0 calc((100% - 4.5rem) / 4) !important;
-    width: calc((100% - 4.5rem) / 4) !important;
-    max-width: calc((100% - 4.5rem) / 4) !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  .programas-grid>div {
-    /* Gap es 2rem. 3 gaps = 6rem */
-    flex: 0 0 calc((100% - 6rem) / 4) !important;
-    width: calc((100% - 6rem) / 4) !important;
-    max-width: calc((100% - 6rem) / 4) !important;
-  }
 }
 
 /* Mensaje Sin Resultados */

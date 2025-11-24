@@ -5,7 +5,11 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        '3xl': '1920px', // Breakpoint personalizado para pantallas muy grandes
+      },
+    },
   },
   plugins: [
     require('tailwindcss-primeui')

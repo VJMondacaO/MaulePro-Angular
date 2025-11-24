@@ -669,26 +669,16 @@
    GRID SYSTEM OVERRIDES
    ============================================ */
 
+/* Grid de programas usando Tailwind - estilos adicionales para altura fija */
 .programas-grid {
-  display: flex;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-  width: 100% !important;
-  margin: 0 !important;
-  /* Override PrimeFlex negative margins */
-  gap: 1.5rem;
+  /* Tailwind grid ya maneja el layout con grid-cols-* */
+  /* Solo mantenemos estilos específicos que Tailwind no cubre */
 }
 
-/* Ajustar gap según breakpoint */
+/* Ajustar gap según breakpoint - ahora manejado por Tailwind gap-6 */
 @media (min-width: 768px) and (max-width: 991.98px) {
   .programas-grid {
     gap: 1.25rem;
-  }
-}
-
-@media (min-width: 992px) {
-  .programas-grid {
-    gap: 1.5rem;
   }
 }
 
@@ -707,17 +697,13 @@
   box-sizing: border-box;
 }
 
-/* Resetear estilos de hijos directos del grid (los divs con clases col-*) */
+/* Altura fija para las cards de programa */
 .programas-grid>div {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   box-sizing: border-box;
-  padding: 0 !important;
-  /* Override PrimeFlex padding */
-  margin: 0 !important;
   height: 560px;
-  /* Force fixed height */
   max-height: 560px;
 }
 
@@ -735,46 +721,12 @@
 }
 
 /* ============================================
-   RESPONSIVE COLUMNS
+   RESPONSIVE COLUMNS - Ahora manejado por Tailwind grid-cols-*
    ============================================ */
-
-/* Móvil: 1 columna (col-12) */
-@media (max-width: 767.98px) {
-  .programas-grid>div {
-    flex: 0 0 100%;
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-/* Tablet: 2 columnas (md:col-6) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .programas-grid>div {
-    /* (100% - 1 gap) / 2 */
-    /* Gap es 1.25rem. 1 gap = 1.25rem */
-    flex: 0 0 calc((100% - 1.25rem) / 2) !important;
-    width: calc((100% - 1.25rem) / 2) !important;
-    max-width: calc((100% - 1.25rem) / 2) !important;
-  }
-}
-
-/* Desktop: 4 columnas (lg:col-3) */
-@media (min-width: 992px) {
-  .programas-grid>div {
-    /* (100% - 3 gaps) / 4 */
-    /* Gap es 1.5rem. 3 gaps = 4.5rem */
-    flex: 0 0 calc((100% - 4.5rem) / 4) !important;
-    width: calc((100% - 4.5rem) / 4) !important;
-    max-width: calc((100% - 4.5rem) / 4) !important;
-  }
-}
-
-/* Large Desktop: 4 columnas con gap más grande */
-@media (min-width: 1200px) {
-  .programas-grid>div {
-    /* Gap es 2rem. 3 gaps = 6rem */
-    flex: 0 0 calc((100% - 6rem) / 4) !important;
-    width: calc((100% - 6rem) / 4) !important;
-    max-width: calc((100% - 6rem) / 4) !important;
-  }
-}
+/* 
+ * Tailwind CSS maneja el grid responsivo automáticamente con:
+ * grid-cols-1 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4
+ * Progresión: 1 col (< 768px) → 2 cols (≥ 768px) → 3 cols (≥ 1280px) → 4 cols (≥ 1920px)
+ * Breakpoints aumentados significativamente para evitar desbordes antes del cambio
+ * Ya no necesitamos cálculos manuales de columnas
+ */
