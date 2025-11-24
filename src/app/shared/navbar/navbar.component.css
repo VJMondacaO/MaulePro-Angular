@@ -177,6 +177,7 @@
   font-weight: 500;
   font-size: 0.95rem;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .nav-link:hover {
@@ -192,6 +193,10 @@
 .nav-link.active {
   background: rgba(255, 255, 255, 0.15);
   color: white;
+}
+
+.nav-link-accesibilidad {
+  cursor: pointer;
 }
 
 /* Botón Accesibilidad */

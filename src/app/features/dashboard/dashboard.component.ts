@@ -9,7 +9,7 @@ import { MeterGroupModule } from 'primeng/metergroup';
     template: `
         <div class="flex flex-col gap-4">
             <div class="mb-2" style="margin-top: 2%;">
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1">Dashboard</h1>
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1">Panel de Información</h1>
                 <p class="text-gray-600 dark:text-gray-400">Resumen de proyectos y ejecución presupuestaria</p>
             </div>
             <div class="flex gap-4 flex-col w-full">

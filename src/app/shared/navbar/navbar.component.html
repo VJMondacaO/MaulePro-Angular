@@ -35,23 +35,18 @@
       <!-- Enlaces de Navegación -->
       <div class="navbar-links">
         <a routerLink="/home" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Inicio</a>
+        <a routerLink="/dashboard" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Panel de Información</a>
         <a routerLink="/nosotros" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Nosotros</a>
         <a routerLink="/preguntas-frecuentes" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Preguntas Frecuentes</a>
-        <a routerLink="/dashboard" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Dashboard</a>
+        <a 
+          class="nav-link nav-link-accesibilidad" 
+          (click)="onAccesibilidadClick(); closeMobileMenu()">
+          Accesibilidad
+        </a>
       </div>
       
       <!-- Acciones -->
       <div class="navbar-buttons">
-        <!-- Accesibilidad -->
-        <button 
-          type="button" 
-          class="btn-accesibilidad"
-          (click)="onAccesibilidadClick()"
-          aria-label="Accesibilidad">
-          <i class="pi pi-universal-access"></i>
-          <span class="btn-accesibilidad-text">Accesibilidad</span>
-        </button>
-        
         <!-- ClaveÚnica -->
         <button 
           type="button"

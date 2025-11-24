@@ -100,7 +100,7 @@ export class HeroComponent {
     const programsSection = document.querySelector('.programs-header-panel');
     if (programsSection) {
       const elementPosition = programsSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - (window.innerHeight * 0.05);
+      const offsetPosition = elementPosition + window.pageYOffset - (window.innerHeight * 0.15);
       
       window.scrollTo({
         top: offsetPosition,
