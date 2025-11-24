@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production --base-href /MaulePro-Angular/",
+    "deploy": "ng build --configuration production --base-href /MaulePro-Angular/ && npx angular-cli-ghpages --dir=dist/maulepro/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
