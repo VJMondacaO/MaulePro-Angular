@@ -32,6 +32,7 @@
   z-index: 1;
   overflow: hidden;
   border-radius: 1rem;
+  min-height: 100%;
 }
 
 .hero-overlay {
@@ -87,28 +88,33 @@
 /* Forzar altura completa solo en móviles */
 @media (max-width: 767.98px) {
   :host ::ng-deep .hero-galleria {
-    height: 100% !important;
-    min-height: 520px !important;
+    height: 650px !important;
+    min-height: 650px !important;
+    max-height: 650px !important;
   }
 
   :host ::ng-deep .hero-galleria .p-galleria-content {
-    height: 100% !important;
-    min-height: 520px !important;
+    height: 650px !important;
+    min-height: 650px !important;
+    max-height: 650px !important;
   }
 
   :host ::ng-deep .hero-galleria .p-galleria-item-wrapper {
-    height: 100% !important;
-    min-height: 520px !important;
+    height: 650px !important;
+    min-height: 650px !important;
+    max-height: 650px !important;
   }
 
   :host ::ng-deep .hero-galleria .p-galleria-item-container {
-    height: 100% !important;
-    min-height: 520px !important;
+    height: 650px !important;
+    min-height: 650px !important;
+    max-height: 650px !important;
   }
 
   :host ::ng-deep .hero-galleria .p-galleria-item {
-    height: 100% !important;
-    min-height: 520px !important;
+    height: 650px !important;
+    min-height: 650px !important;
+    max-height: 650px !important;
     display: flex !important;
     align-items: center;
     justify-content: center;
@@ -117,23 +123,33 @@
 
 @media (max-width: 575.98px) {
   :host ::ng-deep .hero-galleria {
+    height: 600px !important;
     min-height: 600px !important;
+    max-height: 600px !important;
   }
 
   :host ::ng-deep .hero-galleria .p-galleria-content {
+    height: 600px !important;
     min-height: 600px !important;
+    max-height: 600px !important;
   }
 
   :host ::ng-deep .hero-galleria .p-galleria-item-wrapper {
+    height: 600px !important;
     min-height: 600px !important;
+    max-height: 600px !important;
   }
 
   :host ::ng-deep .hero-galleria .p-galleria-item-container {
+    height: 600px !important;
     min-height: 600px !important;
+    max-height: 600px !important;
   }
 
   :host ::ng-deep .hero-galleria .p-galleria-item {
+    height: 600px !important;
     min-height: 600px !important;
+    max-height: 600px !important;
   }
 }
 
@@ -185,6 +201,17 @@
   object-position: center center;
   display: block;
   border-radius: 1rem;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .hero-carousel-image {
+    object-position: center 40%;
+    min-height: 100%;
+    height: auto;
+    width: 100%;
+  }
 }
 
 @media (max-width: 767.98px) {
@@ -193,12 +220,19 @@
     top: 0;
     left: 0;
     min-height: 650px;
+    height: 650px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    transform: scale(1);
   }
 }
 
 @media (max-width: 575.98px) {
   .hero-carousel-image {
     min-height: 600px;
+    height: 600px;
+    object-position: center 30%;
   }
 }
 
@@ -214,6 +248,7 @@
   display: flex;
   align-items: center;
   min-height: 100%;
+  box-sizing: border-box;
 }
 
 @media (min-width: 992px) {
@@ -225,6 +260,20 @@
 
 .hero-content-inner {
   max-width: 600px;
+  width: 100%;
+  padding-top: 0;
+}
+
+@media (max-width: 767.98px) {
+  .hero-content-inner {
+    padding-top: 0.5rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-content-inner {
+    padding-top: 0.75rem;
+  }
 }
 
 /* Badge Institucional */
@@ -391,18 +440,21 @@
 /* Responsive */
 @media (max-width: 767.98px) {
   .hero-wrapper {
-    height: auto;
+    height: 650px;
     min-height: 650px;
-    max-height: none;
+    max-height: 650px;
   }
   
   .hero-carousel {
+    height: 650px;
     min-height: 650px;
+    max-height: 650px;
   }
 
   .hero-content {
-    padding: 1.5rem 1rem;
+    padding: 3rem 1.25rem 2.5rem 1.25rem;
     transform: translateY(0);
+    align-items: flex-start;
   }
 
   .hero-content-inner {
@@ -460,15 +512,21 @@
 
 @media (max-width: 575.98px) {
   .hero-wrapper {
+    height: 600px;
     min-height: 600px;
+    max-height: 600px;
   }
   
   .hero-carousel {
+    height: 600px;
     min-height: 600px;
+    max-height: 600px;
   }
 
   .hero-content {
-    padding: 1.25rem 1rem;
+    padding: 2.5rem 1rem;
+    padding-top: 2.75rem;
+    align-items: flex-start;
   }
 
   .hero-title {

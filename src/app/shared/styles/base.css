@@ -62,41 +62,61 @@ main.main-content {
     max-width: 100%;
     position: relative;
     z-index: 1;
+    /* Usar padding en lugar de margin para evitar problemas de overflow */
+    margin-left: 0;
+    margin-right: 0;
 }
 
-/* Móvil: margen lateral pequeño */
+/* Móvil: margen lateral pequeño usando padding */
 @media (max-width: 767.98px) {
     main.main-content {
-        margin-left: 5% !important;
-        margin-right: 5% !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        width: 90% !important; /* 100% - 5% - 5% = 90% */
-        max-width: 90% !important;
+        padding-left: 5%;
+        padding-right: 5%;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 }
 
-/* Tablet: margen lateral reducido */
+/* Tablet: margen lateral reducido usando padding */
 @media (min-width: 768px) and (max-width: 991.98px) {
     main.main-content {
-        margin-left: 8% !important;
-        margin-right: 8% !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        width: 84% !important; /* 100% - 8% - 8% = 84% */
-        max-width: 84% !important;
+        padding-left: 8%;
+        padding-right: 8%;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 }
 
-/* Desktop: márgenes laterales */
+/* Desktop: márgenes laterales usando padding */
 @media (min-width: 992px) {
     main.main-content {
-        margin-left: 10% !important;
-        margin-right: 10% !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        width: 80% !important; /* 100% - 10% - 10% = 80% */
-        max-width: 80% !important;
+        padding-left: 10%;
+        padding-right: 10%;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Pantallas muy grandes: limitar padding máximo */
+@media (min-width: 1400px) {
+    main.main-content {
+        padding-left: max(10%, 140px);
+        padding-right: max(10%, 140px);
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Pantallas ultra grandes: padding fijo */
+@media (min-width: 1920px) {
+    main.main-content {
+        padding-left: 192px;
+        padding-right: 192px;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 }
 
