@@ -4,11 +4,29 @@
     <div class="program-card-content">
       <div class="program-card-header">
         <p-tag [value]="getEstadoTag()" [severity]="getEstadoSeverity()" styleClass="status-badge"></p-tag>
+        <p-tag 
+          *ngIf="mostrarDiasRestantes()" 
+          [value]="getTextoPlazoDias()" 
+          [severity]="getSeveridadDiasRestantes()" 
+          styleClass="dias-restantes-badge"
+          icon="pi pi-clock">
+        </p-tag>
       </div>
       
       <div class="program-card-body">
         <h3 class="program-card-title">{{ program.titulo }}</h3>
         <p class="program-card-description">{{ program.descripcion }}</p>
+        
+        <!-- Fechas y Plazos -->
+        <div class="program-card-plazos" *ngIf="program.fechaInicio && program.fechaFin">
+          <div class="plazo-item">
+            <i class="pi pi-calendar"></i>
+            <div class="plazo-content">
+              <strong>Plazo de postulación</strong>
+              <span>{{ program.fechaInicio }} - {{ program.fechaFin }}</span>
+            </div>
+          </div>
+        </div>
         
         <div class="program-card-features">
           <div class="feature-item">

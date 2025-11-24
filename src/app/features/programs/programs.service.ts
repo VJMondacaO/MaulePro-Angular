@@ -18,7 +18,7 @@ export class ProgramsService {
    * Para agregar un nuevo programa, simplemente agrega un nuevo objeto al array
    */
   getPrograms(): ProgramCardData[] {
-    return [
+    const programs: ProgramCardData[] = [
       {
         id: '1',
         titulo: 'Actividades de Carácter Social',
@@ -37,9 +37,9 @@ export class ProgramsService {
         titulo: 'Proyectos Menores a 5.000 UTM',
         descripcion: 'Financiamiento para proyectos de inversión municipal de menor envergadura en la región del Maule.',
         estado: 'open',
-        fechaInicio: '01-10-2025',
-        fechaFin: '30-11-2025',
-        fechaCierre: '2025-11-30',
+        fechaInicio: '01-11-2025',
+        fechaFin: '27-11-2025',
+        fechaCierre: '2025-11-27',
         beneficiarios: 'Municipios',
         montos: 'Hasta 5.000 UTM',
         rutaDetalles: '/programas/2'
@@ -78,6 +78,19 @@ export class ProgramsService {
         beneficiarios: 'Personas naturales',
         montos: '$1.000.000',
         rutaDetalles: '/programas/5'
+      },
+      {
+        id: '6',
+        titulo: 'Fondo Regional de Iniciativa Local (FRIL 2025)',
+        descripcion: 'Financia proyectos de inversión comunal destinados a ejecutar, mantener o conservar infraestructura pública, incluyendo obras de carácter social o deportivo.',
+        estado: 'open',
+        fechaInicio: '01-12-2025',
+        fechaFin: '31-01-2026',
+        fechaCierre: '2026-01-31',
+        beneficiarios: 'Municipalidades',
+        montos: 'Hasta 3.000 UTM',
+        tipoFondo: 'FRIL',
+        rutaDetalles: '/programas/6'
       }
       // 👇 AQUÍ AGREGAS MÁS CARDS 👇
       // Ejemplo de cómo agregar una nueva card:
@@ -97,6 +110,44 @@ export class ProgramsService {
       //   // linkDetalles: 'https://ejemplo.com/programa'
       // }
     ];
+
+    // Ordenar programas: 
+    // 1. Primero los abiertos, ordenados por fecha de cierre (más pronto primero)
+    // 2. Luego los próximos
+    // 3. Al final los cerrados
+    const programasOrdenados = programs.sort((a, b) => {
+      // Prioridad de estados: open = 1, soon = 2, closed = 3
+      const prioridadEstado: { [key: string]: number } = { open: 1, soon: 2, closed: 3 };
+      const prioridadA = prioridadEstado[a.estado] || 4;
+      const prioridadB = prioridadEstado[b.estado] || 4;
+
+      // Si tienen diferente estado, ordenar por prioridad
+      if (prioridadA !== prioridadB) {
+        return prioridadA - prioridadB;
+      }
+
+      // Si ambos están abiertos, ordenar por fecha de cierre (más pronto primero)
+      if (a.estado === 'open' && b.estado === 'open') {
+        if (a.fechaCierre && b.fechaCierre) {
+          return new Date(a.fechaCierre).getTime() - new Date(b.fechaCierre).getTime();
+        }
+        // Si uno no tiene fecha de cierre, ponerlo al final
+        if (!a.fechaCierre) return 1;
+        if (!b.fechaCierre) return -1;
+      }
+
+      // Si ambos son próximos, ordenar por fecha de inicio
+      if (a.estado === 'soon' && b.estado === 'soon') {
+        if (a.fechaCierre && b.fechaCierre) {
+          return new Date(a.fechaCierre).getTime() - new Date(b.fechaCierre).getTime();
+        }
+      }
+
+      // Para el resto (cerrados o sin fecha), mantener orden original
+      return 0;
+    });
+
+    return programasOrdenados;
   }
 
   /**
@@ -439,6 +490,215 @@ export class ProgramsService {
           descripcion: 'Para consultas y/o entrega de información relacionada con el proceso de postulación, los interesados podrán dirigirse al Gobierno Regional del Maule o a través de correo electrónico, en los siguientes horarios:',
           horarios: 'De lunes a jueves de 09:00 horas a 13:00 hrs., y en la tarde de 14:00 hrs., a 17:00 horas y los viernes de 09:00 horas a 13:00 hrs., y en la tarde de 14:00 hrs., a 16:00 horas.',
           contacto: 'Correo electrónico sin restricción de horario, salvo el último día hábil del periodo de postulación que se recibirán correos hasta las 16:30 horas (si día recae entre un lunes a un jueves) o hasta las 15:30 horas (si día recae un viernes).'
+        }
+      },
+      {
+        id: '6',
+        titulo: 'Fondo Regional de Iniciativa Local (FRIL 2025)',
+        descripcion: 'El Fondo Regional de Iniciativa Local (FRIL) financia proyectos de inversión comunal destinados a ejecutar, mantener o conservar infraestructura pública, incluyendo obras de carácter social o deportivo. Busca mejorar la calidad de vida, recuperar espacios públicos, atender necesidades territoriales y promover la equidad, considerando criterios de género e inclusión.',
+        estado: 'open',
+        fechaInicio: '01-12-2025',
+        fechaFin: '31-01-2026',
+        fechaCierre: '2026-01-31',
+        fechaCierreFormateada: 'Viernes 31 de Enero, 2026',
+        beneficiarios: 'Municipalidades',
+        montos: 'Hasta 3.000 UTM',
+        tipoFondo: 'FRIL',
+        rutaDetalles: '/programas/6',
+        categoria: 'Inversión Municipal',
+        invita: 'Gobierno Regional del Maule',
+        alcance: 'Regional',
+        modalidad: {
+          tipo: 'Online',
+          icono: 'pi-laptop',
+          descripcion: 'Los municipios deben presentar sus iniciativas a través de la plataforma Maule Pro. La postulación está disponible únicamente para las municipalidades de la Región del Maule.',
+          linkPostulacion: '/login'
+        },
+        tipoPostulante: {
+          tipo: 'Municipalidades',
+          icono: 'pi-building',
+          descripcion: 'Solo las municipalidades de la Región del Maule, mediante su Alcalde/Alcaldesa, están habilitadas para postular a este fondo.'
+        },
+        tipoFinanciamiento: {
+          tipo: 'Inversión',
+          icono: 'pi-briefcase',
+          descripcion: 'Financiamiento para proyectos de inversión pública que no superen las 3.000 UTM cuando corresponden al "Subtítulo 33". Los proyectos deben tener carácter comunal y estar alineados con la planificación territorial.'
+        },
+        requisitos: {
+          introduccion: 'Para postular al FRIL 2024, se deben cumplir los siguientes requisitos obligatorios:',
+          items: [
+            {
+              titulo: 'Tipos de proyectos financiables:',
+              descripcion: 'Infraestructura pública (plazas, aceras, recintos comunitarios, obras de conservación), equipamientos (maquinaria o equipos para el funcionamiento de infraestructura), mobiliario (cuando sea parte integral del proyecto), y consultorías (solo para diseño de proyectos o prefactibilidad vinculada a inversión pública).'
+            },
+            {
+              titulo: 'Carácter del proyecto:',
+              descripcion: 'El proyecto debe tener carácter comunal y estar alineado con la planificación territorial e instrumentos vigentes.'
+            },
+            {
+              titulo: 'Requisitos técnicos:',
+              descripcion: 'Incluir diagnóstico, justificación, objetivos y resultados esperados. No superar las 3.000 UTM cuando corresponde al "Subtítulo 33".'
+            },
+            {
+              titulo: 'Terreno:',
+              descripcion: 'Contar con terreno acreditado (dominio municipal u otra entidad pública).'
+            },
+            {
+              titulo: 'Enfoque inclusivo:',
+              descripcion: 'Integrar enfoque de género y accesibilidad universal cuando sea aplicable.'
+            },
+            {
+              titulo: 'Plazo de postulación:',
+              descripcion: '40 días hábiles desde la publicación de la resolución.'
+            }
+          ]
+        },
+        documentacion: {
+          introduccion: 'Al momento de postular, se debe adjuntar la siguiente documentación requerida:',
+          items: [
+            {
+              titulo: 'I. Ficha IDI - Identificación del proyecto:',
+              descripcion: 'Nombre del proyecto + comuna, localización geográfica, y responsable técnico municipal.'
+            },
+            {
+              titulo: 'II. Ficha IDI - Diagnóstico:',
+              descripcion: 'Problema a resolver, causas, efectos, población beneficiaria con datos desagregados por género, y relación con instrumentos de planificación pública.'
+            },
+            {
+              titulo: 'III. Especificaciones Técnicas:',
+              descripcion: 'Firmadas por profesional competente con detalle técnico de las obras o intervención.'
+            },
+            {
+              titulo: 'IV. Presupuesto Oficial (Anexo Nº 2):',
+              descripcion: 'Desglose por partidas y precios unitarios, firmado por profesional proyectista y SECPLAN.'
+            },
+            {
+              titulo: 'V. Carta Gantt:',
+              descripcion: 'Coherente con el presupuesto y las partidas establecidas.'
+            },
+            {
+              titulo: 'VI. Planimetría requerida:',
+              descripcion: 'Plantas de arquitectura, planta de fundaciones, planta de estructura, elevaciones, cortes y cubicaciones, detalle de puertas y ventanas, cuadro de superficies, y ubicación en el contexto territorial.'
+            },
+            {
+              titulo: 'VII. Acreditación de dominio del terreno:',
+              descripcion: 'Certificado municipal (si es dominio municipal), certificado del administrador de bienes nacionales, documentos de comodato o transferencia, o informes de propiedad cuando el bien tenga restricciones o litigios.'
+            },
+            {
+              titulo: 'VIII. Certificado de Participación Ciudadana:',
+              descripcion: 'Cuando corresponda según las bases del concurso.'
+            },
+            {
+              titulo: 'IX. Certificado de Recepción de Infraestructura Existente:',
+              descripcion: 'En proyectos de conservación de infraestructura existente.'
+            },
+            {
+              titulo: 'X. Memoria de Cálculo Estructural:',
+              descripcion: 'Cuando el proyecto lo requiera.'
+            },
+            {
+              titulo: 'XI. Estudio de Mecánica de Suelos:',
+              descripcion: 'Si el proyecto lo requiere.'
+            },
+            {
+              titulo: 'XII. Proyectos de instalaciones:',
+              descripcion: 'Instalaciones eléctricas, sanitarias y gas, según corresponda.'
+            },
+            {
+              titulo: 'XIII. Formulario de Asesoría Técnica (FAT):',
+              descripcion: 'Cuando corresponda según las bases.'
+            },
+            {
+              titulo: 'XIV. Aprobaciones sectoriales:',
+              descripcion: 'Aprobación de otros servicios públicos relevantes (Salud, Vialidad, SERVIU, Obras Hidráulicas, etc.).'
+            }
+          ]
+        },
+        evaluacion: {
+          introduccion: 'El proceso de evaluación del FRIL se divide en dos etapas principales:',
+          etapas: [
+            {
+              titulo: 'Etapa N°1: Administración',
+              descripcion: 'Revisión documental completa. Si el proyecto es admisible, pasa a evaluación técnica. Si no es admisible, se devuelve al municipio con observaciones.',
+              items: [
+                {
+                  titulo: 'Completitud de antecedentes',
+                  descripcion: 'Se verifica la completitud de todos los documentos requeridos.'
+                },
+                {
+                  titulo: 'Validez de certificados',
+                  descripcion: 'Se valida la vigencia de certificados y documentos oficiales.'
+                },
+                {
+                  titulo: 'Formatos',
+                  descripcion: 'Se revisa el cumplimiento de formatos establecidos.'
+                },
+                {
+                  titulo: 'Coherencia técnica',
+                  descripcion: 'Se analiza la coherencia entre presupuesto y especificaciones técnicas.'
+                }
+              ]
+            },
+            {
+              titulo: 'Etapa N°2: Evaluación Técnica',
+              descripcion: 'Aplicada por profesionales del GORE. El proyecto puede ser recomendado para financiamiento o no recomendado. La decisión final se formaliza en un Acta de Evaluación, enviada por la plataforma Maule Pro.',
+              items: [
+                {
+                  titulo: 'Pertinencia del diagnóstico',
+                  descripcion: 'Análisis de la pertinencia del diagnóstico presentado.'
+                },
+                {
+                  titulo: 'Coherencia del proyecto',
+                  descripcion: 'Evaluación de la coherencia entre el problema identificado, los objetivos y la solución propuesta.'
+                },
+                {
+                  titulo: 'Justificación económica',
+                  descripcion: 'Revisión de la justificación económica del proyecto.'
+                },
+                {
+                  titulo: 'Calidad técnica',
+                  descripcion: 'Verificación de la calidad técnica y viabilidad de ejecución.'
+                },
+                {
+                  titulo: 'Cumplimiento normativo',
+                  descripcion: 'Comprobación del cumplimiento de normativas sectoriales aplicables.'
+                },
+                {
+                  titulo: 'Impacto e inclusión',
+                  descripcion: 'Evaluación del impacto social y del enfoque de género e inclusión.'
+                },
+                {
+                  titulo: 'Viabilidad',
+                  descripcion: 'Análisis de la viabilidad de implementación del proyecto.'
+                }
+              ]
+            }
+          ]
+        },
+        bases: {
+          bases: [
+            {
+              nombre: 'Bases Técnicas FRIL 2024',
+              url: '#'
+            },
+            {
+              nombre: 'Anexo Nº 2 - Presupuesto Oficial',
+              url: '#'
+            },
+            {
+              nombre: 'Ficha IDI (Iniciativa de Inversión)',
+              url: '#'
+            },
+            {
+              nombre: 'Formulario de Asesoría Técnica (FAT)',
+              url: '#'
+            }
+          ]
+        },
+        dudasConsultas: {
+          descripcion: 'Para consultas y/o entrega de información relacionada con el proceso de postulación del FRIL 2024, los municipios interesados podrán dirigirse al Gobierno Regional del Maule o a través de los canales oficiales.',
+          horarios: 'De lunes a jueves de 09:00 horas a 13:00 hrs., y en la tarde de 14:00 hrs., a 17:00 horas y los viernes de 09:00 horas a 13:00 hrs., y en la tarde de 14:00 hrs., a 16:00 horas.',
+          contacto: 'Correo electrónico sin restricción de horario para consultas técnicas sobre la postulación.'
         }
       }
     ];

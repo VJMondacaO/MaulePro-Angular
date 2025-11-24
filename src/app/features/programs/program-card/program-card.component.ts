@@ -50,4 +50,63 @@ export class ProgramCardComponent {
       default: return '';
     }
   }
+
+  /**
+   * Calcula los días restantes hasta la fecha de cierre
+   */
+  getDiasRestantes(): number | null {
+    if (!this.program.fechaCierre || this.program.estado !== 'open') {
+      return null;
+    }
+
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0); // Resetear a medianoche para comparación precisa
+    
+    const fechaCierre = new Date(this.program.fechaCierre);
+    fechaCierre.setHours(0, 0, 0, 0);
+    
+    const diferenciaTiempo = fechaCierre.getTime() - hoy.getTime();
+    const diferenciaDias = Math.ceil(diferenciaTiempo / (1000 * 60 * 60 * 24));
+    
+    return diferenciaDias > 0 ? diferenciaDias : 0;
+  }
+
+  /**
+   * Obtiene el texto para la etiqueta de días restantes
+   */
+  getTextoPlazoDias(): string {
+    const dias = this.getDiasRestantes();
+    if (dias === null) return '';
+    
+    if (dias === 0) {
+      return '¡Último día!';
+    } else if (dias === 1) {
+      return 'Queda 1 día';
+    } else {
+      return `Quedan ${dias} días`;
+    }
+  }
+
+  /**
+   * Obtiene la severidad de la etiqueta de días restantes según urgencia
+   */
+  getSeveridadDiasRestantes(): 'success' | 'warning' | 'danger' {
+    const dias = this.getDiasRestantes();
+    if (dias === null) return 'success';
+    
+    if (dias <= 3) {
+      return 'danger'; // Rojo: 3 días o menos
+    } else if (dias <= 7) {
+      return 'warning'; // Amarillo: 7 días o menos
+    } else {
+      return 'success'; // Verde: más de 7 días
+    }
+  }
+
+  /**
+   * Verifica si debe mostrar la etiqueta de días restantes
+   */
+  mostrarDiasRestantes(): boolean {
+    return this.program.estado === 'open' && this.getDiasRestantes() !== null;
+  }
 }
