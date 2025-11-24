@@ -1,0 +1,118 @@
+<div class="container-busqueda">
+  <div class="grid">
+    <!-- Sección de Búsqueda -->
+    <div class="col-12">
+      <!-- Botón Volver -->
+      <div class="contenedor-volver">
+        <button 
+          type="button"
+          class="boton-volver"
+          (click)="goBack()">
+          <i class="pi pi-arrow-left"></i>
+          Volver
+        </button>
+      </div>
+
+      <!-- Título de la página -->
+      <div class="encabezado-busqueda">
+        <h1 class="titulo-busqueda">Buscar Programas</h1>
+        <p class="descripcion-busqueda">
+          Encuentra programas y fondos que se ajusten a tus necesidades utilizando los filtros disponibles
+        </p>
+      </div>
+
+      <!-- Panel de Filtros y Búsqueda -->
+      <div class="panel-busqueda">
+        <div class="panel-header">
+          <h2 class="section-title">Filtros de búsqueda</h2>
+          <button 
+            type="button"
+            class="boton-limpiar"
+            (click)="clearFilters()"
+            *ngIf="searchTerm || selectedEstado || selectedTipoFondo">
+            <i class="pi pi-times"></i>
+            Limpiar filtros
+          </button>
+        </div>
+        
+        <div class="panel-filters">
+          <div class="filters-row">
+            <p-dropdown 
+              [options]="estadoOptions" 
+              [(ngModel)]="selectedEstado"
+              (onChange)="filterPrograms()"
+              placeholder="Estado"
+              optionLabel="label"
+              optionValue="value"
+              [showClear]="true"
+              styleClass="filter-dropdown estado-filter">
+            </p-dropdown>
+            
+            <p-dropdown 
+              [options]="tipoFondoOptions" 
+              [(ngModel)]="selectedTipoFondo"
+              (onChange)="filterPrograms()"
+              placeholder="Tipo de Fondo"
+              optionLabel="label"
+              optionValue="value"
+              [showClear]="true"
+              styleClass="filter-dropdown tipo-fondo-filter">
+            </p-dropdown>
+            
+            <div class="contenedor-busqueda">
+              <input 
+                type="text" 
+                pInputText 
+                [(ngModel)]="searchTerm"
+                (input)="filterPrograms()"
+                (keyup.enter)="onSearchClick()"
+                placeholder="Buscar programas..." 
+                class="barra-busqueda w-full" />
+              <button 
+                pButton
+                type="button"
+                label="Buscar"
+                icon="pi pi-search"
+                (click)="onSearchClick()"
+                class="boton-buscar">
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contador de resultados -->
+        <div class="resultados-info">
+          <p class="programs-count">
+            <i class="pi pi-filter"></i>
+            Mostrando <strong>{{ filteredPrograms.length }}</strong> de <strong>{{ programas.length }}</strong> programas
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid de Cards de Programa -->
+      <div class="grid programas-grid">
+        <div 
+          class="col-12 md:col-6 lg:col-4" 
+          *ngFor="let programa of filteredPrograms">
+          <app-program-card [program]="programa"></app-program-card>
+        </div>
+      </div>
+
+      <!-- Mensaje cuando no hay resultados -->
+      <div class="sin-resultados" *ngIf="filteredPrograms.length === 0">
+        <i class="pi pi-search"></i>
+        <h3>No se encontraron programas</h3>
+        <p>Intenta ajustar los filtros o busca con otros términos</p>
+        <button 
+          pButton
+          type="button"
+          label="Limpiar filtros"
+          icon="pi pi-refresh"
+          (click)="clearFilters()"
+          class="p-button-outlined">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

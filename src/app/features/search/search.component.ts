@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import { HeroComponent } from './hero/hero.component';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProgramCardData } from '../programs/program-card.types';
 import { ProgramsService } from '../programs/programs.service';
 import { ProgramCardComponent } from '../programs/program-card/program-card.component';
@@ -11,21 +10,20 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-search',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule,
-    HeroComponent, 
     ProgramCardComponent,
     InputTextModule,
     DropdownModule,
     ButtonModule
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.css',
 })
-export class HomeComponent {
+export class SearchComponent implements OnInit {
   programas: ProgramCardData[] = [];
   filteredPrograms: ProgramCardData[] = [];
   searchTerm: string = '';
@@ -42,7 +40,8 @@ export class HomeComponent {
 
   constructor(
     private programsService: ProgramsService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     // Obtener todos los programas del servicio
     this.programas = this.programsService.getPrograms();
@@ -58,6 +57,25 @@ export class HomeComponent {
     this.tipoFondoOptions = Array.from(tiposFondo)
       .sort()
       .map(tipo => ({ label: tipo, value: tipo }));
+  }
+
+  ngOnInit(): void {
+    // Scroll al top
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    
+    // Cargar parámetros de búsqueda desde la URL
+    this.route.queryParams.subscribe(params => {
+      if (params['q']) {
+        this.searchTerm = params['q'];
+      }
+      if (params['estado']) {
+        this.selectedEstado = params['estado'];
+      }
+      if (params['tipo']) {
+        this.selectedTipoFondo = params['tipo'];
+      }
+      this.filterPrograms();
+    });
   }
 
   filterPrograms(): void {
@@ -91,7 +109,7 @@ export class HomeComponent {
   }
 
   onSearchClick(): void {
-    // Navegar a la página de búsqueda con los parámetros actuales
+    // Actualizar la URL con los parámetros de búsqueda
     const queryParams: any = {};
     
     if (this.searchTerm && this.searchTerm.trim() !== '') {
@@ -104,7 +122,19 @@ export class HomeComponent {
       queryParams.tipo = this.selectedTipoFondo;
     }
     
-    // Navegar a la página de búsqueda
+    // Navegar con los nuevos parámetros
     this.router.navigate(['/buscar'], { queryParams });
   }
+
+  clearFilters(): void {
+    this.searchTerm = '';
+    this.selectedEstado = null;
+    this.selectedTipoFondo = null;
+    this.router.navigate(['/buscar']);
+  }
+
+  goBack(): void {
+    this.router.navigate(['/home']);
+  }
 }
+

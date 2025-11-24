@@ -1,0 +1,163 @@
+<div class="contenedor-nosotros">
+  <div class="grid">
+    <div class="col-12">
+      <!-- Hero Section -->
+      <div class="hero-nosotros">
+        <div class="hero-contenido">
+          <h1 class="titulo-principal">Sobre Nosotros</h1>
+          <div class="linea-decorativa"></div>
+        </div>
+      </div>
+
+      <!-- Contenido Principal -->
+      <div class="contenido-principal">
+        <!-- Carrusel de Proyectos -->
+        <div class="seccion-carrusel">
+          <div class="carrusel-header">
+            <h2 class="titulo-seccion">Nuestros Proyectos en Acción</h2>
+            <p class="descripcion-seccion">
+              Conoce algunos de los proyectos que hemos financiado y que están transformando la Región del Maule
+            </p>
+          </div>
+
+          <div class="carrusel-container">
+            <p-galleria 
+              [value]="proyectoImages" 
+              [numVisible]="5" 
+              [circular]="true" 
+              [showItemNavigators]="true" 
+              [showThumbnails]="true"
+              [showIndicators]="true"
+              [autoPlay]="true"
+              [transitionInterval]="4000"
+              [containerStyle]="{ 'max-width': '100%' }"
+              styleClass="proyectos-galleria">
+              <ng-template #item let-item>
+                <div class="imagen-item">
+                  <img [src]="item.itemImageSrc" [alt]="item.alt" class="imagen-proyecto" />
+                  <div class="imagen-overlay">
+                    <h3 class="imagen-titulo">{{ item.title }}</h3>
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template #thumbnail let-item>
+                <div class="thumbnail-item">
+                  <img [src]="item.thumbnailImageSrc" [alt]="item.alt" class="thumbnail-imagen" />
+                </div>
+              </ng-template>
+            </p-galleria>
+          </div>
+        </div>
+
+        <article class="seccion-contenido">
+          <!-- Introducción -->
+          <div class="bloque-texto">
+            <div class="icono-bloque">
+              <i class="pi pi-building"></i>
+            </div>
+            <p class="parrafo-principal">
+              La <strong>Plataforma de Postulación de Proyectos del Gobierno Regional del Maule</strong> es un espacio digital creado para fortalecer la transparencia, la participación y el desarrollo territorial de nuestras dieciséis comunas. Nuestro propósito es facilitar el acceso a los fondos regionales, optimizar los procesos de postulación y asegurar que cada iniciativa presentada cuente con las herramientas necesarias para avanzar de manera clara, ordenada y eficiente.
+            </p>
+          </div>
+
+          <!-- Misión -->
+          <div class="bloque-texto destacado">
+            <div class="icono-bloque">
+              <i class="pi pi-users"></i>
+            </div>
+            <p class="parrafo-principal">
+              Como <strong>Gobierno Regional</strong>, trabajamos para impulsar proyectos que contribuyan al bienestar de las comunidades maulinas, promoviendo el crecimiento económico, la equidad territorial y la mejora continua de los servicios públicos. Esta plataforma centraliza información relevante, orientaciones, requisitos y estados de avance, permitiendo a municipios, organizaciones y ciudadanos gestionar sus postulaciones con mayor autonomía y trazabilidad.
+            </p>
+          </div>
+
+          <!-- Compromiso -->
+          <div class="bloque-texto">
+            <div class="icono-bloque">
+              <i class="pi pi-shield"></i>
+            </div>
+            <p class="parrafo-principal">
+              Estamos comprometidos con una <strong>gestión moderna, inclusiva y orientada a resultados</strong>. Por ello, cada actualización de esta plataforma busca mejorar la experiencia del usuario, reducir tiempos de revisión y asegurar la correcta administración de los recursos públicos.
+            </p>
+          </div>
+
+          <!-- Objetivo -->
+          <div class="bloque-texto final">
+            <div class="icono-bloque">
+              <i class="pi pi-heart"></i>
+            </div>
+            <p class="parrafo-principal">
+              Nuestro objetivo es que todas las ideas con impacto social, cultural, económico y ambiental tengan un canal claro para transformarse en proyectos que beneficien a la <strong>Región del Maule</strong> y a quienes la habitan.
+            </p>
+          </div>
+        </article>
+
+        <!-- Tarjetas de Valores -->
+        <div class="grid valores-grid">
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="tarjeta-valor">
+              <div class="icono-valor">
+                <i class="pi pi-eye"></i>
+              </div>
+              <h3 class="titulo-valor">Transparencia</h3>
+              <p class="descripcion-valor">
+                Procesos claros y accesibles para todas las comunas de la región
+              </p>
+            </div>
+          </div>
+
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="tarjeta-valor">
+              <div class="icono-valor">
+                <i class="pi pi-check-circle"></i>
+              </div>
+              <h3 class="titulo-valor">Eficiencia</h3>
+              <p class="descripcion-valor">
+                Optimización de tiempos y recursos en cada etapa del proceso
+              </p>
+            </div>
+          </div>
+
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="tarjeta-valor">
+              <div class="icono-valor">
+                <i class="pi pi-globe"></i>
+              </div>
+              <h3 class="titulo-valor">Inclusión</h3>
+              <p class="descripcion-valor">
+                Acceso equitativo para municipios, organizaciones y ciudadanos
+              </p>
+            </div>
+          </div>
+
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="tarjeta-valor">
+              <div class="icono-valor">
+                <i class="pi pi-chart-line"></i>
+              </div>
+              <h3 class="titulo-valor">Desarrollo</h3>
+              <p class="descripcion-valor">
+                Impulso al crecimiento económico y bienestar de las comunidades
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner de Contacto -->
+        <div class="banner-contacto">
+          <div class="banner-contenido">
+            <i class="pi pi-inbox"></i>
+            <h3>¿Tienes dudas o consultas?</h3>
+            <p>Estamos aquí para ayudarte en tu proceso de postulación</p>
+            <button 
+              class="boton-contacto"
+              (click)="goToFaq()">
+              <i class="pi pi-question-circle"></i>
+              Ver Preguntas Frecuentes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
