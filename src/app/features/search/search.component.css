@@ -404,24 +404,24 @@
   box-sizing: border-box;
   width: 100% !important;
   margin: 0 !important;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
   .programas-grid {
-    gap: 2rem;
+    gap: 1.25rem;
   }
 }
 
 @media (min-width: 992px) {
   .programas-grid {
-    gap: 2.5rem;
+    gap: 1.5rem;
   }
 }
 
 @media (min-width: 1200px) {
   .programas-grid {
-    gap: 3rem;
+    gap: 2rem;
   }
 }
 
@@ -460,25 +460,28 @@
 
 @media (min-width: 768px) and (max-width: 991.98px) {
   .programas-grid>div {
-    flex: 0 0 calc((100% - 2rem) / 2) !important;
-    width: calc((100% - 2rem) / 2) !important;
-    max-width: calc((100% - 2rem) / 2) !important;
+    /* Gap es 1.25rem. 1 gap = 1.25rem */
+    flex: 0 0 calc((100% - 1.25rem) / 2) !important;
+    width: calc((100% - 1.25rem) / 2) !important;
+    max-width: calc((100% - 1.25rem) / 2) !important;
   }
 }
 
 @media (min-width: 992px) {
   .programas-grid>div {
-    flex: 0 0 calc((100% - 5rem) / 3) !important;
-    width: calc((100% - 5rem) / 3) !important;
-    max-width: calc((100% - 5rem) / 3) !important;
+    /* Gap es 1.5rem. 3 gaps = 4.5rem */
+    flex: 0 0 calc((100% - 4.5rem) / 4) !important;
+    width: calc((100% - 4.5rem) / 4) !important;
+    max-width: calc((100% - 4.5rem) / 4) !important;
   }
 }
 
 @media (min-width: 1200px) {
   .programas-grid>div {
-    flex: 0 0 calc((100% - 6rem) / 3) !important;
-    width: calc((100% - 6rem) / 3) !important;
-    max-width: calc((100% - 6rem) / 3) !important;
+    /* Gap es 2rem. 3 gaps = 6rem */
+    flex: 0 0 calc((100% - 6rem) / 4) !important;
+    width: calc((100% - 6rem) / 4) !important;
+    max-width: calc((100% - 6rem) / 4) !important;
   }
 }
 

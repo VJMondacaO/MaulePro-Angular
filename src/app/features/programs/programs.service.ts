@@ -82,7 +82,7 @@ export class ProgramsService {
       {
         id: '6',
         titulo: 'Fondo Regional de Iniciativa Local (FRIL 2025)',
-        descripcion: 'Financia proyectos de inversión comunal destinados a ejecutar, mantener o conservar infraestructura pública, incluyendo obras de carácter social o deportivo.',
+        descripcion: 'Apoyo financiero destinado a ejecutar, mantener o conservar infraestructura pública.',
         estado: 'open',
         fechaInicio: '01-12-2025',
         fechaFin: '31-01-2026',
@@ -495,7 +495,7 @@ export class ProgramsService {
       {
         id: '6',
         titulo: 'Fondo Regional de Iniciativa Local (FRIL 2025)',
-        descripcion: 'El Fondo Regional de Iniciativa Local (FRIL) financia proyectos de inversión comunal destinados a ejecutar, mantener o conservar infraestructura pública, incluyendo obras de carácter social o deportivo. Busca mejorar la calidad de vida, recuperar espacios públicos, atender necesidades territoriales y promover la equidad, considerando criterios de género e inclusión.',
+        descripcion: 'Apoyo financiero destinados a ejecutar, mantener o conservar infraestructura pública, incluyendo obras de carácter social o deportivo. Busca mejorar la calidad de vida, recuperar espacios públicos, atender necesidades territoriales y promover la equidad, considerando criterios de género e inclusión.',
         estado: 'open',
         fechaInicio: '01-12-2025',
         fechaFin: '31-01-2026',

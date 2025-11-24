@@ -20,7 +20,9 @@
         <!-- Fechas y Plazos -->
         <div class="program-card-plazos" *ngIf="program.fechaInicio && program.fechaFin">
           <div class="plazo-item">
-            <i class="pi pi-calendar"></i>
+            <div class="feature-icon">
+              <i class="pi pi-calendar"></i>
+            </div>
             <div class="plazo-content">
               <strong>Plazo de postulación</strong>
               <span>{{ program.fechaInicio }} - {{ program.fechaFin }}</span>
