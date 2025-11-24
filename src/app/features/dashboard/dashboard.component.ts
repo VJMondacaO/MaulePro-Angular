@@ -144,13 +144,8 @@ import { MeterGroupModule } from 'primeng/metergroup';
                                                     <div class="text-base text-surface-900 dark:text-surface-0">187 Proyectos</div>
                                                 </div>
                                                 <div class="flex gap-4 items-center">
-                                                    <div class="hidden items-end gap-[3px] md:flex">
-                                                        <div class="w-[6px] h-[22px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                        <div class="w-[6px] h-[14px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                        <div class="w-[6px] h-[19px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                        <div class="w-[6px] h-[19px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                        <div class="w-[6px] h-[17px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                        <div class="w-[6px] h-[24px] bg-primary rounded-[3.5px]"></div>
+                                                    <div class="hidden md:flex">
+                                                        <img src="assets/images/logosprovincias/Region_del_Maule.svg.png" alt="Región del Maule" class="h-12 w-12 object-contain" />
                                                     </div>
                                                     <i class="pi pi-chevron-right text-xs! leading-tight! text-surface-900 dark:text-surface-0"></i>
                                                 </div>
@@ -167,17 +162,13 @@ import { MeterGroupModule } from 'primeng/metergroup';
                                                 </div>
                                                 <div class="flex flex-1 items-center justify-between p-4">
                                                     <div class="flex flex-col gap-2">
-                                                        <div class="text-xl font-medium text-surface-900 dark:text-surface-0">Provincia Talca</div>
+                                                        <div class="text-base text-surface-700 dark:text-surface-300">Provincia de</div>
+                                                        <div class="text-xl font-medium text-surface-900 dark:text-surface-0">Talca</div>
                                                         <div class="text-base text-surface-700 dark:text-surface-200">68 Proyectos</div>
                                                     </div>
                                                     <div class="flex gap-4 items-center">
-                                                        <div class="hidden items-end gap-[3px] md:flex">
-                                                            <div class="w-[6px] h-[18px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[18px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[12px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[18px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[21px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[15px] bg-primary rounded-[3.5px]"></div>
+                                                        <div class="hidden md:flex">
+                                                            <img src="assets/images/logosprovincias/Provincia_de_Talca.svg.png" alt="Provincia Talca" class="h-12 w-12 object-contain" />
                                                         </div>
                                                         <i class="pi pi-chevron-right text-xs! leading-tight! text-surface-900 dark:text-surface-0"></i>
                                                     </div>
@@ -193,17 +184,13 @@ import { MeterGroupModule } from 'primeng/metergroup';
                                                 </div>
                                                 <div class="flex flex-1 items-center justify-between p-4">
                                                     <div class="flex flex-col gap-2">
-                                                        <div class="text-xl font-medium text-surface-900 dark:text-surface-0">Provincia Curicó</div>
+                                                        <div class="text-base text-surface-700 dark:text-surface-300">Provincia de</div>
+                                                        <div class="text-xl font-medium text-surface-900 dark:text-surface-0">Curicó</div>
                                                         <div class="text-base text-surface-700 dark:text-surface-200">52 Proyectos</div>
                                                     </div>
                                                     <div class="flex gap-4 items-center">
-                                                        <div class="hidden items-end gap-[3px] md:flex">
-                                                            <div class="w-[6px] h-[12px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[16px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[20px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[10px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[12px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[10px] bg-primary rounded-[3.5px]"></div>
+                                                        <div class="hidden md:flex">
+                                                            <img src="assets/images/logosprovincias/Provincia_de_Curicó.svg.png" alt="Provincia Curicó" class="h-12 w-12 object-contain" />
                                                         </div>
                                                         <i class="pi pi-chevron-right text-xs! leading-tight! text-surface-900 dark:text-surface-0"></i>
                                                     </div>
@@ -219,17 +206,13 @@ import { MeterGroupModule } from 'primeng/metergroup';
                                                 </div>
                                                 <div class="flex flex-1 items-center justify-between p-4">
                                                     <div class="flex flex-col gap-2">
-                                                        <div class="text-xl font-medium text-surface-900 dark:text-surface-0">Provincia Linares</div>
+                                                        <div class="text-base text-surface-700 dark:text-surface-300">Provincia de</div>
+                                                        <div class="text-xl font-medium text-surface-900 dark:text-surface-0">Linares</div>
                                                         <div class="text-base text-surface-700 dark:text-surface-200">43 Proyectos</div>
                                                     </div>
                                                     <div class="flex gap-4 items-center">
-                                                        <div class="hidden items-end gap-[3px] md:flex">
-                                                            <div class="w-[6px] h-[17px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[9px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[14px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[12px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[14px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[21px] bg-primary rounded-[3.5px]"></div>
+                                                        <div class="hidden md:flex">
+                                                            <img src="assets/images/logosprovincias/Provincia_de_Linares.svg.png" alt="Provincia Linares" class="h-12 w-12 object-contain" />
                                                         </div>
                                                         <i class="pi pi-chevron-right text-xs! leading-tight! text-surface-900 dark:text-surface-0"></i>
                                                     </div>
@@ -245,17 +228,13 @@ import { MeterGroupModule } from 'primeng/metergroup';
                                                 </div>
                                                 <div class="flex flex-1 items-center justify-between p-4">
                                                     <div class="flex flex-col gap-2">
-                                                        <div class="text-xl font-medium text-surface-900 dark:text-surface-0">Provincia Cauquenes</div>
+                                                        <div class="text-base text-surface-700 dark:text-surface-300">Provincia de</div>
+                                                        <div class="text-xl font-medium text-surface-900 dark:text-surface-0">Cauquenes</div>
                                                         <div class="text-base text-surface-700 dark:text-surface-200">24 Proyectos</div>
                                                     </div>
                                                     <div class="flex gap-4 items-center">
-                                                        <div class="hidden items-end gap-[3px] md:flex">
-                                                            <div class="w-[6px] h-[15px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[15px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[12px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[21px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[20px] bg-surface-200 dark:bg-surface-700 rounded-[3.5px]"></div>
-                                                            <div class="w-[6px] h-[17px] bg-primary rounded-[3.5px]"></div>
+                                                        <div class="hidden md:flex">
+                                                            <img src="assets/images/logosprovincias/Provincia_de_Cauquenes.svg.png" alt="Provincia Cauquenes" class="h-12 w-12 object-contain" />
                                                         </div>
                                                         <i class="pi pi-chevron-right text-xs! leading-tight! text-surface-900 dark:text-surface-0"></i>
                                                     </div>
