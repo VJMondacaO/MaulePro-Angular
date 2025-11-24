@@ -123,101 +123,171 @@
 
 :host ::ng-deep .filter-dropdown .p-dropdown {
   width: 100%;
-  height: 48px !important;
-  border: 2px solid #e5e7eb;
-  border-radius: 0.5rem;
+  height: 50px !important;
+  /* Match search bar height */
+  border: 1px solid #E2E8F0;
+  border-radius: 2rem;
+  /* Pill shape */
   transition: all 0.2s ease;
+  background: #F8FAFC;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
 }
 
 :host ::ng-deep .filter-dropdown .p-dropdown .p-dropdown-label {
-  padding: 0.625rem 1rem !important;
+  padding: 0 1.25rem !important;
   font-size: 0.95rem;
-  color: #374151;
-  line-height: 1.5;
+  color: #334155;
+  line-height: 50px;
+  /* Vertically center text */
 }
 
 :host ::ng-deep .filter-dropdown .p-dropdown:not(.p-disabled):hover {
-  border-color: #d1d5db;
+  border-color: #CBD5E1;
+  background: #FFFFFF;
 }
 
 :host ::ng-deep .filter-dropdown .p-dropdown:not(.p-disabled).p-focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+  border-color: #0066CC;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+  background: #FFFFFF;
 }
 
-/* Barra de Búsqueda */
-.search-bar {
+/* Contenedor de Búsqueda con Botón */
+.contenedor-busqueda {
   flex: 1;
   min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 @media (min-width: 700px) {
-  .search-bar {
+  .contenedor-busqueda {
     flex: 1.5;
     min-width: 250px;
+    gap: 1rem;
   }
 }
 
-:host ::ng-deep .search-bar .p-inputtext {
-  width: 70%;
-  padding: 0.625rem 1rem 0.625rem 2.75rem !important;
+/* Barra de Búsqueda */
+:host ::ng-deep .barra-busqueda {
+  flex: 1;
+  width: 100%;
+  height: 50px !important;
+  border-radius: 2rem;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  border: 2px solid #E2E8F0;
+  background: #FFFFFF;
+  color: #1C1C1C;
   font-size: 0.95rem;
-  border-radius: 0.5rem;
-  border: 2px solid #e5e7eb;
-  transition: all 0.2s ease;
-  height: 48px !important;
-  line-height: 1.5;
-  color: #374151;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
 }
 
-:host ::ng-deep .search-bar .p-inputtext::placeholder {
-  color: #9ca3af;
+:host ::ng-deep .barra-busqueda:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-:host ::ng-deep .search-bar .p-inputtext:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+:host ::ng-deep .barra-busqueda:focus {
+  border-color: #0066CC;
+  background: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(0, 102, 204, 0.2);
   outline: none;
 }
 
-:host ::ng-deep .search-bar .p-input-icon-left {
-  position: relative;
+:host ::ng-deep .barra-busqueda::placeholder {
+  color: #94A3B8;
+  font-weight: 400;
 }
 
-:host ::ng-deep .search-bar .p-input-icon-left > i {
-  position: relative;
-  left: 10rem;
-  top: 50%;
-  transform: translateY(-80%);
-  color: #6b7280;
-  font-size: 1rem;
-  z-index: 1;
+/* Botón de Búsqueda */
+:host ::ng-deep .boton-buscar {
+  height: 50px !important;
+  padding: 0 1.75rem !important;
+  background: linear-gradient(135deg, #0066CC 0%, #0052A3 100%) !important;
+  border: none !important;
+  border-radius: 2rem !important;
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3) !important;
+  white-space: nowrap !important;
+  flex-shrink: 0;
 }
+
+:host ::ng-deep .boton-buscar:hover {
+  background: linear-gradient(135deg, #0052A3 0%, #003d7a 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4) !important;
+}
+
+:host ::ng-deep .boton-buscar:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3) !important;
+}
+
+:host ::ng-deep .boton-buscar .p-button-icon {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+:host ::ng-deep .boton-buscar .p-button-label {
+  font-weight: 600;
+}
+
+/* Responsive para el botón */
+@media (max-width: 576px) {
+  :host ::ng-deep .boton-buscar .p-button-label {
+    display: none;
+  }
+  
+  :host ::ng-deep .boton-buscar {
+    padding: 0 1rem !important;
+    width: 50px;
+    min-width: 50px;
+  }
+  
+  :host ::ng-deep .boton-buscar .p-button-icon {
+    margin-right: 0;
+  }
+}
+
+/* ============================================
+   GRID SYSTEM OVERRIDES
+   ============================================ */
 
 .programas-grid {
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100% !important;
+  margin: 0 !important;
+  /* Override PrimeFlex negative margins */
+  gap: 2.5rem;
 }
 
 /* Ajustar gap según breakpoint */
-/* Tablet: 2 columnas */
 @media (min-width: 768px) and (max-width: 991.98px) {
   .programas-grid {
-    gap: 1.25rem;
+    gap: 2rem;
   }
 }
 
-/* Desktop: 3 columnas (lg:col-4) */
 @media (min-width: 992px) {
   .programas-grid {
-    gap: 1.5rem;
+    gap: 2.5rem;
   }
 }
 
-/* Desktop grande: ajustar gap si es necesario */
 @media (min-width: 1200px) {
   .programas-grid {
-    gap: 1.5rem;
+    gap: 3rem;
   }
 }
 
@@ -230,108 +300,73 @@
   box-sizing: border-box;
 }
 
-/* Asegurar que el grid use flexbox correctamente (PrimeFlex usa display: flex) */
-.programas-grid {
-  display: flex;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-}
-
-/* Permitir que PrimeFlex maneje los anchos naturalmente */
-/* Los hijos deben ser flex solo en dirección column para estirar contenido interno */
-/* No interferir con el cálculo de ancho de PrimeFlex */
-.programas-grid > div {
+/* Resetear estilos de hijos directos del grid (los divs con clases col-*) */
+.programas-grid>div {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   box-sizing: border-box;
-  /* No definir width aquí - dejar que PrimeFlex lo maneje */
+  padding: 0 !important;
+  /* Override PrimeFlex padding */
+  margin: 0 !important;
+  height: 560px;
+  /* Force fixed height */
+  max-height: 560px;
 }
 
-.programas-grid > div > app-program-card {
+.programas-grid>div>app-program-card {
   width: 100%;
   display: flex;
   flex: 1 1 auto;
-  min-height: 450px;
-  max-height: 450px;
   align-items: stretch;
+  height: 100%;
 }
 
-.programas-grid > div > app-program-card > .program-card {
+.programas-grid>div>app-program-card>.program-card {
   width: 100%;
   height: 100%;
-  min-height: 450px;
-  max-height: 450px;
 }
 
-/* Responsive: Altura uniforme en todos los breakpoints */
+/* ============================================
+   RESPONSIVE COLUMNS
+   ============================================ */
 
 /* Móvil: 1 columna (col-12) */
 @media (max-width: 767.98px) {
-  .programas-grid > div {
-    min-height: 450px;
-    max-height: 450px;
-  }
-  
-  .programas-grid > div > app-program-card {
-    min-height: 450px;
-    max-height: 450px;
-  }
-  
-  .programas-grid > div > app-program-card > .program-card {
-    min-height: 450px;
-    max-height: 450px;
+  .programas-grid>div {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
   }
 }
 
 /* Tablet: 2 columnas (md:col-6) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-  /* Asegurar que PrimeFlex aplique correctamente 2 columnas */
-  .programas-grid > div[class*="md:col-6"] {
-    flex: 0 0 calc((100% - 1.25rem) / 2); /* 2 columnas con 1 gap de 1.25rem */
-    width: calc((100% - 1.25rem) / 2);
-    max-width: calc((100% - 1.25rem) / 2);
-    min-width: 0;
-  }
-  
-  .programas-grid > div {
-    min-height: 450px;
-    max-height: 450px;
-  }
-  
-  .programas-grid > div > app-program-card {
-    min-height: 450px;
-    max-height: 450px;
-  }
-  
-  .programas-grid > div > app-program-card > .program-card {
-    min-height: 450px;
-    max-height: 450px;
+  .programas-grid>div {
+    /* (100% - 1 gap) / 2 */
+    flex: 0 0 calc((100% - 2rem) / 2) !important;
+    width: calc((100% - 2rem) / 2) !important;
+    max-width: calc((100% - 2rem) / 2) !important;
   }
 }
 
-/* Desktop: 3 columnas (lg:col-4) - Todas las pantallas desktop */
+/* Desktop: 3 columnas (lg:col-4) */
 @media (min-width: 992px) {
-  /* Forzar 3 columnas usando lg:col-4 */
-  .programas-grid > div[class*="lg:col-4"] {
-    flex: 0 0 calc((100% - 3rem) / 3); /* 3 columnas con 2 gaps de 1.5rem */
-    width: calc((100% - 3rem) / 3);
-    max-width: calc((100% - 3rem) / 3);
-    min-width: 0;
+  .programas-grid>div {
+    /* (100% - 2 gaps) / 3 */
+    /* Gap es 2.5rem. 2 gaps = 5rem */
+    flex: 0 0 calc((100% - 5rem) / 3) !important;
+    width: calc((100% - 5rem) / 3) !important;
+    max-width: calc((100% - 5rem) / 3) !important;
   }
-  
-  .programas-grid > div {
-    min-height: 450px;
-    max-height: 450px;
-  }
-  
-  .programas-grid > div > app-program-card {
-    min-height: 450px;
-    max-height: 450px;
-  }
-  
-  .programas-grid > div > app-program-card > .program-card {
-    min-height: 450px;
-    max-height: 450px;
+}
+
+/* Large Desktop: 3 columnas con gap más grande */
+@media (min-width: 1200px) {
+  .programas-grid>div {
+    /* Gap es 3rem. 2 gaps = 6rem */
+    flex: 0 0 calc((100% - 6rem) / 3) !important;
+    width: calc((100% - 6rem) / 3) !important;
+    max-width: calc((100% - 6rem) / 3) !important;
   }
 }

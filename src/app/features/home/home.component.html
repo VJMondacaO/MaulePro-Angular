@@ -40,16 +40,24 @@
               styleClass="filter-dropdown tipo-fondo-filter">
             </p-dropdown>
             
-            <span class="p-input-icon-left search-bar">
-              <i class="pi pi-search"></i>
+            <div class="contenedor-busqueda">
               <input 
                 type="text" 
                 pInputText 
                 [(ngModel)]="searchTerm"
                 (input)="filterPrograms()"
+                (keyup.enter)="onSearchClick()"
                 placeholder="Buscar programas..." 
-                class="w-full" />
-            </span>
+                class="barra-busqueda w-full" />
+              <button 
+                pButton
+                type="button"
+                label="Buscar"
+                icon="pi pi-search"
+                (click)="onSearchClick()"
+                class="boton-buscar">
+              </button>
+            </div>
           </div>
         </div>
       </div>

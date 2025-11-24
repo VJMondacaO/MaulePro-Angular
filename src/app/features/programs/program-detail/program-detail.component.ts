@@ -44,6 +44,9 @@ export class ProgramDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Scroll al top al cargar el componente
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id) {
@@ -57,6 +60,10 @@ export class ProgramDetailComponent implements OnInit {
 
   private loadProgram(id: string): void {
     this.loading = true;
+    
+    // Asegurar scroll al top al cargar un programa
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    
     const program = this.programsService.getProgramDetailById(id);
     
     if (!program) {

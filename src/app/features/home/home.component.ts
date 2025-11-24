@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HeroComponent } from './hero/hero.component';
 import { ProgramCardData } from '../programs/program-card.types';
 import { ProgramsService } from '../programs/programs.service';
 import { ProgramCardComponent } from '../programs/program-card/program-card.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,8 @@ import { DropdownModule } from 'primeng/dropdown';
     HeroComponent, 
     ProgramCardComponent,
     InputTextModule,
-    DropdownModule
+    DropdownModule,
+    ButtonModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -37,7 +40,11 @@ export class HomeComponent {
 
   tipoFondoOptions: { label: string; value: string }[] = [];
 
-  constructor(private programsService: ProgramsService) {
+  constructor(
+    private programsService: ProgramsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     // Obtener todos los programas del servicio
     this.programas = this.programsService.getPrograms();
     this.filteredPrograms = this.programas;
@@ -52,6 +59,22 @@ export class HomeComponent {
     this.tipoFondoOptions = Array.from(tiposFondo)
       .sort()
       .map(tipo => ({ label: tipo, value: tipo }));
+    
+    // Cargar parámetros de búsqueda desde la URL si estamos en /buscar
+    this.route.queryParams.subscribe(params => {
+      if (params['q']) {
+        this.searchTerm = params['q'];
+        this.filterPrograms();
+      }
+      if (params['estado']) {
+        this.selectedEstado = params['estado'];
+        this.filterPrograms();
+      }
+      if (params['tipo']) {
+        this.selectedTipoFondo = params['tipo'];
+        this.filterPrograms();
+      }
+    });
   }
 
   filterPrograms(): void {
@@ -82,5 +105,23 @@ export class HomeComponent {
     }
 
     this.filteredPrograms = filtered;
+  }
+
+  onSearchClick(): void {
+    // Navegar a la página de búsqueda con los parámetros actuales
+    const queryParams: any = {};
+    
+    if (this.searchTerm && this.searchTerm.trim() !== '') {
+      queryParams.q = this.searchTerm.trim();
+    }
+    if (this.selectedEstado) {
+      queryParams.estado = this.selectedEstado;
+    }
+    if (this.selectedTipoFondo) {
+      queryParams.tipo = this.selectedTipoFondo;
+    }
+    
+    // Navegar a la página de búsqueda
+    this.router.navigate(['/buscar'], { queryParams });
   }
 }

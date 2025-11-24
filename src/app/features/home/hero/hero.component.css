@@ -7,6 +7,7 @@
   width: 100%;
   height: 100vh;
   min-height: 600px;
+  max-height: 900px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,6 +29,7 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  overflow: hidden;
 }
 
 .hero-overlay {
@@ -36,9 +38,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.5) 100%);
   z-index: 2;
   pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .hero-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+  }
 }
 
 @media (min-width: 992px) {
@@ -73,9 +81,68 @@
   width: 100%;
 }
 
+/* Forzar altura completa solo en móviles */
+@media (max-width: 767.98px) {
+  :host ::ng-deep .hero-galleria {
+    height: 100% !important;
+    min-height: 650px !important;
+  }
+
+  :host ::ng-deep .hero-galleria .p-galleria-content {
+    height: 100% !important;
+    min-height: 650px !important;
+  }
+
+  :host ::ng-deep .hero-galleria .p-galleria-item-wrapper {
+    height: 100% !important;
+    min-height: 650px !important;
+  }
+
+  :host ::ng-deep .hero-galleria .p-galleria-item-container {
+    height: 100% !important;
+    min-height: 650px !important;
+  }
+
+  :host ::ng-deep .hero-galleria .p-galleria-item {
+    height: 100% !important;
+    min-height: 650px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  :host ::ng-deep .hero-galleria {
+    min-height: 600px !important;
+  }
+
+  :host ::ng-deep .hero-galleria .p-galleria-content {
+    min-height: 600px !important;
+  }
+
+  :host ::ng-deep .hero-galleria .p-galleria-item-wrapper {
+    min-height: 600px !important;
+  }
+
+  :host ::ng-deep .hero-galleria .p-galleria-item-container {
+    min-height: 600px !important;
+  }
+
+  :host ::ng-deep .hero-galleria .p-galleria-item {
+    min-height: 600px !important;
+  }
+}
+
 :host ::ng-deep .hero-galleria .p-galleria-indicators {
   bottom: 20px;
   z-index: 10;
+}
+
+@media (max-width: 767.98px) {
+  :host ::ng-deep .hero-galleria .p-galleria-indicators {
+    bottom: 15px;
+  }
 }
 
 :host ::ng-deep .hero-galleria .p-galleria-indicator button {
@@ -84,17 +151,51 @@
   height: 12px;
   border-radius: 50%;
   margin: 0 4px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 767.98px) {
+  :host ::ng-deep .hero-galleria .p-galleria-indicator button {
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+  }
 }
 
 :host ::ng-deep .hero-galleria .p-galleria-indicator.p-highlight button {
   background-color: var(--primary-color);
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 767.98px) {
+  :host ::ng-deep .hero-galleria .p-galleria-indicator.p-highlight button {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 .hero-carousel-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
+}
+
+@media (max-width: 767.98px) {
+  .hero-carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 650px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-carousel-image {
+    min-height: 600px;
+  }
 }
 
 /* Contenido Principal */
@@ -132,6 +233,17 @@
   padding: 0.5rem 1rem !important;
   font-weight: 600 !important;
   backdrop-filter: blur(10px);
+}
+
+@media (max-width: 767.98px) {
+  .hero-badge {
+    margin-bottom: 1rem;
+  }
+  
+  :host ::ng-deep .institucional-badge {
+    font-size: 0.75rem !important;
+    padding: 0.4rem 0.875rem !important;
+  }
 }
 
 /* Título */
@@ -272,21 +384,34 @@
 /* Responsive */
 @media (max-width: 767.98px) {
   .hero-wrapper {
-    min-height: 500px;
+    height: auto;
+    min-height: 650px;
+    max-height: none;
+  }
+  
+  .hero-carousel {
+    min-height: 650px;
   }
 
   .hero-content {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1rem;
+    transform: translateY(0);
+  }
+
+  .hero-content-inner {
+    max-width: 100%;
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin-bottom: 1rem;
+    line-height: 1.3;
   }
 
   .hero-description {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
   }
 
   .hero-features {
@@ -295,30 +420,65 @@
   }
 
   .feature-item {
-    padding: 0.875rem;
+    padding: 0.75rem;
+    gap: 0.75rem;
   }
 
   .feature-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.25rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
   }
 
   .feature-title {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 
   .feature-text {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .hero-buttons {
     flex-direction: column;
     width: 100%;
+    justify-content: stretch;
   }
 
   :host ::ng-deep .hero-buttons .p-button {
     width: 100%;
-    padding: 0.75rem 1.5rem !important;
+    padding: 0.75rem 1.25rem !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-wrapper {
+    min-height: 600px;
+  }
+  
+  .hero-carousel {
+    min-height: 600px;
+  }
+
+  .hero-content {
+    padding: 1.25rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-features {
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .feature-item {
+    padding: 0.625rem;
   }
 }
