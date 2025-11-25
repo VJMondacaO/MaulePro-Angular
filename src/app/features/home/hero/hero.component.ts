@@ -97,10 +97,10 @@ export class HeroComponent {
   }
 
   scrollToPrograms(): void {
-    const programsSection = document.querySelector('.programs-header-panel');
-    if (programsSection) {
-      const elementPosition = programsSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - (window.innerHeight * 0.15);
+    const fondosSection = document.getElementById('fondos-disponibles');
+    if (fondosSection) {
+      const elementPosition = fondosSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset;
       
       window.scrollTo({
         top: offsetPosition,

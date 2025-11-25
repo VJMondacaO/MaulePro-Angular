@@ -1,14 +1,15 @@
-<div class="container">
+<div class="container px-48">
   <div class="w-full">
     <!-- Hero Section -->
-    <div class="w-full">
+    <div class="w-full seccion-hero">
       <app-hero></app-hero>
     </div>
 
     <!-- Lista de Programas -->
-    <div class="w-full mt-4">
-      <!-- Panel Integrado: Título, Filtros y Búsqueda -->
-      <div class="programs-header-panel">
+    <div id="fondos-disponibles" class="w-full seccion-fondos mt-4">
+      <div class="seccion-contenido">
+        <!-- Panel Integrado: Título, Filtros y Búsqueda -->
+        <div class="programs-header-panel">
         <div class="panel-header">
           <h3 class="section-title">Fondos Disponibles</h3>
           <p class="programs-count">
@@ -69,12 +70,15 @@
           <app-program-card [program]="programa"></app-program-card>
         </div>
       </div>
+      </div>
     </div>
 
     <!-- Sección de Beneficios -->
-    <div class="w-full">
-      <div class="beneficios-section">
+    <div class="w-full seccion-pasos">
+      <div class="seccion-contenido">
+        <div class="beneficios-section">
         <h3 class="pasos-titulo">Pasos de Postulación</h3>
+        <p class="pasos-subtitulo">Siga estos pasos para completar su postulación exitosamente</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div 
             class="beneficio-card"
@@ -89,27 +93,8 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Sección de Servicios -->
-    <div class="w-full">
-      <div class="servicios-section">
-        <h2 class="servicios-titulo">Información para Postulantes</h2>
-        <p class="servicios-descripcion">
-          Conozca los pasos esenciales del proceso de postulación.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center">
-          <div 
-            class="servicio-card"
-            *ngFor="let servicio of servicios">
-            <span class="servicio-icon-box">
-              <i [class]="servicio.icon" class="servicio-icon"></i>
-            </span>
-            <h5 class="servicio-titulo">{{ servicio.title }}</h5>
-            <p class="servicio-descripcion">{{ servicio.description }}</p>
-          </div>
-        </div>
       </div>
     </div>
+
   </div>
 </div>

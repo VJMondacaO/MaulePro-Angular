@@ -35,8 +35,26 @@ export class ProgramCardComponent {
 
   getEstadoColor(): string {
     switch (this.program.estado) {
+      case 'open': return 'rgba(0, 102, 204, 0.08)'; // Azul claro para abierta
+      case 'soon': return '#FFE082'; // Amarillo para próxima (igual que botón)
+      case 'closed': return '#6C757D'; // Gris para cerrada (igual que botón)
+      default: return '#999';
+    }
+  }
+
+  getEstadoTextColor(): string {
+    switch (this.program.estado) {
       case 'open': return '#0066CC'; // Azul para abierta
-      case 'soon': return '#FFE082'; // Amarillo pálido para próxima
+      case 'soon': return '#333'; // Negro para próxima (igual que botón)
+      case 'closed': return '#FFFFFF'; // Blanco para cerrada (igual que botón)
+      default: return '#999';
+    }
+  }
+
+  getEstadoBorderColor(): string {
+    switch (this.program.estado) {
+      case 'open': return 'rgba(0, 102, 204, 0.2)'; // Azul claro para abierta
+      case 'soon': return '#FFE082'; // Amarillo para próxima
       case 'closed': return '#6C757D'; // Gris para cerrada
       default: return '#999';
     }

@@ -67,6 +67,22 @@
   box-sizing: border-box;
 }
 
+/* Etiqueta de tipo de fondo en esquina - Diseño cuadrado */
+.tipo-fondo-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 102, 204, 0.08);
+  color: #0066CC;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  z-index: 10;
+  border-radius: 0;
+  border-bottom-left-radius: 0.375rem;
+}
+
 /* Borde izquierdo coloreado - Estado abierta */
 .program-card.estado-abierta .program-card-content::before {
   content: '';
@@ -127,6 +143,34 @@
   letter-spacing: 0.5px;
 }
 
+/* Forzar estilos directamente en los elementos p-tag con severity - Mayor especificidad */
+:host ::ng-deep .status-badge.p-tag-warning,
+:host ::ng-deep .p-component.p-tag.status-badge.p-tag-warning {
+  background: #FFE082 !important;
+  background-color: #FFE082 !important;
+  border: 1px solid #FFE082 !important;
+  border-color: #FFE082 !important;
+  color: #333 !important;
+}
+
+:host ::ng-deep .status-badge.p-tag-danger,
+:host ::ng-deep .p-component.p-tag.status-badge.p-tag-danger {
+  background: #6C757D !important;
+  background-color: #6C757D !important;
+  border: 1px solid #6C757D !important;
+  border-color: #6C757D !important;
+  color: #FFFFFF !important;
+}
+
+:host ::ng-deep .status-badge.p-tag-success,
+:host ::ng-deep .p-component.p-tag.status-badge.p-tag-success {
+  background: rgba(0, 102, 204, 0.08) !important;
+  background-color: rgba(0, 102, 204, 0.08) !important;
+  border: 1px solid rgba(0, 102, 204, 0.2) !important;
+  border-color: rgba(0, 102, 204, 0.2) !important;
+  color: #0066CC !important;
+}
+
 /* Etiqueta de días restantes */
 :host ::ng-deep .dias-restantes-badge {
   font-size: 0.75rem !important;
@@ -163,24 +207,42 @@
 }
 
 /* Badge azul para estado abierta */
-.estado-abierta :host ::ng-deep .status-badge {
+.estado-abierta :host ::ng-deep .status-badge,
+.estado-abierta :host ::ng-deep .status-badge.p-tag,
+.estado-abierta :host ::ng-deep .status-badge.p-tag-success,
+.estado-abierta :host ::ng-deep .p-tag.status-badge.p-tag-success,
+.estado-abierta :host ::ng-deep .p-component.p-tag.status-badge.p-tag-success {
   background: rgba(0, 102, 204, 0.08) !important;
+  background-color: rgba(0, 102, 204, 0.08) !important;
   border: 1px solid rgba(0, 102, 204, 0.2) !important;
+  border-color: rgba(0, 102, 204, 0.2) !important;
   color: #0066CC !important;
 }
 
-/* Badge amarillo para estado próxima */
-.estado-proxima :host ::ng-deep .status-badge {
-  background: rgba(255, 193, 7, 0.08) !important;
-  border: 1px solid rgba(255, 193, 7, 0.2) !important;
-  color: #B38600 !important;
+/* Badge amarillo para estado próxima - Mismo color que botón Ver detalles */
+.estado-proxima :host ::ng-deep .status-badge,
+.estado-proxima :host ::ng-deep .status-badge.p-tag,
+.estado-proxima :host ::ng-deep .status-badge.p-tag-warning,
+.estado-proxima :host ::ng-deep .p-tag.status-badge.p-tag-warning,
+.estado-proxima :host ::ng-deep .p-component.p-tag.status-badge.p-tag-warning {
+  background: #FFE082 !important;
+  background-color: #FFE082 !important;
+  border: 1px solid #FFE082 !important;
+  border-color: #FFE082 !important;
+  color: #333 !important;
 }
 
-/* Badge gris para estado cerrada */
-.estado-cerrada :host ::ng-deep .status-badge {
-  background: rgba(108, 117, 125, 0.08) !important;
-  border: 1px solid rgba(108, 117, 125, 0.2) !important;
-  color: #6C757D !important;
+/* Badge gris para estado cerrada - Mismo color que botón Ver detalles */
+.estado-cerrada :host ::ng-deep .status-badge,
+.estado-cerrada :host ::ng-deep .status-badge.p-tag,
+.estado-cerrada :host ::ng-deep .status-badge.p-tag-danger,
+.estado-cerrada :host ::ng-deep .p-tag.status-badge.p-tag-danger,
+.estado-cerrada :host ::ng-deep .p-component.p-tag.status-badge.p-tag-danger {
+  background: #6C757D !important;
+  background-color: #6C757D !important;
+  border: 1px solid #6C757D !important;
+  border-color: #6C757D !important;
+  color: #FFFFFF !important;
 }
 
 .program-card-body {
@@ -248,17 +310,12 @@
   align-items: center;
   gap: 0.875rem;
   padding: 0.875rem;
-  background: #F8FAFC;
-  border-radius: 0.65rem;
+  background: transparent;
+  border-radius: 0;
   transition: all 0.2s ease;
-  border: 1px solid #F1F5F9;
+  border: none;
 }
 
-.plazo-item:hover {
-  background: #FFFFFF;
-  border-color: #E2E8F0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-}
 
 /* Estilos de hover para los iconos de plazo según estado */
 .estado-abierta .plazo-item:hover .feature-icon {
@@ -318,17 +375,12 @@
   align-items: center;
   gap: 0.875rem;
   padding: 0.875rem;
-  background: #F8FAFC;
-  border-radius: 0.65rem;
+  background: transparent;
+  border-radius: 0;
   transition: all 0.2s ease;
-  border: 1px solid #F1F5F9;
+  border: none;
 }
 
-.feature-item:hover {
-  background: #FFFFFF;
-  border-color: #E2E8F0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-}
 
 .feature-icon {
   width: 40px;

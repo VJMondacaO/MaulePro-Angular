@@ -35,7 +35,7 @@ export class ProgramsService {
       {
         id: '2',
         titulo: 'Proyectos Menores a 5.000 UTM',
-        descripcion: 'Financiamiento para proyectos de inversión municipal de menor envergadura en la región del Maule.',
+        descripcion: 'Financiamiento para proyectos de inversión municipal de menor envergadura.',
         estado: 'open',
         fechaInicio: '01-11-2025',
         fechaFin: '27-11-2025',

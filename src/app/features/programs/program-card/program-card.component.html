@@ -2,8 +2,16 @@
 <article class="program-card" [ngClass]="getClaseEstado()">
   <p-card [styleClass]="'program-card-wrapper'">
     <div class="program-card-content">
+      <div class="tipo-fondo-corner" *ngIf="program.tipoFondo">
+        <span>{{ program.tipoFondo }}</span>
+      </div>
       <div class="program-card-header">
-        <p-tag [value]="getEstadoTag()" [severity]="getEstadoSeverity()" styleClass="status-badge"></p-tag>
+        <p-tag 
+          [value]="getEstadoTag()" 
+          [severity]="getEstadoSeverity()" 
+          styleClass="status-badge"
+          [ngStyle]="{'background': getEstadoColor(), 'background-color': getEstadoColor(), 'border': '1px solid ' + getEstadoBorderColor(), 'border-color': getEstadoBorderColor(), 'color': getEstadoTextColor()}">
+        </p-tag>
         <p-tag 
           *ngIf="mostrarDiasRestantes()" 
           [value]="getTextoPlazoDias()" 
