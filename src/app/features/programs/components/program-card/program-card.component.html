@@ -45,7 +45,9 @@
             </div>
             <div class="feature-content">
               <strong>Beneficiarios</strong>
-              <span>{{ program.beneficiarios }}</span>
+              <div class="beneficiarios-text">
+                <span *ngFor="let linea of getBeneficiariosDivididos()">{{ linea }}</span>
+              </div>
             </div>
           </div>
           <div class="feature-item">
@@ -69,10 +71,10 @@
           icon="pi pi-arrow-right"
           iconPos="right"
           [routerLink]="program.rutaDetalles"
-          [class]="'btn-details ' + (program.estado === 'closed' ? 'btn-details-closed' : '')"
-          [style.background-color]="program.estado === 'closed' ? '#6C757D' : (program.estado === 'soon' ? '#FFE082' : null)"
-          [style.border-color]="program.estado === 'closed' ? '#6C757D' : (program.estado === 'soon' ? '#FFE082' : null)"
-          [style.color]="program.estado === 'closed' ? '#FFFFFF' : (program.estado === 'soon' ? '#333' : null)">
+          [class]="'btn-details ' + (getEstadoReal() === 'closed' ? 'btn-details-closed' : '')"
+          [style.background-color]="getEstadoReal() === 'closed' ? '#6C757D' : (getEstadoReal() === 'soon' ? '#FFE082' : null)"
+          [style.border-color]="getEstadoReal() === 'closed' ? '#6C757D' : (getEstadoReal() === 'soon' ? '#FFE082' : null)"
+          [style.color]="getEstadoReal() === 'closed' ? '#FFFFFF' : (getEstadoReal() === 'soon' ? '#333' : null)">
         </button>
       </div>
     </div>

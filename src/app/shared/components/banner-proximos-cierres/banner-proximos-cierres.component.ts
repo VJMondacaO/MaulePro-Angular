@@ -43,6 +43,28 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
         this.detenerCarrusel();
     }
 
+    /**
+     * Obtiene el estado real del programa, verificando si el plazo ya cumplió
+     */
+    getEstadoReal(programa: ProgramCardData): 'open' | 'soon' | 'closed' {
+        // Si el estado es 'open' y tiene fechaCierre, verificar si ya pasó
+        if (programa.estado === 'open' && programa.fechaCierre) {
+            const hoy = new Date();
+            hoy.setHours(0, 0, 0, 0);
+            
+            const [year, month, day] = programa.fechaCierre.split('-').map(Number);
+            const fechaCierre = new Date(year, month - 1, day);
+            fechaCierre.setHours(0, 0, 0, 0);
+            
+            // Si la fecha de cierre ya pasó, cambiar a 'closed'
+            if (fechaCierre.getTime() < hoy.getTime()) {
+                return 'closed';
+            }
+        }
+        
+        return programa.estado;
+    }
+
     cargarProyectosProximosACerrar(): void {
         const todosLosProgramas = this.programsService.getPrograms();
         const hoy = new Date();
@@ -51,7 +73,9 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
         // Primero intentar filtrar proyectos próximos a cerrar (próximos 90 días)
         let proyectosFiltrados = todosLosProgramas
             .filter(programa => {
-                if (programa.estado !== 'open' || !programa.fechaCierre) {
+                // Usar el estado real calculado
+                const estadoReal = this.getEstadoReal(programa);
+                if (estadoReal !== 'open' || !programa.fechaCierre) {
                     return false;
                 }
                 
@@ -85,10 +109,10 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
                 }
             });
         
-        // Si no hay proyectos próximos a cerrar, mostrar todos los proyectos abiertos
+        // Si no hay proyectos próximos a cerrar, mostrar todos los proyectos abiertos (usando estado real)
         if (proyectosFiltrados.length === 0) {
             proyectosFiltrados = todosLosProgramas
-                .filter(programa => programa.estado === 'open')
+                .filter(programa => this.getEstadoReal(programa) === 'open')
                 .slice(0, 3);
         }
         

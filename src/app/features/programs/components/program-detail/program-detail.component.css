@@ -89,3 +89,14 @@ button.p-button.p-button-text.p-button-plain .pi {
 button.p-button.p-button-text.p-button-plain:hover .pi {
   color: #0052CC !important;
 }
+
+/* Icono más grande para el botón de postular */
+.boton-postular .p-button-icon {
+  font-size: 1.5rem !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+.boton-postular .pi {
+  font-size: 1.5rem !important;
+}

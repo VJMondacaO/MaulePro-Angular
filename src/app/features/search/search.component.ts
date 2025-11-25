@@ -78,6 +78,29 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  /**
+   * Obtiene el estado real del programa, verificando si el plazo ya cumplió
+   * Similar a la lógica en program-card.component.ts
+   */
+  getEstadoReal(programa: ProgramCardData): 'open' | 'soon' | 'closed' {
+    // Si el estado es 'open' y tiene fechaCierre, verificar si ya pasó
+    if (programa.estado === 'open' && programa.fechaCierre) {
+      const hoy = new Date();
+      hoy.setHours(0, 0, 0, 0);
+      
+      const [year, month, day] = programa.fechaCierre.split('-').map(Number);
+      const fechaCierre = new Date(year, month - 1, day);
+      fechaCierre.setHours(0, 0, 0, 0);
+      
+      // Si la fecha de cierre ya pasó, cambiar a 'closed'
+      if (fechaCierre.getTime() < hoy.getTime()) {
+        return 'closed';
+      }
+    }
+    
+    return programa.estado;
+  }
+
   filterPrograms(): void {
     let filtered = [...this.programas];
 
@@ -95,9 +118,9 @@ export class SearchComponent implements OnInit {
       });
     }
 
-    // Filtro por estado
+    // Filtro por estado - usar el estado real calculado
     if (this.selectedEstado) {
-      filtered = filtered.filter(programa => programa.estado === this.selectedEstado);
+      filtered = filtered.filter(programa => this.getEstadoReal(programa) === this.selectedEstado);
     }
 
     // Filtro por tipo de fondo

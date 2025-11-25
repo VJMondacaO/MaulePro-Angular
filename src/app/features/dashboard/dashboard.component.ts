@@ -270,41 +270,52 @@ import { ButtonModule } from 'primeng/button';
                         </div>
                     </div>
 
-                    <div class="bg-surface-50 dark:bg-surface-950 px-6 py-6 md:px-12 lg:px-20">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <div class="bg-surface-0 dark:bg-surface-900 shadow-sm p-4 rounded-2xl flex items-center gap-4">
-                                <div class="flex-1 flex flex-col gap-2">
-                                    <div class="flex flex-col gap-1">
-                                        <span class="text-surface-900 dark:text-surface-0 text-3xl font-semibold leading-tight">145</span>
-                                        <div class="text-surface-500 dark:text-surface-400 text-xl leading-tight">Proyectos Aprobados</div>
+                    <!-- Sección de Estado de Proyectos -->
+                    <div class="bg-surface-50 dark:bg-surface-950 px-6 py-8 md:px-12 lg:px-20 rounded-2xl">
+                        <h2 class="text-2xl font-bold text-surface-900 dark:text-surface-0 mb-6">Estado de Proyectos</h2>
+                        <div class="flex flex-col md:flex-row gap-6 justify-center items-center max-w-7xl mx-auto">
+                            <!-- Proyectos Aprobados -->
+                            <div class="group relative bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 border-2 border-green-200 dark:border-green-800 shadow-lg hover:shadow-xl transition-all duration-300 p-6 rounded-2xl overflow-hidden flex-1 max-w-md">
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-green-200/20 dark:bg-green-800/20 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+                                <div class="relative flex flex-col gap-4 items-center justify-center text-center">
+                                    <div class="flex flex-col items-center">
+                                        <div class="text-sm font-semibold text-green-700 dark:text-green-300 uppercase tracking-wide mb-2">Aprobados</div>
+                                        <div class="text-4xl font-bold text-green-900 dark:text-green-100 mb-1">145</div>
+                                        <div class="text-base text-green-600 dark:text-green-400 font-medium">Proyectos</div>
                                     </div>
-                                </div>
-                                <div class="flex items-center justify-center w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full">
-                                    <i class="pi pi-check-circle text-5xl text-green-600 dark:text-green-400"></i>
+                                    <div class="flex items-center justify-center gap-2 pt-2 border-t border-green-200 dark:border-green-800 w-full">
+                                        <span class="text-sm text-green-700 dark:text-green-300 font-medium">77.5% del total</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="bg-surface-0 dark:bg-surface-900 shadow-sm p-4 rounded-2xl flex items-center gap-4">
-                                <div class="flex-1 flex flex-col gap-2">
-                                    <div class="flex flex-col gap-1">
-                                        <span class="text-surface-900 dark:text-surface-0 text-3xl font-semibold leading-tight">28</span>
-                                        <div class="text-surface-500 dark:text-surface-400 text-xl leading-tight">Proyectos en Revisión</div>
+                            <!-- Proyectos en Revisión -->
+                            <div class="group relative bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 border-2 border-amber-200 dark:border-amber-800 shadow-lg hover:shadow-xl transition-all duration-300 p-6 rounded-2xl overflow-hidden flex-1 max-w-md">
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-amber-200/20 dark:bg-amber-800/20 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+                                <div class="relative flex flex-col gap-4 items-center justify-center text-center">
+                                    <div class="flex flex-col items-center">
+                                        <div class="text-sm font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-wide mb-2">En Revisión</div>
+                                        <div class="text-4xl font-bold text-amber-900 dark:text-amber-100 mb-1">28</div>
+                                        <div class="text-base text-amber-600 dark:text-amber-400 font-medium">Proyectos</div>
                                     </div>
-                                </div>
-                                <div class="flex items-center justify-center w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full">
-                                    <i class="pi pi-clock text-5xl text-amber-600 dark:text-amber-400"></i>
+                                    <div class="flex items-center justify-center gap-2 pt-2 border-t border-amber-200 dark:border-amber-800 w-full">
+                                        <span class="text-sm text-amber-700 dark:text-amber-300 font-medium">15.0% del total</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="bg-surface-0 dark:bg-surface-900 shadow-sm p-4 rounded-2xl flex items-center gap-4">
-                                <div class="flex-1 flex flex-col gap-2">
-                                    <div class="flex flex-col gap-1">
-                                        <span class="text-surface-900 dark:text-surface-0 text-3xl font-semibold leading-tight">14</span>
-                                        <div class="text-surface-500 dark:text-surface-400 text-xl leading-tight">Proyectos Rechazados</div>
+                            <!-- Proyectos Rechazados -->
+                            <div class="group relative bg-gradient-to-br from-red-50 to-rose-50 dark:from-red-950/30 dark:to-rose-950/30 border-2 border-red-200 dark:border-red-800 shadow-lg hover:shadow-xl transition-all duration-300 p-6 rounded-2xl overflow-hidden flex-1 max-w-md">
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-red-200/20 dark:bg-red-800/20 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+                                <div class="relative flex flex-col gap-4 items-center justify-center text-center">
+                                    <div class="flex flex-col items-center">
+                                        <div class="text-sm font-semibold text-red-700 dark:text-red-300 uppercase tracking-wide mb-2">Rechazados</div>
+                                        <div class="text-4xl font-bold text-red-900 dark:text-red-100 mb-1">14</div>
+                                        <div class="text-base text-red-600 dark:text-red-400 font-medium">Proyectos</div>
                                     </div>
-                                </div>
-                                <div class="flex items-center justify-center w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-full">
-                                    <i class="pi pi-times-circle text-5xl text-red-600 dark:text-red-400"></i>
+                                    <div class="flex items-center justify-center gap-2 pt-2 border-t border-red-200 dark:border-red-800 w-full">
+                                        <span class="text-sm text-red-700 dark:text-red-300 font-medium">7.5% del total</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

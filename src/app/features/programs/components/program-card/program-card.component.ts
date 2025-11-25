@@ -16,8 +16,31 @@ import { ProgramCardData } from '../models/program-card.types';
 export class ProgramCardComponent {
   @Input() program!: ProgramCardData;
 
+  /**
+   * Obtiene el estado real del programa, verificando si el plazo ya cumplió
+   */
+  getEstadoReal(): 'open' | 'soon' | 'closed' {
+    // Si el estado es 'open' y tiene fechaCierre, verificar si ya pasó
+    if (this.program.estado === 'open' && this.program.fechaCierre) {
+      const hoy = new Date();
+      hoy.setHours(0, 0, 0, 0);
+      
+      const [year, month, day] = this.program.fechaCierre.split('-').map(Number);
+      const fechaCierre = new Date(year, month - 1, day);
+      fechaCierre.setHours(0, 0, 0, 0);
+      
+      // Si la fecha de cierre ya pasó, cambiar a 'closed'
+      if (fechaCierre.getTime() < hoy.getTime()) {
+        return 'closed';
+      }
+    }
+    
+    return this.program.estado;
+  }
+
   getEstadoTag(): string {
-    switch (this.program.estado) {
+    const estado = this.getEstadoReal();
+    switch (estado) {
       case 'open': return 'ABIERTO';
       case 'soon': return 'PRÓXIMO';
       case 'closed': return 'CERRADO';
@@ -26,7 +49,8 @@ export class ProgramCardComponent {
   }
 
   getEstadoSeverity(): 'success' | 'warning' | 'danger' {
-    switch (this.program.estado) {
+    const estado = this.getEstadoReal();
+    switch (estado) {
       case 'open': return 'success';
       case 'soon': return 'warning';
       case 'closed': return 'danger';
@@ -34,7 +58,8 @@ export class ProgramCardComponent {
   }
 
   getEstadoColor(): string {
-    switch (this.program.estado) {
+    const estado = this.getEstadoReal();
+    switch (estado) {
       case 'open': return 'rgba(0, 102, 204, 0.08)'; // Azul claro para abierta
       case 'soon': return '#FFE082'; // Amarillo para próxima (igual que botón)
       case 'closed': return '#6C757D'; // Gris para cerrada (igual que botón)
@@ -43,7 +68,8 @@ export class ProgramCardComponent {
   }
 
   getEstadoTextColor(): string {
-    switch (this.program.estado) {
+    const estado = this.getEstadoReal();
+    switch (estado) {
       case 'open': return '#0066CC'; // Azul para abierta
       case 'soon': return '#333'; // Negro para próxima (igual que botón)
       case 'closed': return '#FFFFFF'; // Blanco para cerrada (igual que botón)
@@ -52,7 +78,8 @@ export class ProgramCardComponent {
   }
 
   getEstadoBorderColor(): string {
-    switch (this.program.estado) {
+    const estado = this.getEstadoReal();
+    switch (estado) {
       case 'open': return 'rgba(0, 102, 204, 0.2)'; // Azul claro para abierta
       case 'soon': return '#FFE082'; // Amarillo para próxima
       case 'closed': return '#6C757D'; // Gris para cerrada
@@ -61,7 +88,8 @@ export class ProgramCardComponent {
   }
 
   getClaseEstado(): string {
-    switch (this.program.estado) {
+    const estado = this.getEstadoReal();
+    switch (estado) {
       case 'open': return 'estado-abierta';
       case 'soon': return 'estado-proxima';
       case 'closed': return 'estado-cerrada';
@@ -73,20 +101,30 @@ export class ProgramCardComponent {
    * Calcula los días restantes hasta la fecha de cierre
    */
   getDiasRestantes(): number | null {
-    if (!this.program.fechaCierre || this.program.estado !== 'open') {
+    const estado = this.getEstadoReal();
+    if (!this.program.fechaCierre || estado !== 'open') {
       return null;
     }
 
+    // Obtener fecha actual en zona horaria local
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0); // Resetear a medianoche para comparación precisa
     
-    const fechaCierre = new Date(this.program.fechaCierre);
+    // Parsear fecha de cierre (formato: YYYY-MM-DD)
+    const [year, month, day] = this.program.fechaCierre.split('-').map(Number);
+    const fechaCierre = new Date(year, month - 1, day); // month - 1 porque Date usa 0-11 para meses
     fechaCierre.setHours(0, 0, 0, 0);
     
+    // Calcular diferencia en días
     const diferenciaTiempo = fechaCierre.getTime() - hoy.getTime();
     const diferenciaDias = Math.ceil(diferenciaTiempo / (1000 * 60 * 60 * 24));
     
-    return diferenciaDias > 0 ? diferenciaDias : 0;
+    // Retornar null si la fecha ya pasó (diferencia negativa)
+    if (diferenciaDias < 0) {
+      return null;
+    }
+    
+    return diferenciaDias;
   }
 
   /**
@@ -125,6 +163,18 @@ export class ProgramCardComponent {
    * Verifica si debe mostrar la etiqueta de días restantes
    */
   mostrarDiasRestantes(): boolean {
-    return this.program.estado === 'open' && this.getDiasRestantes() !== null;
+    const estado = this.getEstadoReal();
+    return estado === 'open' && this.getDiasRestantes() !== null;
+  }
+
+  /**
+   * Divide el texto de beneficiarios en dos líneas si contiene "Instituciones privadas sin fines de lucro"
+   */
+  getBeneficiariosDivididos(): string[] {
+    const beneficiarios = this.program.beneficiarios || '';
+    if (beneficiarios.includes('Instituciones privadas sin fines de lucro')) {
+      return ['Instituciones privadas', 'sin fines de lucro'];
+    }
+    return [beneficiarios];
   }
 }

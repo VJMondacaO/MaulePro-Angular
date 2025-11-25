@@ -20,19 +20,6 @@ export class ProgramsService {
   getPrograms(): ProgramCardData[] {
     const programs: ProgramCardData[] = [
       {
-        id: '1',
-        titulo: 'Actividades de Carácter Social',
-        descripcion: 'Proyectos que fortalecen el tejido social y mejoran la calidad de vida de las comunidades.',
-        estado: 'open',
-        fechaInicio: '01-11-2025',
-        fechaFin: '15-12-2025',
-        fechaCierre: '2025-12-15', // Formato: YYYY-MM-DD para calcular días restantes
-        beneficiarios: 'Organizaciones',
-        montos: '$2.000.000 - $5.000.000',
-        tipoFondo: 'FNDR 8%',
-        rutaDetalles: '/programas/3' // Ruta interna de Angular (usa ID)
-      },
-      {
         id: '2',
         titulo: 'Proyectos Menores a 5.000 UTM',
         descripcion: 'Financiamiento para proyectos de inversión municipal de menor envergadura.',
@@ -91,6 +78,123 @@ export class ProgramsService {
         montos: 'Hasta 3.000 UTM',
         tipoFondo: 'FRIL',
         rutaDetalles: '/programas/6'
+      },
+      {
+        id: '7',
+        titulo: 'Creación y Producción Artística',
+        descripcion: 'Iniciativas que fomenten la creación artística original y la generación de obra.',
+        estado: 'open',
+        fechaInicio: '03-02-2025',
+        fechaFin: '09-03-2025',
+        fechaCierre: '2025-03-09',
+        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        montos: '$2.000.000 a $5.000.000.',
+        tipoFondo: 'FNDR 8%',
+        rutaDetalles: '/programas/3'
+      },
+      {
+        id: '8',
+        titulo: 'Investigación y Desarrollo de Saberes',
+        descripcion: 'Proyectos de investigación cultural, patrimonial o identitaria vinculados a la región del Maule.',
+        estado: 'open',
+        fechaInicio: '03-02-2025',
+        fechaFin: '09-03-2025',
+        fechaCierre: '2025-03-09',
+        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        montos: '$2.000.000 a $5.000.000.',
+        tipoFondo: 'FNDR 8%',
+        rutaDetalles: '/programas/3'
+      },
+      {
+        id: '9',
+        titulo: 'Formación y Mediación de Saberes',
+        descripcion: 'Acciones formativas, talleres y procesos de capacitación artística y cultural para la comunidad.',
+        estado: 'open',
+        fechaInicio: '03-02-2025',
+        fechaFin: '09-03-2025',
+        fechaCierre: '2025-03-09',
+        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        montos: '$2.000.000 a $5.000.000.',
+        tipoFondo: 'FNDR 8%',
+        rutaDetalles: '/programas/3'
+      },
+      {
+        id: '10',
+        titulo: 'Acciones de Mediación Cultural',
+        descripcion: 'Actividades que acerquen el arte y la cultura a públicos generales o grupos específicos (niños, jóvenes, adultos mayores, personas con discapacidad, etc.).',
+        estado: 'open',
+        fechaInicio: '03-02-2025',
+        fechaFin: '09-03-2025',
+        fechaCierre: '2025-03-09',
+        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        montos: '$2.000.000 a $5.000.000.',
+        tipoFondo: 'FNDR 8%',
+        rutaDetalles: '/programas/3'
+      },
+      {
+        id: '11',
+        titulo: 'Circulación Cultural',
+        descripcion: 'Programas, circuitos o redes para la itinerancia de obras, festivales, ferias y eventos culturales en la región del Maule.',
+        estado: 'open',
+        fechaInicio: '03-02-2025',
+        fechaFin: '09-03-2025',
+        fechaCierre: '2025-03-09',
+        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        montos: '$2.000.000 a $5.000.000.',
+        tipoFondo: 'FNDR 8%',
+        rutaDetalles: '/programas/3'
+      },
+      {
+        id: '12',
+        titulo: 'Acceso Equitativo a Expresiones Artísticas y Culturales',
+        descripcion: 'Iniciativas que promuevan el acceso inclusivo y equitativo a expresiones artísticas y culturales en distintos territorios y comunidades.',
+        estado: 'open',
+        fechaInicio: '03-02-2025',
+        fechaFin: '09-03-2025',
+        fechaCierre: '2025-03-09',
+        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        montos: '$2.000.000 a $5.000.000.',
+        tipoFondo: 'FNDR 8%',
+        rutaDetalles: '/programas/3'
+      },
+      {
+        id: '13',
+        titulo: 'Patrimonio Cultural e Identidad de la Región',
+        descripcion: 'Acciones de identificación, investigación, registro, preservación y difusión del patrimonio cultural material e inmaterial del Maule.',
+        estado: 'open',
+        fechaInicio: '03-02-2025',
+        fechaFin: '09-03-2025',
+        fechaCierre: '2025-03-09',
+        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        montos: '$2.000.000 a $5.000.000.',
+        tipoFondo: 'FNDR 8%',
+        rutaDetalles: '/programas/3'
+      },
+      {
+        id: '14',
+        titulo: 'Gestión Cultural Ciudadana',
+        descripcion: 'Proyectos de gestión y fortalecimiento de organizaciones culturales y comunitarias para el desarrollo local.',
+        estado: 'open',
+        fechaInicio: '03-02-2025',
+        fechaFin: '09-03-2025',
+        fechaCierre: '2025-03-09',
+        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        montos: '$2.000.000 a $5.000.000.',
+        tipoFondo: 'FNDR 8%',
+        rutaDetalles: '/programas/3'
+      },
+      {
+        id: '15',
+        titulo: 'Innovación, Cultura Digital y Comunicación del Patrimonio',
+        descripcion: 'Iniciativas que integren tecnologías digitales, culturas digitales y nuevas formas de comunicación del patrimonio cultural regional.',
+        estado: 'open',
+        fechaInicio: '03-02-2025',
+        fechaFin: '09-03-2025',
+        fechaCierre: '2025-03-09',
+        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        montos: '$2.000.000 a $5.000.000.',
+        tipoFondo: 'FNDR 8%',
+        rutaDetalles: '/programas/3'
       }
       // 👇 AQUÍ AGREGAS MÁS CARDS 👇
       // Ejemplo de cómo agregar una nueva card:
