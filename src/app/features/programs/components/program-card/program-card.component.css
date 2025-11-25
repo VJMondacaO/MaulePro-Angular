@@ -188,17 +188,17 @@
 
 
 /* Estilos de hover para los iconos de plazo según estado */
-.estado-abierta .plazo-item:hover .feature-icon.feature-icon {
+.program-card.estado-abierta .plazo-item:hover .feature-icon {
   background: rgba(0, 102, 204, 0.15);
   transform: scale(1.05);
 }
 
-.estado-proxima .plazo-item:hover .feature-icon.feature-icon {
+.program-card.estado-proxima .plazo-item:hover .feature-icon {
   background: rgba(255, 193, 7, 0.15);
   transform: scale(1.05);
 }
 
-.estado-cerrada .plazo-item:hover .feature-icon.feature-icon {
+.program-card.estado-cerrada .plazo-item:hover .feature-icon {
   background: rgba(108, 117, 125, 0.15);
   transform: scale(1.05);
 }
@@ -268,35 +268,80 @@
   transition: all 0.3s ease;
 }
 
+.feature-icon i {
+  font-size: 1.125rem;
+  line-height: 1;
+  display: inline-block;
+  width: auto;
+  height: auto;
+}
+
 /* Colores de iconos según estado - Mayor especificidad */
-.program-card.estado-abierta .feature-icon.feature-icon {
+.program-card.estado-abierta .feature-icon {
   background: rgba(0, 102, 204, 0.08);
   color: #0066CC;
 }
 
-.program-card.estado-abierta .feature-item:hover .feature-icon.feature-icon {
+.program-card.estado-abierta .feature-icon i {
+  color: #0066CC;
+}
+
+.program-card.estado-abierta .feature-item:hover .feature-icon {
   background: rgba(0, 102, 204, 0.15);
   transform: scale(1.05);
 }
 
-.program-card.estado-proxima .feature-icon.feature-icon {
+.program-card.estado-proxima .feature-icon {
   background: rgba(255, 193, 7, 0.08);
   color: #B38600;
 }
 
-.program-card.estado-proxima .feature-item:hover .feature-icon.feature-icon {
+.program-card.estado-proxima .feature-icon i {
+  color: #B38600;
+}
+
+.program-card.estado-proxima .feature-item:hover .feature-icon {
   background: rgba(255, 193, 7, 0.15);
   transform: scale(1.05);
 }
 
-.program-card.estado-cerrada .feature-icon.feature-icon {
+.program-card.estado-cerrada .feature-icon {
   background: rgba(108, 117, 125, 0.08);
   color: #6C757D;
 }
 
-.program-card.estado-cerrada .feature-item:hover .feature-icon.feature-icon {
+.program-card.estado-cerrada .feature-icon i {
+  color: #6C757D;
+}
+
+.program-card.estado-cerrada .feature-item:hover .feature-icon {
   background: rgba(108, 117, 125, 0.15);
   transform: scale(1.05);
+}
+
+/* Estilos para iconos en plazo-item */
+.program-card.estado-abierta .plazo-item .feature-icon {
+  background: rgba(0, 102, 204, 0.08);
+}
+
+.program-card.estado-abierta .plazo-item .feature-icon i {
+  color: #0066CC;
+}
+
+.program-card.estado-proxima .plazo-item .feature-icon {
+  background: rgba(255, 193, 7, 0.08);
+}
+
+.program-card.estado-proxima .plazo-item .feature-icon i {
+  color: #B38600;
+}
+
+.program-card.estado-cerrada .plazo-item .feature-icon {
+  background: rgba(108, 117, 125, 0.08);
+}
+
+.program-card.estado-cerrada .plazo-item .feature-icon i {
+  color: #6C757D;
 }
 
 .feature-content {

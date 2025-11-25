@@ -15,11 +15,7 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled'
       })
     ),
-
-    // Requerido por PrimeNG
     provideAnimationsAsync(),
-
-    // Configurar PrimeNG con el tema Aura
     providePrimeNG({
       theme: {
         preset: Aura,

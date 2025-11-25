@@ -87,7 +87,6 @@ export class NosotrosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Scroll al top al cargar el componente
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }
 

@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-// PrimeNG Components
-import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-faq',
@@ -13,14 +10,14 @@ import { CardModule } from 'primeng/card';
   imports: [
     CommonModule,
     RouterModule,
-    AccordionModule,
-    ButtonModule,
-    CardModule
+    ButtonModule
   ],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.css'
 })
 export class FaqComponent implements OnInit {
+  expandedIndex: number | null = null;
+
   faqs = [
     {
       pregunta: '¿Quiénes pueden postular a cada línea de financiamiento?',
@@ -58,6 +55,18 @@ export class FaqComponent implements OnInit {
 
   ngOnInit(): void {
     this.addStructuredData();
+  }
+
+  toggleAccordion(index: number): void {
+    if (this.expandedIndex === index) {
+      this.expandedIndex = null;
+    } else {
+      this.expandedIndex = index;
+    }
+  }
+
+  isExpanded(index: number): boolean {
+    return this.expandedIndex === index;
   }
 
   private addStructuredData(): void {

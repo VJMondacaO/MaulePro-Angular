@@ -9,6 +9,9 @@ module.exports = {
       screens: {
         '3xl': '1920px', // Breakpoint personalizado para pantallas muy grandes
       },
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [

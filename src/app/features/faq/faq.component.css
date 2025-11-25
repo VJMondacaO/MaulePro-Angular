@@ -1,4 +1,3 @@
-
 /* Evitar que el texto se corte en el subtítulo del hero */
 /* En web, las palabras largas no se dividen, solo se ajustan en espacios */
 section p {
@@ -6,5 +5,10 @@ section p {
   overflow-wrap: normal;
   hyphens: none;
   word-break: normal;
+}
+
+/* Asegurar que los iconos usen la fuente correcta */
+i[class*="pi"] {
+  font-family: 'primeicons' !important;
 }
 

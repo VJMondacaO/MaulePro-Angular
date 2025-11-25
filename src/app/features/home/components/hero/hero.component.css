@@ -233,6 +233,13 @@
   color: white;
 }
 
+.feature-icon i {
+  font-family: 'primeicons' !important;
+  font-size: 1.215rem;
+  line-height: 1;
+  display: inline-block;
+}
+
 .feature-icon-primary {
   background: rgba(0, 102, 204, 0.3);
   border: 1px solid rgba(0, 102, 204, 0.5);
@@ -274,6 +281,14 @@
   gap: 0.9rem;
   flex-wrap: wrap;
   width: 100%;
+}
+
+/* Asegurar que los iconos de los botones PrimeNG usen la fuente correcta */
+.hero-buttons .p-button .p-button-icon,
+.hero-buttons .p-button i,
+.hero-buttons button .p-button-icon,
+.hero-buttons button i[class*="pi"] {
+  font-family: 'primeicons' !important;
 }
 
 

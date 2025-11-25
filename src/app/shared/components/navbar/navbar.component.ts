@@ -14,19 +14,16 @@ export class NavbarComponent {
 
   onClaveUnicaClick(): void {
     // TODO: Implementar redirección a ClaveÚnica
-    console.log('ClaveÚnica clicked');
     this.closeMobileMenu();
   }
 
   onAccesibilidadClick(): void {
     // TODO: Implementar funcionalidad de accesibilidad
-    console.log('Accesibilidad clicked');
     this.closeMobileMenu();
   }
 
   toggleMobileMenu(): void {
     this.mobileMenuOpen = !this.mobileMenuOpen;
-    // Prevenir scroll del body cuando el menú está abierto
     if (this.mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {

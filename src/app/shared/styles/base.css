@@ -18,6 +18,28 @@ html.loading.loading body.body {
     overflow: hidden;
 }
 
+/* Aplicar Roboto a todos los elementos */
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Asegurar que los iconos de PrimeIcons usen su fuente correcta */
+.pi,
+[class*="pi-"],
+i[class*="pi"],
+.p-accordion-header-icon,
+.p-accordion-header-icon::before,
+.p-accordion-header-icon::after,
+.p-accordion-header-icon i,
+.p-accordion-header-icon span,
+.p-accordion-header-icon .pi {
+    font-family: 'primeicons' !important;
+}
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #F1F5F8;

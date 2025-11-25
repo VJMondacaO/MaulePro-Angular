@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ProgramsService } from '../services/programs.service';
 import { ProgramDetailData } from '../models/program-detail.types';
+import { getEstadoTagSeverity, getEstadoTagText } from '../utils/program.utils';
 
 // PrimeNG Components
 import { CardModule } from 'primeng/card';
@@ -46,7 +47,6 @@ export class ProgramDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Scroll al top al cargar el componente
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     
     this.route.paramMap.subscribe(params => {
@@ -54,7 +54,6 @@ export class ProgramDetailComponent implements OnInit {
       if (id) {
         this.loadProgram(id);
       } else {
-        // Si no hay ID, redirigir al home
         this.router.navigate(['/home']);
       }
     });
@@ -62,14 +61,11 @@ export class ProgramDetailComponent implements OnInit {
 
   private loadProgram(id: string): void {
     this.loading = true;
-    
-    // Asegurar scroll al top al cargar un programa
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     
     const program = this.programsService.getProgramDetailById(id);
     
     if (!program) {
-      // Programa no encontrado, redirigir al home
       this.router.navigate(['/home']);
       return;
     }
@@ -80,32 +76,12 @@ export class ProgramDetailComponent implements OnInit {
 
   getEstadoTagSeverity(): 'success' | 'warning' | 'danger' | 'info' {
     if (!this.program) return 'info';
-    
-    switch (this.program.estado) {
-      case 'open':
-        return 'success';
-      case 'soon':
-        return 'warning';
-      case 'closed':
-        return 'danger';
-      default:
-        return 'info';
-    }
+    return getEstadoTagSeverity(this.program.estado);
   }
 
   getEstadoTagText(): string {
     if (!this.program) return '';
-    
-    switch (this.program.estado) {
-      case 'open':
-        return 'ABIERTO';
-      case 'soon':
-        return 'PRÓXIMO';
-      case 'closed':
-        return 'CERRADO';
-      default:
-        return '';
-    }
+    return getEstadoTagText(this.program.estado);
   }
 
   onPostularClick(): void {
@@ -114,7 +90,6 @@ export class ProgramDetailComponent implements OnInit {
   }
 
   toggleAccordion(type: 'modalidad' | 'tipoPostulante' | 'tipoFinanciamiento'): void {
-    // Verificar si la tarjeta seleccionada ya está abierta
     let isCurrentlyOpen = false;
     if (type === 'modalidad') {
       isCurrentlyOpen = this.expandedModalidad;
@@ -124,12 +99,10 @@ export class ProgramDetailComponent implements OnInit {
       isCurrentlyOpen = this.expandedTipoFinanciamiento;
     }
     
-    // Cerrar todas las tarjetas
     this.expandedModalidad = false;
     this.expandedTipoPostulante = false;
     this.expandedTipoFinanciamiento = false;
     
-    // Si la tarjeta seleccionada estaba cerrada, abrirla
     if (!isCurrentlyOpen) {
       if (type === 'modalidad') {
         this.expandedModalidad = true;
@@ -143,7 +116,6 @@ export class ProgramDetailComponent implements OnInit {
 
   getHeroBackgroundImage(): SafeStyle {
     if (this.program?.imagenHero) {
-      // Codificar la ruta de la imagen para URL
       const imagePath = encodeURI(this.program.imagenHero);
       const style = `url('${imagePath}')`;
       return this.sanitizer.bypassSecurityTrustStyle(style);

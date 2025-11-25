@@ -51,7 +51,7 @@
                 pButton 
                 type="button"
                 label="Postular" 
-                icon="pi pi-send"
+                icon="pi pi-arrow-right"
                 iconPos="right"
                 class="boton-postular px-10 py-4 text-lg font-bold rounded-full bg-white text-[#0066CC] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-gray-50"
                 (click)="onPostularClick()"
@@ -81,7 +81,7 @@
                         <p class="text-xl font-bold m-0 text-red-600 flex items-center justify-center gap-2">
                           <i [class]="'pi ' + program.modalidad.icono" class="text-2xl text-red-600"></i>
                           <span class="text-red-600 flex items-center gap-1.5">
-                            <i *ngIf="program.modalidad.tipo === 'Online'" class="pi pi-wifi text-lg text-red-600"></i>
+                            <i *ngIf="program.modalidad.tipo === 'Online'" class="pi pi-globe text-lg text-red-600"></i>
                             {{ program.modalidad.tipo }}
                           </span>
                         </p>

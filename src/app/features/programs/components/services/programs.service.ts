@@ -196,58 +196,31 @@ export class ProgramsService {
         tipoFondo: 'FNDR 8%',
         rutaDetalles: '/programas/3'
       }
-      // 👇 AQUÍ AGREGAS MÁS CARDS 👇
-      // Ejemplo de cómo agregar una nueva card:
-      // {
-      //   id: '6',
-      //   titulo: 'Nombre del Nuevo Programa',
-      //   descripcion: 'Descripción detallada del programa...',
-      //   estado: 'open', // 'open' | 'soon' | 'closed'
-      //   fechaInicio: '01-03-2026',
-      //   fechaFin: '31-03-2026',
-      //   fechaCierre: '2026-03-31', // Opcional: para calcular días restantes
-      //   beneficiarios: 'Municipios, Organizaciones, Personas naturales, etc.',
-      //   montos: '$5.000.000 - $10.000.000',
-      //   tipoFondo: 'FNDR 10%', // Opcional
-      //   rutaDetalles: '/programas/nuevo-programa' // Opcional: ruta interna
-      //   // O usar linkDetalles para URL externa:
-      //   // linkDetalles: 'https://ejemplo.com/programa'
-      // }
     ];
 
-    // Ordenar programas: 
-    // 1. Primero los abiertos, ordenados por fecha de cierre (más pronto primero)
-    // 2. Luego los próximos
-    // 3. Al final los cerrados
     const programasOrdenados = programs.sort((a, b) => {
-      // Prioridad de estados: open = 1, soon = 2, closed = 3
       const prioridadEstado: { [key: string]: number } = { open: 1, soon: 2, closed: 3 };
       const prioridadA = prioridadEstado[a.estado] || 4;
       const prioridadB = prioridadEstado[b.estado] || 4;
 
-      // Si tienen diferente estado, ordenar por prioridad
       if (prioridadA !== prioridadB) {
         return prioridadA - prioridadB;
       }
 
-      // Si ambos están abiertos, ordenar por fecha de cierre (más pronto primero)
       if (a.estado === 'open' && b.estado === 'open') {
         if (a.fechaCierre && b.fechaCierre) {
           return new Date(a.fechaCierre).getTime() - new Date(b.fechaCierre).getTime();
         }
-        // Si uno no tiene fecha de cierre, ponerlo al final
         if (!a.fechaCierre) return 1;
         if (!b.fechaCierre) return -1;
       }
 
-      // Si ambos son próximos, ordenar por fecha de inicio
       if (a.estado === 'soon' && b.estado === 'soon') {
         if (a.fechaCierre && b.fechaCierre) {
           return new Date(a.fechaCierre).getTime() - new Date(b.fechaCierre).getTime();
         }
       }
 
-      // Para el resto (cerrados o sin fecha), mantener orden original
       return 0;
     });
 

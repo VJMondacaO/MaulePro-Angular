@@ -1,6 +1,38 @@
 /* Estilos globales para componentes PrimeNG */
 /* Estos estilos se aplican globalmente y no requieren ::ng-deep */
 
+/* Aplicar Roboto a todos los componentes PrimeNG */
+.p-component,
+.p-component *,
+.p-button,
+.p-inputtext,
+.p-dropdown,
+.p-tag,
+.p-card,
+.p-accordion,
+.p-tabview,
+.p-galleria {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+/* Excepción: Los iconos de PrimeIcons deben usar su fuente correcta */
+.p-button .p-button-icon,
+.p-button i[class*="pi"],
+.p-component .p-button-icon,
+.p-component i[class*="pi"],
+.p-button-icon,
+i[class*="pi"],
+.p-accordion .p-accordion-header .p-accordion-header-icon,
+.p-accordion .p-accordion-header-icon,
+.p-accordion-header-icon,
+.p-accordion-tab .p-accordion-header-icon,
+.p-accordion-tab i[class*="pi"],
+.p-accordion-header-icon i,
+.p-accordion-header-icon::before,
+.p-accordion-header-icon::after {
+  font-family: 'primeicons' !important;
+}
+
 /* ============================================
    PROGRAM CARD - PrimeNG Card Overrides
    ============================================ */
@@ -708,63 +740,7 @@
   transform: translateX(-2px);
 }
 
-/* ============================================
-   FAQ - PrimeNG Accordion Overrides
-   ============================================ */
-.acordeon-preguntas.p-accordion,
-.p-component.p-accordion.acordeon-preguntas {
-  border: none;
-  background: transparent;
-}
 
-.acordeon-preguntas.p-accordion .p-accordion-tab,
-.p-component.p-accordion.acordeon-preguntas .p-accordion-tab {
-  border-bottom: 1px solid rgb(229 231 235);
-  margin-bottom: 0;
-}
-
-.acordeon-preguntas.p-accordion .p-accordion-tab:last-child,
-.p-component.p-accordion.acordeon-preguntas .p-accordion-tab:last-child {
-  border-bottom: none;
-}
-
-.dark .acordeon-preguntas.p-accordion .p-accordion-tab,
-.dark .p-component.p-accordion.acordeon-preguntas .p-accordion-tab {
-  border-color: rgb(55 65 81);
-}
-
-.acordeon-preguntas.p-accordion .p-accordion-header,
-.p-component.p-accordion.acordeon-preguntas .p-accordion-header {
-  background: transparent;
-}
-
-.acordeon-preguntas.p-accordion .p-accordion-header-link,
-.p-component.p-accordion.acordeon-preguntas .p-accordion-header-link {
-  padding: 1.25rem 0;
-  transition: all 0.3s ease;
-}
-
-.acordeon-preguntas.p-accordion .p-accordion-header-link:hover,
-.p-component.p-accordion.acordeon-preguntas .p-accordion-header-link:hover {
-  background: transparent;
-}
-
-.acordeon-preguntas.p-accordion .p-accordion-header-link:hover .pregunta-encabezado,
-.p-component.p-accordion.acordeon-preguntas .p-accordion-header-link:hover .pregunta-encabezado {
-  color: var(--gobierno-azul-principal, #0066CC);
-}
-
-.acordeon-preguntas.p-accordion .p-accordion-header.p-highlight .pregunta-encabezado,
-.p-component.p-accordion.acordeon-preguntas .p-accordion-header.p-highlight .pregunta-encabezado {
-  color: var(--gobierno-azul-principal, #0066CC);
-}
-
-.acordeon-preguntas.p-accordion .p-accordion-content,
-.p-component.p-accordion.acordeon-preguntas .p-accordion-content {
-  background-color: transparent;
-  padding: 0;
-  padding-bottom: 0;
-}
 
 .respuesta-contenido strong {
   color: var(--gobierno-azul-principal, #0066CC);

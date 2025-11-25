@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ProgramsService } from '../../../features/programs/components/services/programs.service';
 import { ProgramCardData } from '../../../features/programs/components/models/program-card.types';
 import { ButtonModule } from 'primeng/button';
+import { getEstadoReal, parseFechaCierre, getDiasRestantes } from '../../../features/programs/components/utils/program.utils';
 
 @Component({
     selector: 'app-banner-proximos-cierres',
@@ -24,7 +25,6 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit(): void {
-        // Verificar si el banner fue cerrado previamente
         const cerrado = localStorage.getItem('bannerProximosCierresCerrado');
         if (cerrado === 'true') {
             this.bannerCerrado = true;
@@ -33,7 +33,6 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
         
         this.cargarProyectosProximosACerrar();
         
-        // Iniciar carrusel si hay proyectos
         if (this.proyectos.length > 0) {
             this.iniciarCarrusel();
         }
@@ -43,84 +42,46 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
         this.detenerCarrusel();
     }
 
-    /**
-     * Obtiene el estado real del programa, verificando si el plazo ya cumplió
-     */
     getEstadoReal(programa: ProgramCardData): 'open' | 'soon' | 'closed' {
-        // Si el estado es 'open' y tiene fechaCierre, verificar si ya pasó
-        if (programa.estado === 'open' && programa.fechaCierre) {
-            const hoy = new Date();
-            hoy.setHours(0, 0, 0, 0);
-            
-            const [year, month, day] = programa.fechaCierre.split('-').map(Number);
-            const fechaCierre = new Date(year, month - 1, day);
-            fechaCierre.setHours(0, 0, 0, 0);
-            
-            // Si la fecha de cierre ya pasó, cambiar a 'closed'
-            if (fechaCierre.getTime() < hoy.getTime()) {
-                return 'closed';
-            }
-        }
-        
-        return programa.estado;
+        return getEstadoReal(programa);
     }
 
     cargarProyectosProximosACerrar(): void {
         const todosLosProgramas = this.programsService.getPrograms();
-        const hoy = new Date();
-        hoy.setHours(0, 0, 0, 0);
 
-        // Primero intentar filtrar proyectos próximos a cerrar (próximos 90 días)
         let proyectosFiltrados = todosLosProgramas
             .filter(programa => {
-                // Usar el estado real calculado
                 const estadoReal = this.getEstadoReal(programa);
                 if (estadoReal !== 'open' || !programa.fechaCierre) {
                     return false;
                 }
                 
-                try {
-                    const fechaCierre = new Date(programa.fechaCierre);
-                    if (isNaN(fechaCierre.getTime())) {
-                        return false;
-                    }
-                    
-                    fechaCierre.setHours(0, 0, 0, 0);
-                    const diasRestantes = Math.ceil((fechaCierre.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24));
-                    
-                    // Mostrar proyectos que cierren en los próximos 90 días
-                    return diasRestantes >= 0 && diasRestantes <= 90;
-                } catch (error) {
-                    console.error('Error al procesar fecha de cierre:', programa.fechaCierre, error);
-                    return false;
-                }
+                const diasRestantes = getDiasRestantes(programa.fechaCierre);
+                
+                return diasRestantes !== null && diasRestantes >= 0 && diasRestantes <= 90;
             })
             .sort((a, b) => {
-                try {
-                    // Ordenar por fecha de cierre (más próximos primero)
-                    if (!a.fechaCierre || !b.fechaCierre) {
-                        return 0;
-                    }
-                    const fechaA = new Date(a.fechaCierre);
-                    const fechaB = new Date(b.fechaCierre);
-                    return fechaA.getTime() - fechaB.getTime();
-                } catch {
+                if (!a.fechaCierre || !b.fechaCierre) {
                     return 0;
                 }
+                
+                const fechaA = parseFechaCierre(a.fechaCierre);
+                const fechaB = parseFechaCierre(b.fechaCierre);
+                
+                if (!fechaA || !fechaB) {
+                    return 0;
+                }
+                
+                return fechaA.getTime() - fechaB.getTime();
             });
         
-        // Si no hay proyectos próximos a cerrar, mostrar todos los proyectos abiertos (usando estado real)
         if (proyectosFiltrados.length === 0) {
             proyectosFiltrados = todosLosProgramas
                 .filter(programa => this.getEstadoReal(programa) === 'open')
                 .slice(0, 3);
         }
         
-        this.proyectos = proyectosFiltrados.slice(0, 3); // Tomar solo los 3 más próximos
-        
-        console.log('Proyectos encontrados para el banner:', this.proyectos.length);
-        console.log('Proyectos:', this.proyectos);
-        console.log('Fecha actual:', hoy.toISOString().split('T')[0]);
+        this.proyectos = proyectosFiltrados.slice(0, 3);
     }
 
     iniciarCarrusel(): void {
@@ -130,7 +91,7 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
         
         this.intervalo = setInterval(() => {
             this.siguienteProyecto();
-        }, 5000); // Cambiar cada 5 segundos
+        }, 5000);
     }
 
     detenerCarrusel(): void {
@@ -156,12 +117,8 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
     }
 
     obtenerDiasRestantes(fechaCierre: string): number {
-        const hoy = new Date();
-        hoy.setHours(0, 0, 0, 0);
-        const fecha = new Date(fechaCierre);
-        fecha.setHours(0, 0, 0, 0);
-        const dias = Math.ceil((fecha.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24));
-        return dias >= 0 ? dias : 0;
+        const dias = getDiasRestantes(fechaCierre);
+        return dias !== null && dias >= 0 ? dias : 0;
     }
 
     cerrarBanner(): void {
@@ -179,19 +136,15 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
 
     get mostrarBanner(): boolean {
         if (this.bannerCerrado) {
-            console.log('Banner cerrado por usuario');
             return false;
         }
         // Verificar si el usuario cerró el banner en esta sesión
         const cerrado = localStorage.getItem('bannerProximosCierresCerrado');
         if (cerrado === 'true') {
             this.bannerCerrado = true;
-            console.log('Banner cerrado en localStorage');
             return false;
         }
-        const debeMostrar = this.proyectos.length > 0;
-        console.log('¿Debe mostrar banner?', debeMostrar, 'Proyectos:', this.proyectos.length, 'Banner cerrado:', this.bannerCerrado);
-        return debeMostrar;
+        return this.proyectos.length > 0;
     }
 
     obtenerColorBanner(): string {

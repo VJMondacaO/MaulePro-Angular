@@ -8,6 +8,7 @@ import { ProgramCardComponent } from '../programs/components/program-card/progra
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
+import { getEstadoReal } from '../programs/components/utils/program.utils';
 
 @Component({
   selector: 'app-search',
@@ -43,11 +44,9 @@ export class SearchComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    // Obtener todos los programas del servicio
     this.programas = this.programsService.getPrograms();
     this.filteredPrograms = this.programas;
     
-    // Obtener tipos de fondo únicos
     const tiposFondo = new Set<string>();
     this.programas.forEach(programa => {
       if (programa.tipoFondo) {
@@ -60,10 +59,8 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Scroll al top
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     
-    // Cargar parámetros de búsqueda desde la URL
     this.route.queryParams.subscribe(params => {
       if (params['q']) {
         this.searchTerm = params['q'];
@@ -78,33 +75,13 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  /**
-   * Obtiene el estado real del programa, verificando si el plazo ya cumplió
-   * Similar a la lógica en program-card.component.ts
-   */
   getEstadoReal(programa: ProgramCardData): 'open' | 'soon' | 'closed' {
-    // Si el estado es 'open' y tiene fechaCierre, verificar si ya pasó
-    if (programa.estado === 'open' && programa.fechaCierre) {
-      const hoy = new Date();
-      hoy.setHours(0, 0, 0, 0);
-      
-      const [year, month, day] = programa.fechaCierre.split('-').map(Number);
-      const fechaCierre = new Date(year, month - 1, day);
-      fechaCierre.setHours(0, 0, 0, 0);
-      
-      // Si la fecha de cierre ya pasó, cambiar a 'closed'
-      if (fechaCierre.getTime() < hoy.getTime()) {
-        return 'closed';
-      }
-    }
-    
-    return programa.estado;
+    return getEstadoReal(programa);
   }
 
   filterPrograms(): void {
     let filtered = [...this.programas];
 
-    // Filtro por texto
     if (this.searchTerm && this.searchTerm.trim() !== '') {
       const term = this.searchTerm.toLowerCase().trim();
       filtered = filtered.filter(programa => {
@@ -118,12 +95,10 @@ export class SearchComponent implements OnInit {
       });
     }
 
-    // Filtro por estado - usar el estado real calculado
     if (this.selectedEstado) {
       filtered = filtered.filter(programa => this.getEstadoReal(programa) === this.selectedEstado);
     }
 
-    // Filtro por tipo de fondo
     if (this.selectedTipoFondo) {
       filtered = filtered.filter(programa => programa.tipoFondo === this.selectedTipoFondo);
     }
@@ -132,7 +107,6 @@ export class SearchComponent implements OnInit {
   }
 
   onSearchClick(): void {
-    // Actualizar la URL con los parámetros de búsqueda
     const queryParams: any = {};
     
     if (this.searchTerm && this.searchTerm.trim() !== '') {
@@ -145,7 +119,6 @@ export class SearchComponent implements OnInit {
       queryParams.tipo = this.selectedTipoFondo;
     }
     
-    // Navegar con los nuevos parámetros
     this.router.navigate(['/buscar'], { queryParams });
   }
 
