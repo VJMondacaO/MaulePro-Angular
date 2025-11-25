@@ -1,51 +1,30 @@
-<div class="contenedor-nosotros">
-  <div class="w-full">
-    <div class="w-full">
-      <!-- Hero Section -->
-      <div class="hero-nosotros">
-        <div class="hero-contenido">
-          <h1 class="titulo-principal">Sobre Nosotros</h1>
-          <div class="linea-decorativa"></div>
-        </div>
-      </div>
+<div class="min-h-screen bg-surface-100 dark:bg-surface-950 py-8 lg:py-12">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <!-- Botón Volver -->
+    <div class="mb-6">
+      <button 
+        pButton 
+        type="button"
+        label="Volver" 
+        icon="pi pi-chevron-left"
+        iconPos="left"
+        class="rounded-full p-button-outlined p-button-secondary"
+        [routerLink]="['/home']">
+      </button>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-[#003B8D] to-[#0066CC] text-white rounded-lg shadow-lg mb-8 lg:mb-12 p-6 lg:p-12">
+      <h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 leading-tight">
+        Sobre Nosotros
+      </h1>
+      <p class="text-lg lg:text-xl text-white/95 leading-relaxed w-full">
+        La Plataforma de Postulación de Proyectos del Gobierno Regional del Maule es un espacio digital creado para fortalecer la transparencia, la participación y el desarrollo territorial de nuestras dieciséis comunas.
+      </p>
+    </section>
 
-      <!-- Contenido Principal -->
-      <div class="contenido-principal">
-        <!-- Carrusel de Proyectos -->
-        <div class="seccion-carrusel">
-          <div class="carrusel-header">
-            <h2 class="titulo-seccion">Nuestros Proyectos en Acción</h2>
-          </div>
-
-          <div class="carrusel-container">
-            <p-galleria 
-              [value]="proyectoImages" 
-              [numVisible]="5" 
-              [circular]="true" 
-              [showItemNavigators]="true" 
-              [showThumbnails]="true"
-              [showIndicators]="true"
-              [autoPlay]="true"
-              [transitionInterval]="4000"
-              [containerStyle]="{ 'max-width': '100%' }"
-              styleClass="proyectos-galleria">
-              <ng-template #item let-item>
-                <div class="imagen-item">
-                  <img [src]="item.itemImageSrc" [alt]="item.alt" class="imagen-proyecto" />
-                  <div class="imagen-overlay">
-                    <h3 class="imagen-titulo">{{ item.title }}</h3>
-                  </div>
-                </div>
-              </ng-template>
-              <ng-template #thumbnail let-item>
-                <div class="thumbnail-item">
-                  <img [src]="item.thumbnailImageSrc" [alt]="item.alt" class="thumbnail-imagen" />
-                </div>
-              </ng-template>
-            </p-galleria>
-          </div>
-        </div>
-
+    <!-- Contenido Principal -->
+    <div class="contenido-principal">
         <article class="seccion-contenido">
           <!-- Introducción -->
           <div class="bloque-texto">
@@ -87,6 +66,41 @@
             </p>
           </div>
         </article>
+
+        <!-- Carrusel de Proyectos -->
+        <div class="seccion-carrusel">
+          <div class="carrusel-header">
+            <h2 class="titulo-seccion">Nuestros Proyectos en Acción</h2>
+          </div>
+
+          <div class="carrusel-container">
+            <p-galleria 
+              [value]="proyectoImages" 
+              [numVisible]="5" 
+              [circular]="true" 
+              [showItemNavigators]="true" 
+              [showThumbnails]="true"
+              [showIndicators]="true"
+              [autoPlay]="true"
+              [transitionInterval]="4000"
+              [containerStyle]="{ 'max-width': '100%' }"
+              styleClass="proyectos-galleria">
+              <ng-template #item let-item>
+                <div class="imagen-item">
+                  <img [src]="item.itemImageSrc" [alt]="item.alt" class="imagen-proyecto" />
+                  <div class="imagen-overlay">
+                    <h3 class="imagen-titulo">{{ item.title }}</h3>
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template #thumbnail let-item>
+                <div class="thumbnail-item">
+                  <img [src]="item.thumbnailImageSrc" [alt]="item.alt" class="thumbnail-imagen" />
+                </div>
+              </ng-template>
+            </p-galleria>
+          </div>
+        </div>
 
         <!-- Tarjetas de Valores -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 valores-grid">
@@ -154,5 +168,3 @@
       </div>
     </div>
   </div>
-</div>
-

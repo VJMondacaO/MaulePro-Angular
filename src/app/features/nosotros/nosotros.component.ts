@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { GalleriaModule } from 'primeng/galleria';
+import { ButtonModule } from 'primeng/button';
 
 interface ProyectoImagen {
   itemImageSrc: string;
@@ -13,7 +14,7 @@ interface ProyectoImagen {
 @Component({
   selector: 'app-nosotros',
   standalone: true,
-  imports: [CommonModule, GalleriaModule],
+  imports: [CommonModule, GalleriaModule, RouterModule, ButtonModule],
   templateUrl: './nosotros.component.html',
   styleUrl: './nosotros.component.css'
 })

@@ -1,2 +1,11 @@
 /* Estilos para PrimeNG Button, Accordion - Ahora en primeng-overrides.css global */
 
+/* Evitar que el texto se corte en el subtítulo del hero */
+/* En web, las palabras largas no se dividen, solo se ajustan en espacios */
+section p {
+  word-wrap: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  word-break: normal;
+}
+

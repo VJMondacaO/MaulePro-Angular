@@ -38,33 +38,12 @@
               icon="pi pi-calendar"
               styleClass="px-5 py-2.5 text-sm rounded-full shadow-md font-medium">
             </p-tag>
-            <p-tag 
-              [value]="program.categoria"
-              severity="secondary"
-              styleClass="px-4 py-2 text-xs rounded-full shadow-sm font-medium">
-            </p-tag>
           </div>
 
           <!-- Título y Descripción -->
           <div class="mt-6">
             <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-7 text-white tracking-tight drop-shadow-lg">{{ program.titulo | uppercase }}</h1>
             <p class="text-xl md:text-2xl leading-relaxed mb-10 text-white/95 max-w-[95%] font-normal">{{ program.descripcion }}</p>
-
-            <!-- Información Básica -->
-            <div class="flex flex-wrap gap-6 items-start mb-6">
-              <div class="flex flex-col gap-2">
-                <small class="block text-white/70 text-sm mb-1">Invita:</small>
-                <p-tag [value]="program.invita" severity="contrast" styleClass="bg-white text-gray-800 px-4 py-2 rounded-lg text-sm shadow-md font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"></p-tag>
-              </div>
-              <div class="flex flex-col gap-2">
-                <small class="block text-white/70 text-sm mb-1">Alcance:</small>
-                <p-tag [value]="program.alcance" severity="contrast" styleClass="bg-white text-gray-800 px-4 py-2 rounded-lg text-sm shadow-md font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"></p-tag>
-              </div>
-              <div class="flex flex-col gap-2">
-                <small class="block text-white/70 text-sm mb-1">Categoría:</small>
-                <p-tag [value]="program.categoria" severity="contrast" styleClass="bg-white text-gray-800 px-4 py-2 rounded-lg text-sm shadow-md font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"></p-tag>
-              </div>
-            </div>
 
             <!-- Botón Postular -->
             <div class="mt-10">
@@ -115,7 +94,11 @@
                           label="{{ expandedModalidad ? 'Ver menos' : 'Ver más' }}"
                           icon="{{ expandedModalidad ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
                           iconPos="right"
-                          class="bg-transparent border-none text-[#0066CC] py-2 px-0 text-sm font-medium transition-all duration-200 hover:text-[#0052CC]"
+                          styleClass="p-button-text p-button-plain"
+                          [style.background]="'transparent'"
+                          [style.backgroundColor]="'transparent'"
+                          [style.border]="'none'"
+                          class="!bg-transparent !border-none text-[#0066CC] !text-[#0066CC] py-2 px-0 text-sm font-medium transition-all duration-200 hover:!text-[#0052CC]"
                           (click)="toggleAccordion('modalidad')">
                         </button>
                       </div>
@@ -142,7 +125,11 @@
                           label="{{ expandedTipoPostulante ? 'Ver menos' : 'Ver más' }}"
                           icon="{{ expandedTipoPostulante ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
                           iconPos="right"
-                          class="bg-transparent border-none text-[#0066CC] py-2 px-0 text-sm font-medium transition-all duration-200 hover:text-[#0052CC]"
+                          styleClass="p-button-text p-button-plain"
+                          [style.background]="'transparent'"
+                          [style.backgroundColor]="'transparent'"
+                          [style.border]="'none'"
+                          class="!bg-transparent !border-none text-[#0066CC] !text-[#0066CC] py-2 px-0 text-sm font-medium transition-all duration-200 hover:!text-[#0052CC]"
                           (click)="toggleAccordion('tipoPostulante')">
                         </button>
                       </div>
@@ -169,7 +156,11 @@
                           label="{{ expandedTipoFinanciamiento ? 'Ver menos' : 'Ver más' }}"
                           icon="{{ expandedTipoFinanciamiento ? 'pi pi-chevron-up' : 'pi pi-chevron-down' }}"
                           iconPos="right"
-                          class="bg-transparent border-none text-[#0066CC] py-2 px-0 text-sm font-medium transition-all duration-200 hover:text-[#0052CC]"
+                          styleClass="p-button-text p-button-plain"
+                          [style.background]="'transparent'"
+                          [style.backgroundColor]="'transparent'"
+                          [style.border]="'none'"
+                          class="!bg-transparent !border-none text-[#0066CC] !text-[#0066CC] py-2 px-0 text-sm font-medium transition-all duration-200 hover:!text-[#0052CC]"
                           (click)="toggleAccordion('tipoFinanciamiento')">
                         </button>
                       </div>

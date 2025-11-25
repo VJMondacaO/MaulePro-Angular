@@ -4,7 +4,7 @@
 
 /* Hero Section con imagen de fondo o fondo azul oscuro por defecto */
 .hero-programa {
-  background: linear-gradient(135deg, #001a3d 0%, #002855 50%, #003366 100%);
+  background: linear-gradient(135deg, #000d1f 0%, #001a3d 50%, #002244 100%);
 }
 
 .hero-with-image {
@@ -17,7 +17,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 40, 100, 0.75) 0%, rgba(0, 60, 140, 0.7) 50%, rgba(0, 80, 180, 0.65) 100%);
+  background: linear-gradient(135deg, rgba(0, 20, 60, 0.9) 0%, rgba(0, 30, 80, 0.85) 50%, rgba(0, 40, 100, 0.8) 100%);
   z-index: 1;
 }
 
@@ -48,3 +48,44 @@
 /* Estilos para PrimeNG TabView - Ahora en primeng-overrides.css global */
 
 /* Estilos para PrimeNG Accordion y Card - Ahora en primeng-overrides.css global */
+
+/* Forzar color azul en botones "Ver más" y eliminar fondo verde */
+button.p-button.p-button-text.p-button-plain {
+  color: #0066CC !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-color: transparent !important;
+}
+
+button.p-button.p-button-text.p-button-plain:hover {
+  color: #0052CC !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-color: transparent !important;
+}
+
+button.p-button.p-button-text.p-button-plain:focus {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+button.p-button.p-button-text.p-button-plain .p-button-label {
+  color: #0066CC !important;
+}
+
+button.p-button.p-button-text.p-button-plain:hover .p-button-label {
+  color: #0052CC !important;
+}
+
+button.p-button.p-button-text.p-button-plain .pi {
+  color: #0066CC !important;
+}
+
+button.p-button.p-button-text.p-button-plain:hover .pi {
+  color: #0052CC !important;
+}

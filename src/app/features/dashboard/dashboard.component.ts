@@ -1,18 +1,41 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { MeterGroupModule } from 'primeng/metergroup';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [CommonModule, MeterGroupModule],
+    imports: [CommonModule, MeterGroupModule, RouterModule, ButtonModule],
     template: `
-        <div class="flex flex-col gap-4">
-            <div class="mb-2" style="margin-top: 2%;">
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1">Panel de Información</h1>
-                <p class="text-gray-600 dark:text-gray-400">Resumen de proyectos y ejecución presupuestaria</p>
-            </div>
-            <div class="flex gap-4 flex-col w-full">
+        <div class="min-h-screen bg-surface-100 dark:bg-surface-950 py-8 lg:py-12">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+                <!-- Botón Volver -->
+                <div class="mb-6">
+                    <button 
+                        pButton 
+                        type="button"
+                        label="Volver" 
+                        icon="pi pi-chevron-left"
+                        iconPos="left"
+                        class="rounded-full p-button-outlined p-button-secondary"
+                        [routerLink]="['/home']">
+                    </button>
+                </div>
+                
+                <!-- Hero Section -->
+                <section class="bg-gradient-to-br from-[#003B8D] to-[#0066CC] text-white rounded-lg shadow-lg mb-8 lg:mb-12 p-6 lg:p-12">
+                    <h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 leading-tight">
+                        Panel de Información
+                    </h1>
+                    <p class="text-lg lg:text-xl text-white/95 leading-relaxed w-full">
+                        Resumen de proyectos y ejecución presupuestaria
+                    </p>
+                </section>
+
+                <!-- Contenido Principal -->
+                <div class="flex gap-4 flex-col w-full">
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 w-full">
                         <div class="p-4 bg-cyan-50 dark:bg-cyan-400/30 rounded-2xl border border-cyan-200 dark:border-cyan-400/20 flex flex-col gap-4">
                             <div class="flex justify-between items-start">
@@ -286,6 +309,7 @@ import { MeterGroupModule } from 'primeng/metergroup';
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     `
