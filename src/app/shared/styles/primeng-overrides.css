@@ -1,0 +1,987 @@
+/* Estilos globales para componentes PrimeNG */
+/* Estos estilos se aplican globalmente y no requieren ::ng-deep */
+
+/* ============================================
+   PROGRAM CARD - PrimeNG Card Overrides
+   ============================================ */
+/* Usar especificidad alta en lugar de !important */
+.program-card-wrapper.p-card,
+.program-card-wrapper.p-component.p-card {
+  width: 100%;
+  height: 560px;
+  min-height: 560px;
+  max-height: 560px;
+  padding: 0;
+  border-radius: 1rem;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.program-card-wrapper .p-card-body,
+.program-card-wrapper.p-card .p-card-body,
+.program-card-wrapper.p-component.p-card .p-card-body {
+  padding: 0;
+  width: 100%;
+  height: 560px;
+  min-height: 560px;
+  max-height: 560px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================
+   PROGRAM CARD - PrimeNG Tag Overrides
+   ============================================ */
+/* Usar especificidad alta - Los colores se aplican via ngStyle en el componente */
+.status-badge.p-tag,
+.p-component.p-tag.status-badge,
+.status-badge.p-component.p-tag {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+}
+
+/* Badge según severity - Mayor especificidad para sobrescribir PrimeNG */
+.status-badge.p-tag-warning.p-component,
+.p-component.p-tag.status-badge.p-tag-warning,
+.status-badge.p-tag-warning.p-component.p-tag {
+  background: #FFE082;
+  background-color: #FFE082;
+  border: 1px solid #FFE082;
+  border-color: #FFE082;
+  color: #333;
+}
+
+.status-badge.p-tag-danger.p-component,
+.p-component.p-tag.status-badge.p-tag-danger,
+.status-badge.p-tag-danger.p-component.p-tag {
+  background: #6C757D;
+  background-color: #6C757D;
+  border: 1px solid #6C757D;
+  border-color: #6C757D;
+  color: #FFFFFF;
+}
+
+.status-badge.p-tag-success.p-component,
+.p-component.p-tag.status-badge.p-tag-success,
+.status-badge.p-tag-success.p-component.p-tag {
+  background: rgba(0, 102, 204, 0.08);
+  background-color: rgba(0, 102, 204, 0.08);
+  border: 1px solid rgba(0, 102, 204, 0.2);
+  border-color: rgba(0, 102, 204, 0.2);
+  color: #0066CC;
+}
+
+/* Badge de días restantes */
+.dias-restantes-badge.p-tag,
+.p-component.p-tag.dias-restantes-badge,
+.dias-restantes-badge.p-component.p-tag {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.dias-restantes-badge.p-tag-danger {
+  animation: pulseUrgent 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(220, 53, 69, 0.4);
+  }
+}
+
+@keyframes pulseUrgent {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(220, 53, 69, 0.6);
+    transform: scale(1.03);
+  }
+}
+
+/* ============================================
+   PROGRAM CARD - PrimeNG Button Overrides
+   ============================================ */
+.btn-details.p-button,
+.p-component.p-button.btn-details,
+.btn-details.p-button.p-component {
+  width: 100%;
+  font-weight: 600;
+  padding: 0.8rem 1.25rem;
+  border-radius: 0.65rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.95rem;
+}
+
+/* Botón según estado - Los colores se aplican via ngStyle en el componente */
+.btn-details.p-button:enabled:hover {
+  transform: translateY(-2px);
+}
+
+/* Botón según estado - Mayor especificidad */
+.estado-abierta .btn-details.p-button.p-component,
+.estado-abierta .p-component.p-button.btn-details {
+  color: #FFFFFF;
+  background: #0066CC;
+  background-color: #0066CC;
+  border: 1px solid #0066CC;
+  border-color: #0066CC;
+}
+
+.estado-abierta .btn-details.p-button.p-component:enabled:hover,
+.estado-abierta .p-component.p-button.btn-details:enabled:hover {
+  background: #0052CC;
+  background-color: #0052CC;
+  border-color: #0052CC;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.25);
+}
+
+.estado-proxima .btn-details.p-button.p-component,
+.estado-proxima .p-component.p-button.btn-details {
+  color: #333;
+  background: #FFE082;
+  background-color: #FFE082;
+  border: 1px solid #FFE082;
+  border-color: #FFE082;
+}
+
+.estado-proxima .btn-details.p-button.p-component:enabled:hover,
+.estado-proxima .p-component.p-button.btn-details:enabled:hover {
+  background: #FFD54F;
+  background-color: #FFD54F;
+  border-color: #FFD54F;
+  box-shadow: 0 8px 20px rgba(255, 224, 130, 0.25);
+}
+
+.estado-cerrada .btn-details.p-button.p-component,
+.estado-cerrada .p-component.p-button.btn-details,
+.btn-details-closed.p-button.p-component,
+.p-component.p-button.btn-details-closed {
+  color: #FFFFFF;
+  background: #6C757D;
+  background-color: #6C757D;
+  border: 1px solid #6C757D;
+  border-color: #6C757D;
+}
+
+.estado-cerrada .btn-details.p-button.p-component:enabled:hover,
+.estado-cerrada .p-component.p-button.btn-details:enabled:hover,
+.btn-details-closed.p-button.p-component:enabled:hover,
+.p-component.p-button.btn-details-closed:enabled:hover {
+  background: #5A6268;
+  background-color: #5A6268;
+  border-color: #5A6268;
+  box-shadow: 0 8px 20px rgba(108, 117, 125, 0.25);
+}
+
+.estado-cerrada .btn-details.p-button.p-component:enabled:focus,
+.estado-cerrada .p-component.p-button.btn-details:enabled:focus,
+.btn-details-closed.p-button.p-component:enabled:focus,
+.p-component.p-button.btn-details-closed:enabled:focus {
+  background: #6C757D;
+  background-color: #6C757D;
+  border-color: #6C757D;
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.2);
+}
+
+/* ============================================
+   HERO - PrimeNG Galleria Overrides
+   ============================================ */
+.hero-galleria {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.hero-galleria .p-galleria-content {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.hero-galleria .p-galleria-item-wrapper {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.hero-galleria .p-galleria-item-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.hero-galleria .p-galleria-item {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+/* Forzar altura completa solo en móviles - Usar especificidad alta */
+@media (max-width: 767.98px) {
+  .hero-galleria.p-galleria,
+  .hero-galleria.p-component.p-galleria {
+    height: 650px;
+    min-height: 650px;
+    max-height: 650px;
+  }
+
+  .hero-galleria.p-galleria .p-galleria-content,
+  .hero-galleria.p-component.p-galleria .p-galleria-content {
+    height: 650px;
+    min-height: 650px;
+    max-height: 650px;
+  }
+
+  .hero-galleria.p-galleria .p-galleria-item-wrapper,
+  .hero-galleria.p-component.p-galleria .p-galleria-item-wrapper {
+    height: 650px;
+    min-height: 650px;
+    max-height: 650px;
+  }
+
+  .hero-galleria.p-galleria .p-galleria-item-container,
+  .hero-galleria.p-component.p-galleria .p-galleria-item-container {
+    height: 650px;
+    min-height: 650px;
+    max-height: 650px;
+  }
+
+  .hero-galleria.p-galleria .p-galleria-item,
+  .hero-galleria.p-component.p-galleria .p-galleria-item {
+    height: 650px;
+    min-height: 650px;
+    max-height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-galleria.p-galleria,
+  .hero-galleria.p-component.p-galleria {
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+  }
+
+  .hero-galleria.p-galleria .p-galleria-content,
+  .hero-galleria.p-component.p-galleria .p-galleria-content {
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+  }
+
+  .hero-galleria.p-galleria .p-galleria-item-wrapper,
+  .hero-galleria.p-component.p-galleria .p-galleria-item-wrapper {
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+  }
+
+  .hero-galleria.p-galleria .p-galleria-item-container,
+  .hero-galleria.p-component.p-galleria .p-galleria-item-container {
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+  }
+
+  .hero-galleria.p-galleria .p-galleria-item,
+  .hero-galleria.p-component.p-galleria .p-galleria-item {
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+  }
+}
+
+.hero-galleria .p-galleria-indicators {
+  bottom: 20px;
+  z-index: 10;
+}
+
+@media (max-width: 767.98px) {
+  .hero-galleria .p-galleria-indicators {
+    bottom: 15px;
+  }
+}
+
+.hero-galleria .p-galleria-indicator button {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 4px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 767.98px) {
+  .hero-galleria .p-galleria-indicator button {
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+  }
+}
+
+.hero-galleria .p-galleria-indicator.p-highlight button {
+  background-color: var(--primary-color);
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 767.98px) {
+  .hero-galleria .p-galleria-indicator.p-highlight button {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* ============================================
+   HERO - PrimeNG Tag Overrides (Badge Institucional)
+   ============================================ */
+.institucional-badge.p-tag,
+.p-component.p-tag.institucional-badge,
+.institucional-badge.p-component.p-tag {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.711rem;
+  padding: 0.45rem 0.9rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 767.98px) {
+  .institucional-badge.p-tag,
+  .p-component.p-tag.institucional-badge,
+  .institucional-badge.p-component.p-tag {
+    font-size: 0.6075rem;
+    padding: 0.36rem 0.7875rem;
+  }
+}
+
+/* ============================================
+   HERO - PrimeNG Button Overrides
+   ============================================ */
+.hero-buttons .p-button.p-component,
+.hero-buttons .p-component.p-button {
+  padding: 0.7875rem 1.575rem;
+  font-weight: 600;
+  font-size: 0.81rem;
+  width: 100%;
+}
+
+@media (max-width: 767.98px) {
+  .hero-buttons .p-button.p-component,
+  .hero-buttons .p-component.p-button {
+    width: 100%;
+    padding: 0.675rem 1.125rem;
+    font-size: 0.7695rem;
+  }
+}
+
+/* ============================================
+   SEARCH - PrimeNG Dropdown Overrides
+   ============================================ */
+.filter-dropdown {
+  flex: 0 0 auto;
+  min-width: 160px;
+}
+
+@media (min-width: 768px) {
+  .filter-dropdown {
+    min-width: 180px;
+  }
+}
+
+@media (min-width: 992px) {
+  .filter-dropdown {
+    min-width: 200px;
+  }
+}
+
+.filter-dropdown .p-dropdown.p-component,
+.filter-dropdown .p-component.p-dropdown {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #E2E8F0;
+  border-radius: 2rem;
+  transition: all 0.2s ease;
+  background: #F8FAFC;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
+}
+
+.filter-dropdown .p-dropdown.p-component .p-dropdown-label,
+.filter-dropdown .p-component.p-dropdown .p-dropdown-label {
+  padding: 0 1.25rem;
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 50px;
+}
+
+.filter-dropdown .p-dropdown:not(.p-disabled):hover {
+  border-color: #CBD5E1;
+  background: #FFFFFF;
+}
+
+.filter-dropdown .p-dropdown:not(.p-disabled).p-focus {
+  border-color: #0066CC;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+  background: #FFFFFF;
+}
+
+/* ============================================
+   SEARCH - PrimeNG InputText Overrides
+   ============================================ */
+.barra-busqueda.p-inputtext,
+.p-component.p-inputtext.barra-busqueda,
+.barra-busqueda.p-inputtext.p-component {
+  flex: 1;
+  width: 100%;
+  height: 50px;
+  border-radius: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border: 2px solid #E2E8F0;
+  background: #FFFFFF;
+  color: #1C1C1C;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+}
+
+.barra-busqueda:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.barra-busqueda:focus {
+  border-color: #0066CC;
+  background: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(0, 102, 204, 0.2);
+  outline: none;
+}
+
+.barra-busqueda::placeholder {
+  color: #94A3B8;
+  font-weight: 400;
+}
+
+/* ============================================
+   SEARCH - PrimeNG Button Overrides (Botón Buscar)
+   ============================================ */
+.boton-buscar.p-button,
+.p-component.p-button.boton-buscar,
+.boton-buscar.p-button.p-component {
+  height: 50px;
+  padding: 0 1.75rem;
+  background: linear-gradient(135deg, #0066CC 0%, #0052A3 100%);
+  border: none;
+  border-radius: 2rem;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.boton-buscar.p-button:hover,
+.p-component.p-button.boton-buscar:hover,
+.boton-buscar.p-button.p-component:hover {
+  background: linear-gradient(135deg, #0052A3 0%, #003d7a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+}
+
+.boton-buscar.p-button:active,
+.p-component.p-button.boton-buscar:active,
+.boton-buscar.p-button.p-component:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+}
+
+.boton-buscar.p-button .p-button-icon,
+.p-component.p-button.boton-buscar .p-button-icon {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+.boton-buscar.p-button .p-button-label,
+.p-component.p-button.boton-buscar .p-button-label {
+  font-weight: 600;
+}
+
+/* Responsive para el botón */
+@media (max-width: 576px) {
+  .boton-buscar.p-button .p-button-label,
+  .p-component.p-button.boton-buscar .p-button-label {
+    display: none;
+  }
+  
+  .boton-buscar.p-button,
+  .p-component.p-button.boton-buscar,
+  .boton-buscar.p-button.p-component {
+    padding: 0 1rem;
+    width: 50px;
+    min-width: 50px;
+  }
+  
+  .boton-buscar.p-button .p-button-icon,
+  .p-component.p-button.boton-buscar .p-button-icon {
+    margin-right: 0;
+  }
+}
+
+/* ============================================
+   PROGRAM DETAIL - PrimeNG Button Overrides
+   ============================================ */
+.boton-postular.p-button,
+.p-component.p-button.boton-postular,
+.boton-postular.p-button.p-component {
+  width: auto;
+  min-width: 320px;
+}
+
+.boton-postular.p-button .p-button,
+.boton-postular .p-button.p-component,
+.p-component.p-button.boton-postular .p-button {
+  width: 100%;
+  min-width: 320px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.boton-volver-sutil.p-button,
+.p-component.p-button.boton-volver-sutil,
+.boton-volver-sutil.p-button.p-component {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.boton-volver-sutil.p-button:hover,
+.p-component.p-button.boton-volver-sutil:hover,
+.boton-volver-sutil.p-button.p-component:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(-2px);
+}
+
+.boton-volver-sutil.p-button .p-button-icon,
+.p-component.p-button.boton-volver-sutil .p-button-icon {
+  font-size: 0.75rem;
+}
+
+/* ============================================
+   PROGRAM DETAIL - PrimeNG TabView Overrides
+   ============================================ */
+.p-tabview-nav {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.p-tabview-nav-container {
+  background: white;
+  border-radius: 0.75rem 0.75rem 0 0;
+  padding: 0.75rem 0.75rem 0 0.75rem;
+}
+
+.p-tabview-nav-link.p-tabview-nav-link,
+.p-tabview .p-tabview-nav-link {
+  padding: 1.125rem 2rem;
+  font-weight: 600;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.p-tabview-nav-link.p-tabview-nav-link:hover,
+.p-tabview .p-tabview-nav-link:hover {
+  background: #f8f9fa;
+  color: #0066CC;
+}
+
+.p-tabview-nav-link.p-tabview-nav-link.p-highlight,
+.p-tabview .p-tabview-nav-link.p-highlight {
+  background: #0066CC;
+  color: white;
+}
+
+.p-tabview-panels.p-tabview-panels,
+.p-tabview .p-tabview-panels {
+  background: white;
+  border-radius: 0 0 0.75rem 0.75rem;
+  padding: 2.5rem 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .p-tabview-panels.p-tabview-panels,
+  .p-tabview .p-tabview-panels {
+    padding: 2rem 1.5rem;
+  }
+
+  .p-tabview-nav-link.p-tabview-nav-link,
+  .p-tabview .p-tabview-nav-link {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .p-tabview-nav-link.p-tabview-nav-link,
+  .p-tabview .p-tabview-nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .p-tabview-panels.p-tabview-panels,
+  .p-tabview .p-tabview-panels {
+    padding: 1rem;
+  }
+}
+
+/* ============================================
+   PROGRAM DETAIL - PrimeNG Accordion Overrides
+   ============================================ */
+.p-accordion .p-accordion-header .p-accordion-header-link.p-accordion-header-link,
+.p-accordion.p-component .p-accordion-header .p-accordion-header-link {
+  padding: 1.25rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+
+.p-accordion .p-accordion-header .p-accordion-header-link.p-accordion-header-link:hover,
+.p-accordion.p-component .p-accordion-header .p-accordion-header-link:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #0066CC;
+}
+
+.p-accordion .p-accordion-header.p-highlight .p-accordion-header-link.p-accordion-header-link,
+.p-accordion.p-component .p-accordion-header.p-highlight .p-accordion-header-link {
+  background: #0066CC;
+  color: white;
+  border-color: #0066CC;
+}
+
+.p-accordion .p-accordion-content.p-accordion-content,
+.p-accordion.p-component .p-accordion-content {
+  padding: 1.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: white;
+}
+
+/* ============================================
+   PROGRAM DETAIL - PrimeNG Card Overrides
+   ============================================ */
+/* Estilos generales para p-card - se sobrescriben con clases específicas */
+
+/* ============================================
+   FAQ - PrimeNG Button Overrides
+   ============================================ */
+.boton-volver.p-button,
+.p-component.p-button.boton-volver,
+.boton-volver.p-button.p-component {
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.boton-volver:hover {
+  transform: translateX(-2px);
+}
+
+/* ============================================
+   FAQ - PrimeNG Accordion Overrides
+   ============================================ */
+.acordeon-preguntas.p-accordion,
+.p-component.p-accordion.acordeon-preguntas {
+  border: none;
+  background: transparent;
+}
+
+.acordeon-preguntas.p-accordion .p-accordion-tab,
+.p-component.p-accordion.acordeon-preguntas .p-accordion-tab {
+  border-bottom: 1px solid rgb(229 231 235);
+  margin-bottom: 0;
+}
+
+.acordeon-preguntas.p-accordion .p-accordion-tab:last-child,
+.p-component.p-accordion.acordeon-preguntas .p-accordion-tab:last-child {
+  border-bottom: none;
+}
+
+.dark .acordeon-preguntas.p-accordion .p-accordion-tab,
+.dark .p-component.p-accordion.acordeon-preguntas .p-accordion-tab {
+  border-color: rgb(55 65 81);
+}
+
+.acordeon-preguntas.p-accordion .p-accordion-header,
+.p-component.p-accordion.acordeon-preguntas .p-accordion-header {
+  background: transparent;
+}
+
+.acordeon-preguntas.p-accordion .p-accordion-header-link,
+.p-component.p-accordion.acordeon-preguntas .p-accordion-header-link {
+  padding: 1.25rem 0;
+  transition: all 0.3s ease;
+}
+
+.acordeon-preguntas.p-accordion .p-accordion-header-link:hover,
+.p-component.p-accordion.acordeon-preguntas .p-accordion-header-link:hover {
+  background: transparent;
+}
+
+.acordeon-preguntas.p-accordion .p-accordion-header-link:hover .pregunta-encabezado,
+.p-component.p-accordion.acordeon-preguntas .p-accordion-header-link:hover .pregunta-encabezado {
+  color: var(--gobierno-azul-principal, #0066CC);
+}
+
+.acordeon-preguntas.p-accordion .p-accordion-header.p-highlight .pregunta-encabezado,
+.p-component.p-accordion.acordeon-preguntas .p-accordion-header.p-highlight .pregunta-encabezado {
+  color: var(--gobierno-azul-principal, #0066CC);
+}
+
+.acordeon-preguntas.p-accordion .p-accordion-content,
+.p-component.p-accordion.acordeon-preguntas .p-accordion-content {
+  background-color: transparent;
+  padding: 0;
+  padding-bottom: 0;
+}
+
+.respuesta-contenido strong {
+  color: var(--gobierno-azul-principal, #0066CC);
+  font-weight: 600;
+}
+
+.respuesta-contenido em {
+  font-style: italic;
+}
+
+/* ============================================
+   FAQ - PrimeNG Card Overrides (Tarjeta de Ayuda)
+   ============================================ */
+/* Estilos de tarjeta-ayuda ahora se manejan con Tailwind en el HTML */
+
+.boton-centro-ayuda.p-button,
+.p-component.p-button.boton-centro-ayuda,
+.boton-centro-ayuda.p-button.p-component {
+  border-color: #000000;
+  color: #000000;
+  background: transparent;
+}
+
+.boton-centro-ayuda.p-button:hover,
+.p-component.p-button.boton-centro-ayuda:hover,
+.boton-centro-ayuda.p-button.p-component:hover {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.boton-centro-ayuda.p-button .p-button-icon,
+.p-component.p-button.boton-centro-ayuda .p-button-icon {
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .pregunta-encabezado {
+    padding: 1rem 0;
+  }
+  
+  .pregunta-encabezado span {
+    font-size: 0.95rem;
+  }
+}
+
+/* ============================================
+   NOSOTROS - PrimeNG Galleria Overrides
+   ============================================ */
+.proyectos-galleria {
+  width: 100%;
+}
+
+.proyectos-galleria .p-galleria-content {
+  background: transparent;
+}
+
+.proyectos-galleria .p-galleria-item-wrapper {
+  background: transparent;
+}
+
+.proyectos-galleria .p-galleria-thumbnail-wrapper {
+  margin-top: 1.5rem;
+  background: transparent;
+}
+
+.proyectos-galleria .p-galleria-thumbnail-item.p-galleria-thumbnail-item-current .thumbnail-imagen {
+  border-color: #0066CC;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.proyectos-galleria .p-galleria-item-prev,
+.proyectos-galleria .p-galleria-item-next {
+  background: rgba(255, 255, 255, 0.9);
+  color: #0C1B41;
+  width: 3rem;
+}
+
+.proyectos-galleria .p-galleria-item-prev:hover,
+.proyectos-galleria .p-galleria-item-next:hover {
+  background: #0066CC;
+  color: white;
+  transform: scale(1.1);
+}
+
+.proyectos-galleria .p-galleria-indicators {
+  padding: 1rem;
+}
+
+.proyectos-galleria .p-galleria-indicator button {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 12px;
+  height: 12px;
+}
+
+.proyectos-galleria .p-galleria-indicator.p-highlight button {
+  background-color: #0066CC;
+  width: 32px;
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  .proyectos-galleria .p-galleria-thumbnail-wrapper {
+    display: none;
+  }
+}
+
+/* ============================================
+   BANNER - PrimeNG Button Overrides
+   ============================================ */
+.boton-detalles.p-button,
+.p-component.p-button.boton-detalles,
+.boton-detalles.p-button.p-component {
+  background: white;
+  color: #0066CC;
+  border: none;
+}
+
+.boton-detalles.p-button:hover,
+.p-component.p-button.boton-detalles:hover,
+.boton-detalles.p-button.p-component:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.boton-detalles.p-button:active,
+.p-component.p-button.boton-detalles:active,
+.boton-detalles.p-button.p-component:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .boton-detalles.p-button,
+  .p-component.p-button.boton-detalles,
+  .boton-detalles.p-button.p-component {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   NOT FOUND - PrimeNG Button Overrides
+   ============================================ */
+.boton-volver-inicio.p-button,
+.p-component.p-button.boton-volver-inicio,
+.boton-volver-inicio.p-button.p-component {
+  background: linear-gradient(135deg, #0066CC 0%, #0052A3 100%);
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.boton-volver-inicio.p-button:hover,
+.p-component.p-button.boton-volver-inicio:hover,
+.boton-volver-inicio.p-button.p-component:hover {
+  background: linear-gradient(135deg, #0052A3 0%, #003d7a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+}
+
+.boton-volver-inicio.p-button:active,
+.p-component.p-button.boton-volver-inicio:active,
+.boton-volver-inicio.p-button.p-component:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+}
+
+/* ============================================
+   PROGRAM DETAIL - Estilos específicos adicionales
+   ============================================ */
+/* Accordion con estilos específicos para program-detail */
+.p-accordion .p-accordion-header .p-accordion-header-link.p-accordion-header-link,
+.p-accordion.p-component .p-accordion-header .p-accordion-header-link {
+  margin-bottom: 0.75rem;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.p-accordion .p-accordion-content.p-accordion-content,
+.p-accordion.p-component .p-accordion-content {
+  border: 1px solid #e9ecef;
+  border-top: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Card específico para program-detail - usar clase específica si es necesario */
+
+/* ============================================
+   FAQ - Estilos específicos adicionales
+   ============================================ */
+/* Accordion específico para FAQ - Estilos duplicados eliminados, ver arriba */
+
+.respuesta-contenido strong {
+  color: var(--gobierno-azul-principal, #0066CC);
+  font-weight: 600;
+}
+
+.respuesta-contenido em {
+  font-style: italic;
+}
+
+/* Estilos duplicados eliminados - ver sección FAQ - PrimeNG Card Overrides arriba */
+
+@media (max-width: 767.98px) {
+  .pregunta-encabezado {
+    padding: 1rem 0;
+  }
+  
+  .pregunta-encabezado span {
+    font-size: 0.95rem;
+  }
+}
+
+/* ============================================
+   NOSOTROS - Estilos específicos adicionales
+   ============================================ */
+.proyectos-galleria .p-galleria-thumbnail-wrapper {
+  margin-top: 1.5rem;
+  background: transparent;
+}
+

@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ProgramsService } from '../../features/programs/programs.service';
-import { ProgramCardData } from '../../features/programs/program-card.types';
+import { ProgramsService } from '../../../features/programs/components/services/programs.service';
+import { ProgramCardData } from '../../../features/programs/components/models/program-card.types';
 import { ButtonModule } from 'primeng/button';
 
 @Component({

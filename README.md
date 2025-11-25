@@ -1,59 +1,168 @@
-# Maulepro
+# MaulePro - Portal de Fondos Regionales
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+Portal web para la gestión y visualización de programas y fondos regionales del Gobierno Regional del Maule.
 
-## Development server
+**Última actualización:** 24 de noviembre de 2024  
+**Versión Angular:** 19.2.19
 
-To start a local development server, run:
+---
+
+## 📋 Descripción
+
+MaulePro es una aplicación web desarrollada en Angular que permite a los usuarios:
+- Explorar programas y fondos regionales disponibles
+- Buscar y filtrar programas por estado, tipo de fondo y palabras clave
+- Ver detalles completos de cada programa
+- Acceder a información sobre plazos de postulación, beneficiarios y montos
+
+---
+
+## 🚀 Inicio Rápido
+
+### Prerrequisitos
+
+- Node.js (v18 o superior)
+- npm o yarn
+- Angular CLI 19.2.19
+
+### Instalación
+
+```bash
+# Clonar el repositorio
+git clone <repository-url>
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+ng serve
+```
+
+Navega a `http://localhost:4200/` para ver la aplicación.
+
+## 🛠️ Desarrollo
+
+### Servidor de Desarrollo
+
+Para iniciar el servidor de desarrollo local:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Una vez que el servidor esté en ejecución, abre tu navegador y ve a `http://localhost:4200/`. La aplicación se recargará automáticamente cuando modifiques cualquier archivo fuente.
 
-## Code scaffolding
+### Estructura del Proyecto
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+El proyecto sigue las mejores prácticas de Angular con una estructura organizada:
+
+```
+src/app/
+├── core/              # Servicios singleton, guards, interceptors
+├── features/          # Módulos de funcionalidad
+│   ├── programs/      # Gestión de programas
+│   ├── home/          # Página principal
+│   ├── search/        # Búsqueda de programas
+│   └── ...
+└── shared/            # Componentes y recursos compartidos
+    ├── components/    # Componentes reutilizables
+    └── styles/        # Estilos globales
+```
+
+Para más detalles, consulta [ESTRUCTURA_PROYECTO.md](./ESTRUCTURA_PROYECTO.md).
+
+## 📦 Generación de Código
+
+Angular CLI incluye herramientas poderosas para generar código. Para generar un nuevo componente:
 
 ```bash
 ng generate component component-name
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Para una lista completa de esquemas disponibles (como `components`, `directives`, o `pipes`), ejecuta:
 
 ```bash
 ng generate --help
 ```
 
-## Building
+### Convenciones de Nomenclatura
 
-To build the project run:
+- **Componentes:** `kebab-case.component.ts`
+- **Servicios:** `kebab-case.service.ts`
+- **Modelos:** `kebab-case.types.ts` o `kebab-case.model.ts`
+
+## 🏗️ Construcción
+
+Para construir el proyecto:
 
 ```bash
+# Desarrollo
 ng build
+
+# Producción (optimizado)
+ng build --configuration production
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Esto compilará tu proyecto y almacenará los artefactos de construcción en el directorio `dist/`. Por defecto, la construcción de producción optimiza la aplicación para rendimiento y velocidad.
 
-## Running unit tests
+## 🧪 Testing
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Tests Unitarios
+
+Para ejecutar tests unitarios con [Karma](https://karma-runner.github.io):
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+### Tests End-to-End
 
-For end-to-end (e2e) testing, run:
+Para pruebas end-to-end (e2e):
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Angular CLI no incluye un framework de testing e2e por defecto. Puedes elegir uno que se adapte a tus necesidades.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🛠️ Tecnologías Utilizadas
+
+- **Angular 19.2.19** - Framework principal
+- **PrimeNG 19.1.4** - Componentes UI
+- **Tailwind CSS** - Framework de estilos
+- **TypeScript** - Lenguaje de programación
+- **RxJS** - Programación reactiva
+
+---
+
+## 📚 Recursos Adicionales
+
+Para más información sobre el uso de Angular CLI, incluyendo referencias detalladas de comandos, visita la [Documentación de Angular CLI](https://angular.dev/tools/cli).
+
+### Documentación del Proyecto
+
+- [ESTRUCTURA_PROYECTO.md](./ESTRUCTURA_PROYECTO.md) - Estructura y organización del proyecto
+- [ANALISIS_CODIGO.md](../ANALISIS_CODIGO.md) - Análisis técnico y mejoras implementadas
+
+---
+
+## 👥 Contribución
+
+Este proyecto es desarrollado para el Gobierno Regional del Maule. Para contribuir:
+
+1. Sigue las convenciones de código establecidas
+2. Mantén la estructura de carpetas organizada
+3. Documenta cambios significativos
+4. Ejecuta los tests antes de hacer commit
+
+---
+
+## 📝 Licencia
+
+Este proyecto es propiedad del Gobierno Regional del Maule.
+
+---
+
+**Última actualización:** 24 de noviembre de 2024

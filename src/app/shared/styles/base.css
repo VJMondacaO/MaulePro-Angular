@@ -12,10 +12,10 @@ html {
     overflow-y: scroll;
 }
 
-/* Ocultar scrollbar durante la carga */
-html.loading,
-html.loading body {
-    overflow: hidden !important;
+/* Ocultar scrollbar durante la carga - Mayor especificidad */
+html.loading.loading,
+html.loading.loading body.body {
+    overflow: hidden;
 }
 
 body {
@@ -246,19 +246,19 @@ html {
         padding: 0;
     }
     
-    /* Ajustar espaciado en secciones */
-    .bg-info.bg-opacity-10 {
-        padding: 1rem !important;
+    /* Ajustar espaciado en secciones - Mayor especificidad */
+    .bg-info.bg-opacity-10.bg-info {
+        padding: 1rem;
     }
     
-    /* Reducir márgenes en contenedores */
-    .mb-4 {
-        margin-bottom: 1.5rem !important;
+    /* Reducir márgenes en contenedores - Mayor especificidad */
+    .mb-4.mb-4 {
+        margin-bottom: 1.5rem;
     }
     
-    .my-4 {
-        margin-top: 1rem !important;
-        margin-bottom: 1rem !important;
+    .my-4.my-4 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
     
     /* Grid de cards optimizado para móvil - Ya se maneja en _program-cards.css */

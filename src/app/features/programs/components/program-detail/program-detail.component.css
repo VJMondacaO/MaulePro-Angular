@@ -1,0 +1,50 @@
+/* ============================================
+   Program Detail Page Styles - Tailwind + PrimeNG
+   ============================================ */
+
+/* Hero Section con imagen de fondo o fondo azul oscuro por defecto */
+.hero-programa {
+  background: linear-gradient(135deg, #001a3d 0%, #002855 50%, #003366 100%);
+}
+
+.hero-with-image {
+  position: relative;
+}
+
+.hero-with-image .hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 40, 100, 0.75) 0%, rgba(0, 60, 140, 0.7) 50%, rgba(0, 80, 180, 0.65) 100%);
+  z-index: 1;
+}
+
+.hero-with-image > div {
+  position: relative;
+  z-index: 2;
+}
+
+/* Estilos para PrimeNG Button - Ahora en primeng-overrides.css global */
+
+/* Animación para cards expandidas */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clase personalizada para la animación */
+.animacion-deslizar-abajo {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Estilos para PrimeNG TabView - Ahora en primeng-overrides.css global */
+
+/* Estilos para PrimeNG Accordion y Card - Ahora en primeng-overrides.css global */

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { ProgramsService } from '../programs.service';
-import { ProgramDetailData } from '../program-detail.types';
+import { ProgramsService } from '../services/programs.service';
+import { ProgramDetailData } from '../models/program-detail.types';
 
 // PrimeNG Components
 import { CardModule } from 'primeng/card';

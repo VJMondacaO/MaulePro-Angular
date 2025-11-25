@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Card } from 'primeng/card';
 import { Tag } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
-import { ProgramCardData } from '../program-card.types';
+import { ProgramCardData } from '../models/program-card.types';
 
 @Component({
   selector: 'app-program-card',

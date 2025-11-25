@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ProgramCardData } from './program-card.types';
-import { ProgramDetailData } from './program-detail.types';
+import { ProgramCardData } from '../models/program-card.types';
+import { ProgramDetailData } from '../models/program-detail.types';
 
 /**
  * Servicio que contiene todos los datos de los programas

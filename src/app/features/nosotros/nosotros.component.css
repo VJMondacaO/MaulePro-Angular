@@ -289,17 +289,7 @@
 }
 
 /* Estilos de Galleria */
-:host ::ng-deep .proyectos-galleria {
-  width: 100%;
-}
-
-:host ::ng-deep .proyectos-galleria .p-galleria-content {
-  background: transparent;
-}
-
-:host ::ng-deep .proyectos-galleria .p-galleria-item-wrapper {
-  background: transparent;
-}
+/* Estilos para PrimeNG Galleria - Ahora en primeng-overrides.css global */
 
 /* Imagen del carrusel */
 .imagen-item {
@@ -359,10 +349,7 @@
 }
 
 /* Thumbnails */
-:host ::ng-deep .proyectos-galleria .p-galleria-thumbnail-wrapper {
-  margin-top: 1.5rem;
-  background: transparent;
-}
+/* Estilos para PrimeNG Galleria thumbnail - Ahora en primeng-overrides.css global */
 
 .thumbnail-item {
   padding: 0.5rem;
@@ -384,55 +371,7 @@
   transform: scale(1.05);
 }
 
-:host ::ng-deep .proyectos-galleria .p-galleria-thumbnail-item.p-galleria-thumbnail-item-current .thumbnail-imagen {
-  border-color: #0066CC;
-  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
-}
-
-/* Navegadores */
-:host ::ng-deep .proyectos-galleria .p-galleria-item-prev,
-:host ::ng-deep .proyectos-galleria .p-galleria-item-next {
-  background: rgba(255, 255, 255, 0.9);
-  color: #0C1B41;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-:host ::ng-deep .proyectos-galleria .p-galleria-item-prev:hover,
-:host ::ng-deep .proyectos-galleria .p-galleria-item-next:hover {
-  background: #0066CC;
-  color: white;
-  transform: scale(1.1);
-}
-
-/* Indicadores */
-:host ::ng-deep .proyectos-galleria .p-galleria-indicators {
-  padding: 1rem;
-}
-
-:host ::ng-deep .proyectos-galleria .p-galleria-indicator button {
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-:host ::ng-deep .proyectos-galleria .p-galleria-indicator.p-highlight button {
-  background-color: #0066CC;
-  width: 32px;
-  border-radius: 6px;
-}
-
-/* Responsive thumbnails */
-@media (max-width: 991.98px) {
-  :host ::ng-deep .proyectos-galleria .p-galleria-thumbnail-wrapper {
-    display: none;
-  }
-}
+/* Estilos para PrimeNG Galleria - Ahora en primeng-overrides.css global */
 
 /* Banner de Contacto */
 .banner-contacto {

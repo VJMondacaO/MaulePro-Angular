@@ -53,145 +53,7 @@
 }
 
 
-/* Galleria Styles */
-:host ::ng-deep .hero-galleria {
-  height: 100%;
-  width: 100%;
-  border-radius: 1rem;
-}
-
-:host ::ng-deep .hero-galleria .p-galleria-content {
-  height: 100%;
-  width: 100%;
-  border-radius: 1rem;
-}
-
-:host ::ng-deep .hero-galleria .p-galleria-item-wrapper {
-  height: 100%;
-  width: 100%;
-  border-radius: 1rem;
-}
-
-:host ::ng-deep .hero-galleria .p-galleria-item-container {
-  height: 100%;
-  width: 100%;
-  border-radius: 1rem;
-}
-
-:host ::ng-deep .hero-galleria .p-galleria-item {
-  height: 100%;
-  width: 100%;
-  border-radius: 1rem;
-}
-
-/* Forzar altura completa solo en móviles */
-@media (max-width: 767.98px) {
-  :host ::ng-deep .hero-galleria {
-    height: 650px !important;
-    min-height: 650px !important;
-    max-height: 650px !important;
-  }
-
-  :host ::ng-deep .hero-galleria .p-galleria-content {
-    height: 650px !important;
-    min-height: 650px !important;
-    max-height: 650px !important;
-  }
-
-  :host ::ng-deep .hero-galleria .p-galleria-item-wrapper {
-    height: 650px !important;
-    min-height: 650px !important;
-    max-height: 650px !important;
-  }
-
-  :host ::ng-deep .hero-galleria .p-galleria-item-container {
-    height: 650px !important;
-    min-height: 650px !important;
-    max-height: 650px !important;
-  }
-
-  :host ::ng-deep .hero-galleria .p-galleria-item {
-    height: 650px !important;
-    min-height: 650px !important;
-    max-height: 650px !important;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 575.98px) {
-  :host ::ng-deep .hero-galleria {
-    height: 600px !important;
-    min-height: 600px !important;
-    max-height: 600px !important;
-  }
-
-  :host ::ng-deep .hero-galleria .p-galleria-content {
-    height: 600px !important;
-    min-height: 600px !important;
-    max-height: 600px !important;
-  }
-
-  :host ::ng-deep .hero-galleria .p-galleria-item-wrapper {
-    height: 600px !important;
-    min-height: 600px !important;
-    max-height: 600px !important;
-  }
-
-  :host ::ng-deep .hero-galleria .p-galleria-item-container {
-    height: 600px !important;
-    min-height: 600px !important;
-    max-height: 600px !important;
-  }
-
-  :host ::ng-deep .hero-galleria .p-galleria-item {
-    height: 600px !important;
-    min-height: 600px !important;
-    max-height: 600px !important;
-  }
-}
-
-:host ::ng-deep .hero-galleria .p-galleria-indicators {
-  bottom: 20px;
-  z-index: 10;
-}
-
-@media (max-width: 767.98px) {
-  :host ::ng-deep .hero-galleria .p-galleria-indicators {
-    bottom: 15px;
-  }
-}
-
-:host ::ng-deep .hero-galleria .p-galleria-indicator button {
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin: 0 4px;
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 767.98px) {
-  :host ::ng-deep .hero-galleria .p-galleria-indicator button {
-    width: 10px;
-    height: 10px;
-    margin: 0 3px;
-  }
-}
-
-:host ::ng-deep .hero-galleria .p-galleria-indicator.p-highlight button {
-  background-color: var(--primary-color);
-  width: 14px;
-  height: 14px;
-}
-
-@media (max-width: 767.98px) {
-  :host ::ng-deep .hero-galleria .p-galleria-indicator.p-highlight button {
-    width: 12px;
-    height: 12px;
-  }
-}
+/* Estilos para PrimeNG Galleria - Ahora en primeng-overrides.css global */
 
 .hero-carousel-image {
   width: 100%;
@@ -280,24 +142,11 @@
   margin-bottom: 1.35rem;
 }
 
-:host ::ng-deep .institucional-badge {
-  background: rgba(255, 255, 255, 0.2) !important;
-  color: white !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  font-size: 0.711rem !important;
-  padding: 0.45rem 0.9rem !important;
-  font-weight: 600 !important;
-  backdrop-filter: blur(10px);
-}
+/* Estilos para PrimeNG Tag (Badge Institucional) - Ahora en primeng-overrides.css global */
 
 @media (max-width: 767.98px) {
   .hero-badge {
     margin-bottom: 0.9rem;
-  }
-  
-  :host ::ng-deep .institucional-badge {
-    font-size: 0.6075rem !important;
-    padding: 0.36rem 0.7875rem !important;
   }
 }
 
@@ -429,12 +278,7 @@
   width: 100%;
 }
 
-:host ::ng-deep .hero-buttons .p-button {
-  padding: 0.7875rem 1.575rem !important;
-  font-weight: 600 !important;
-  font-size: 0.81rem !important;
-  width: 100%;
-}
+/* Estilos para PrimeNG Button - Ahora en primeng-overrides.css global */
 
 /* Responsive */
 @media (max-width: 767.98px) {
@@ -502,11 +346,7 @@
     justify-content: stretch;
   }
 
-  :host ::ng-deep .hero-buttons .p-button {
-    width: 100%;
-    padding: 0.675rem 1.125rem !important;
-    font-size: 0.7695rem !important;
-  }
+  /* Estilos para PrimeNG Button - Ahora en primeng-overrides.css global */
 }
 
 @media (max-width: 575.98px) {

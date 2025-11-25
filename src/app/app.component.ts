@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { BannerProximosCierresComponent } from './shared/banner-proximos-cierres/banner-proximos-cierres.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { BannerProximosCierresComponent } from './shared/components/banner-proximos-cierres/banner-proximos-cierres.component';
 
 @Component({
   selector: 'app-root',

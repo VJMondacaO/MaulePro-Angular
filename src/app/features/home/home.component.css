@@ -445,56 +445,7 @@
   }
 }
 
-/* Dropdowns de Filtros */
-:host ::ng-deep .filter-dropdown {
-  flex: 0 0 auto;
-  min-width: 160px;
-}
-
-@media (min-width: 768px) {
-  :host ::ng-deep .filter-dropdown {
-    min-width: 180px;
-  }
-}
-
-@media (min-width: 992px) {
-  :host ::ng-deep .filter-dropdown {
-    min-width: 200px;
-  }
-}
-
-:host ::ng-deep .filter-dropdown .p-dropdown {
-  width: 100%;
-  height: 50px !important;
-  /* Match search bar height */
-  border: 1px solid #E2E8F0;
-  border-radius: 2rem;
-  /* Pill shape */
-  transition: all 0.2s ease;
-  background: #F8FAFC;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-  display: flex;
-  align-items: center;
-}
-
-:host ::ng-deep .filter-dropdown .p-dropdown .p-dropdown-label {
-  padding: 0 1.25rem !important;
-  font-size: 0.95rem;
-  color: #334155;
-  line-height: 50px;
-  /* Vertically center text */
-}
-
-:host ::ng-deep .filter-dropdown .p-dropdown:not(.p-disabled):hover {
-  border-color: #CBD5E1;
-  background: #FFFFFF;
-}
-
-:host ::ng-deep .filter-dropdown .p-dropdown:not(.p-disabled).p-focus {
-  border-color: #0066CC;
-  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
-  background: #FFFFFF;
-}
+/* Estilos para PrimeNG Dropdown - Ahora en primeng-overrides.css global */
 
 /* Contenedor de Búsqueda con Botón */
 .contenedor-busqueda {
@@ -513,92 +464,9 @@
   }
 }
 
-/* Barra de Búsqueda */
-:host ::ng-deep .barra-busqueda {
-  flex: 1;
-  width: 100%;
-  height: 50px !important;
-  border-radius: 2rem;
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
-  border: 2px solid #E2E8F0;
-  background: #FFFFFF;
-  color: #1C1C1C;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  box-sizing: border-box;
-}
+/* Estilos para PrimeNG InputText (Barra de Búsqueda) - Ahora en primeng-overrides.css global */
 
-:host ::ng-deep .barra-busqueda:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-:host ::ng-deep .barra-busqueda:focus {
-  border-color: #0066CC;
-  background: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(0, 102, 204, 0.2);
-  outline: none;
-}
-
-:host ::ng-deep .barra-busqueda::placeholder {
-  color: #94A3B8;
-  font-weight: 400;
-}
-
-/* Botón de Búsqueda */
-:host ::ng-deep .boton-buscar {
-  height: 50px !important;
-  padding: 0 1.75rem !important;
-  background: linear-gradient(135deg, #0066CC 0%, #0052A3 100%) !important;
-  border: none !important;
-  border-radius: 2rem !important;
-  color: white !important;
-  font-weight: 600 !important;
-  font-size: 0.95rem !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3) !important;
-  white-space: nowrap !important;
-  flex-shrink: 0;
-}
-
-:host ::ng-deep .boton-buscar:hover {
-  background: linear-gradient(135deg, #0052A3 0%, #003d7a 100%) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4) !important;
-}
-
-:host ::ng-deep .boton-buscar:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3) !important;
-}
-
-:host ::ng-deep .boton-buscar .p-button-icon {
-  margin-right: 0.5rem;
-  font-size: 1rem;
-}
-
-:host ::ng-deep .boton-buscar .p-button-label {
-  font-weight: 600;
-}
-
-/* Responsive para el botón */
-@media (max-width: 576px) {
-  :host ::ng-deep .boton-buscar .p-button-label {
-    display: none;
-  }
-  
-  :host ::ng-deep .boton-buscar {
-    padding: 0 1rem !important;
-    width: 50px;
-    min-width: 50px;
-  }
-  
-  :host ::ng-deep .boton-buscar .p-button-icon {
-    margin-right: 0;
-  }
-}
+/* Estilos para PrimeNG Button (Botón Buscar) - Ahora en primeng-overrides.css global */
 
 /* ============================================
    GRID SYSTEM OVERRIDES

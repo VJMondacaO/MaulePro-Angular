@@ -172,27 +172,7 @@
     flex-shrink: 0;
 }
 
-:host ::ng-deep .boton-detalles {
-    background: white !important;
-    color: #0066CC !important;
-    border: none !important;
-    border-radius: 0.375rem !important;
-    font-weight: 600 !important;
-    font-size: 0.7rem !important;
-    padding: 0.3rem 0.75rem !important;
-    transition: all 0.3s ease !important;
-    white-space: nowrap !important;
-}
-
-:host ::ng-deep .boton-detalles:hover {
-    background: #f0f0f0 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
-}
-
-:host ::ng-deep .boton-detalles:active {
-    transform: translateY(0);
-}
+/* Estilos para PrimeNG Button - Ahora en primeng-overrides.css global */
 
 .carrusel-controles {
     position: absolute;
@@ -290,8 +270,6 @@
         margin-top: 0.5rem;
     }
     
-    :host ::ng-deep .boton-detalles {
-        width: 100% !important;
-    }
+    /* Estilos responsive para botón - Ahora en primeng-overrides.css global */
 }
 

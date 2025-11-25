@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import { SearchComponent } from './features/search/search.component';
 import { NosotrosComponent } from './features/nosotros/nosotros.component';
-import { ProgramDetailComponent } from './features/programs/program-detail/program-detail.component';
+import { ProgramDetailComponent } from './features/programs/components/program-detail/program-detail.component';
 import { FaqComponent } from './features/faq/faq.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';

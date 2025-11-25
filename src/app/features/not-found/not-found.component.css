@@ -90,26 +90,5 @@
     margin-top: 1rem;
 }
 
-:host ::ng-deep .boton-volver-inicio {
-    background: linear-gradient(135deg, #0066CC 0%, #0052A3 100%) !important;
-    border: none !important;
-    border-radius: 0.5rem !important;
-    color: white !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-    padding: 0.75rem 1.5rem !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3) !important;
-}
-
-:host ::ng-deep .boton-volver-inicio:hover {
-    background: linear-gradient(135deg, #0052A3 0%, #003d7a 100%) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4) !important;
-}
-
-:host ::ng-deep .boton-volver-inicio:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3) !important;
-}
+/* Estilos para PrimeNG Button - Ahora en primeng-overrides.css global */
 
