@@ -26,7 +26,6 @@
   z-index: 2;
 }
 
-/* Estilos para PrimeNG Button - Ahora en primeng-overrides.css global */
 
 /* Animación para cards expandidas */
 @keyframes slideDown {
@@ -45,9 +44,7 @@
   animation: slideDown 0.3s ease-out;
 }
 
-/* Estilos para PrimeNG TabView - Ahora en primeng-overrides.css global */
 
-/* Estilos para PrimeNG Accordion y Card - Ahora en primeng-overrides.css global */
 
 /* Forzar color azul en botones "Ver más" y eliminar fondo verde */
 button.p-button.p-button-text.p-button-plain {

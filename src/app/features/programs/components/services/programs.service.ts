@@ -51,7 +51,7 @@ export class ProgramsService {
         estado: 'soon',
         fechaInicio: '01-01-2026',
         fechaFin: '31-01-2026',
-        beneficiarios: 'Personas naturales',
+        beneficiarios: 'Personas Naturales',
         montos: '$1.500.000',
         rutaDetalles: '/programas/4'
       },
@@ -62,7 +62,7 @@ export class ProgramsService {
         estado: 'closed',
         fechaInicio: '01-01-2025',
         fechaFin: '31-01-2025',
-        beneficiarios: 'Personas naturales',
+        beneficiarios: 'Personas Naturales',
         montos: '$1.000.000',
         rutaDetalles: '/programas/5'
       },
@@ -87,7 +87,7 @@ export class ProgramsService {
         fechaInicio: '03-02-2025',
         fechaFin: '09-03-2025',
         fechaCierre: '2025-03-09',
-        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        beneficiarios: 'Instituciones Privadas sin Fines de Lucro',
         montos: '$2.000.000 a $5.000.000.',
         tipoFondo: 'FNDR 8%',
         rutaDetalles: '/programas/3'
@@ -100,7 +100,7 @@ export class ProgramsService {
         fechaInicio: '03-02-2025',
         fechaFin: '09-03-2025',
         fechaCierre: '2025-03-09',
-        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        beneficiarios: 'Instituciones Privadas sin Fines de Lucro',
         montos: '$2.000.000 a $5.000.000.',
         tipoFondo: 'FNDR 8%',
         rutaDetalles: '/programas/3'
@@ -113,7 +113,7 @@ export class ProgramsService {
         fechaInicio: '03-02-2025',
         fechaFin: '09-03-2025',
         fechaCierre: '2025-03-09',
-        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        beneficiarios: 'Instituciones Privadas sin Fines de Lucro',
         montos: '$2.000.000 a $5.000.000.',
         tipoFondo: 'FNDR 8%',
         rutaDetalles: '/programas/3'
@@ -126,7 +126,7 @@ export class ProgramsService {
         fechaInicio: '03-02-2025',
         fechaFin: '09-03-2025',
         fechaCierre: '2025-03-09',
-        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        beneficiarios: 'Instituciones Privadas sin Fines de Lucro',
         montos: '$2.000.000 a $5.000.000.',
         tipoFondo: 'FNDR 8%',
         rutaDetalles: '/programas/3'
@@ -139,7 +139,7 @@ export class ProgramsService {
         fechaInicio: '03-02-2025',
         fechaFin: '09-03-2025',
         fechaCierre: '2025-03-09',
-        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        beneficiarios: 'Instituciones Privadas sin Fines de Lucro',
         montos: '$2.000.000 a $5.000.000.',
         tipoFondo: 'FNDR 8%',
         rutaDetalles: '/programas/3'
@@ -152,7 +152,7 @@ export class ProgramsService {
         fechaInicio: '03-02-2025',
         fechaFin: '09-03-2025',
         fechaCierre: '2025-03-09',
-        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        beneficiarios: 'Instituciones Privadas sin Fines de Lucro',
         montos: '$2.000.000 a $5.000.000.',
         tipoFondo: 'FNDR 8%',
         rutaDetalles: '/programas/3'
@@ -165,7 +165,7 @@ export class ProgramsService {
         fechaInicio: '03-02-2025',
         fechaFin: '09-03-2025',
         fechaCierre: '2025-03-09',
-        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        beneficiarios: 'Instituciones Privadas sin Fines de Lucro',
         montos: '$2.000.000 a $5.000.000.',
         tipoFondo: 'FNDR 8%',
         rutaDetalles: '/programas/3'
@@ -178,7 +178,7 @@ export class ProgramsService {
         fechaInicio: '03-02-2025',
         fechaFin: '09-03-2025',
         fechaCierre: '2025-03-09',
-        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        beneficiarios: 'Instituciones Privadas sin Fines de Lucro',
         montos: '$2.000.000 a $5.000.000.',
         tipoFondo: 'FNDR 8%',
         rutaDetalles: '/programas/3'
@@ -191,7 +191,7 @@ export class ProgramsService {
         fechaInicio: '03-02-2025',
         fechaFin: '09-03-2025',
         fechaCierre: '2025-03-09',
-        beneficiarios: 'Instituciones privadas sin fines de lucro.',
+        beneficiarios: 'Instituciones Privadas sin Fines de Lucro',
         montos: '$2.000.000 a $5.000.000.',
         tipoFondo: 'FNDR 8%',
         rutaDetalles: '/programas/3'
@@ -359,7 +359,7 @@ export class ProgramsService {
         categoria: 'Subvenciones y apoyos',
         invita: 'Gobierno Regional del Maule',
         alcance: 'Regional',
-        imagenHero: 'assets/images/fotosproyectos/8 por ciento.JPG',
+        imagenHero: 'assets/images/fotosproyectos/8 por ciento.webp',
         modalidad: {
           tipo: 'Online',
           icono: 'pi-laptop',

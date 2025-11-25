@@ -168,13 +168,57 @@ export class ProgramCardComponent {
   }
 
   /**
-   * Divide el texto de beneficiarios en dos líneas si contiene "Instituciones privadas sin fines de lucro"
+   * Divide el texto de beneficiarios en dos líneas si contiene "Instituciones Privadas sin Fines de Lucro"
    */
   getBeneficiariosDivididos(): string[] {
     const beneficiarios = this.program.beneficiarios || '';
-    if (beneficiarios.includes('Instituciones privadas sin fines de lucro')) {
-      return ['Instituciones privadas', 'sin fines de lucro'];
+    if (beneficiarios.includes('Instituciones Privadas sin Fines de Lucro')) {
+      return ['Instituciones Privadas', 'sin Fines de Lucro'];
     }
     return [beneficiarios];
+  }
+
+  /**
+   * Formatea una fecha en formato DD-MM-YYYY a formato DD/MM/AAAA
+   * Ejemplo: "01-11-2025" -> "01/11/2025"
+   */
+  formatearFecha(fecha: string): string {
+    if (!fecha) return '';
+    
+    try {
+      // Parsear fecha en formato DD-MM-YYYY
+      const partes = fecha.split('-');
+      if (partes.length !== 3) return fecha;
+      
+      const dia = partes[0];
+      const mes = partes[1];
+      const año = partes[2];
+      
+      // Validar que sean números válidos
+      if (isNaN(parseInt(dia, 10)) || isNaN(parseInt(mes, 10)) || isNaN(parseInt(año, 10))) {
+        return fecha;
+      }
+      
+      // Retornar formato: DD/MM/AAAA
+      return `${dia}/${mes}/${año}`;
+    } catch (error) {
+      // Si hay algún error, retornar la fecha original
+      return fecha;
+    }
+  }
+
+  /**
+   * Formatea el rango de fechas de postulación
+   * Ejemplo: "01/11/2025 - 27/11/2025"
+   */
+  formatearRangoFechas(): string {
+    if (!this.program.fechaInicio || !this.program.fechaFin) {
+      return '';
+    }
+    
+    const fechaInicioFormateada = this.formatearFecha(this.program.fechaInicio);
+    const fechaFinFormateada = this.formatearFecha(this.program.fechaFin);
+    
+    return `${fechaInicioFormateada} - ${fechaFinFormateada}`;
   }
 }

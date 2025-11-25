@@ -53,7 +53,6 @@
 }
 
 
-/* Estilos para PrimeNG Galleria - Ahora en primeng-overrides.css global */
 
 .hero-carousel-image {
   width: 100%;
@@ -142,7 +141,6 @@
   margin-bottom: 1.35rem;
 }
 
-/* Estilos para PrimeNG Tag (Badge Institucional) - Ahora en primeng-overrides.css global */
 
 @media (max-width: 767.98px) {
   .hero-badge {
@@ -278,7 +276,6 @@
   width: 100%;
 }
 
-/* Estilos para PrimeNG Button - Ahora en primeng-overrides.css global */
 
 /* Responsive */
 @media (max-width: 767.98px) {
@@ -346,7 +343,6 @@
     justify-content: stretch;
   }
 
-  /* Estilos para PrimeNG Button - Ahora en primeng-overrides.css global */
 }
 
 @media (max-width: 575.98px) {

@@ -220,7 +220,6 @@
 }
 
 /* Dropdowns de Filtros */
-/* Estilos para PrimeNG Dropdown - Ahora en primeng-overrides.css global */
 
 /* Contenedor de Búsqueda con Botón */
 .contenedor-busqueda {
@@ -239,9 +238,7 @@
   }
 }
 
-/* Estilos para PrimeNG InputText (Barra de Búsqueda) - Ahora en primeng-overrides.css global */
 
-/* Estilos para PrimeNG Button (Botón Buscar) - Ahora en primeng-overrides.css global */
 
 /* Info de Resultados */
 .resultados-info {
@@ -269,7 +266,6 @@
   font-weight: 600;
 }
 
-/* Grid de Programas - Ahora manejado por Tailwind grid-cols-* */
 .programas-grid {
   /* Tailwind maneja el layout con grid-cols-1 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 */
   /* Solo mantenemos estilos específicos que Tailwind no cubre */

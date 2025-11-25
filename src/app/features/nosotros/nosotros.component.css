@@ -248,7 +248,6 @@ section p {
 }
 
 /* Estilos de Galleria */
-/* Estilos para PrimeNG Galleria - Ahora en primeng-overrides.css global */
 
 /* Imagen del carrusel */
 .imagen-item {
@@ -308,7 +307,6 @@ section p {
 }
 
 /* Thumbnails */
-/* Estilos para PrimeNG Galleria thumbnail - Ahora en primeng-overrides.css global */
 
 .thumbnail-item {
   padding: 0.5rem;
@@ -330,7 +328,6 @@ section p {
   transform: scale(1.05);
 }
 
-/* Estilos para PrimeNG Galleria - Ahora en primeng-overrides.css global */
 
 /* Banner de Contacto */
 .banner-contacto {

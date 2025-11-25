@@ -58,40 +58,40 @@ export class HeroComponent {
   constructor(private router: Router) {
     this.images = [
       {
-        itemImageSrc: 'assets/images/Carrusel/bomberos.JPG'
+        itemImageSrc: 'assets/images/Carrusel/bomberos.webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/cortecinta.JPG'
+        itemImageSrc: 'assets/images/Carrusel/cortecinta.webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/cortecinta2.JPG'
+        itemImageSrc: 'assets/images/Carrusel/cortecinta2.webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/cortecinta3.JPG'
+        itemImageSrc: 'assets/images/Carrusel/cortecinta3.webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/deportistas.JPG'
+        itemImageSrc: 'assets/images/Carrusel/deportistas.webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/deportistas2.JPG'
+        itemImageSrc: 'assets/images/Carrusel/deportistas2.webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/discurso.JPG'
+        itemImageSrc: 'assets/images/Carrusel/discurso.webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/entregallaves.JPG'
+        itemImageSrc: 'assets/images/Carrusel/entregallaves.webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/resonador .JPG'
+        itemImageSrc: 'assets/images/Carrusel/resonador .webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/resonancia.JPG'
+        itemImageSrc: 'assets/images/Carrusel/resonancia.webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/sedesocial.JPG'
+        itemImageSrc: 'assets/images/Carrusel/sedesocial.webp'
       },
       {
-        itemImageSrc: 'assets/images/Carrusel/vinculacion comunidad.JPG'
+        itemImageSrc: 'assets/images/Carrusel/vinculacion comunidad.webp'
       }
     ];
   }

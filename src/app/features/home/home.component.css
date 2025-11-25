@@ -77,7 +77,7 @@
 /* Sección de Beneficios */
 .beneficios-section {
   margin-top: 0; /* El padding de la sección ya maneja el espaciado */
-  margin-bottom: 0; /* Eliminado para consistencia */
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -445,7 +445,6 @@
   }
 }
 
-/* Estilos para PrimeNG Dropdown - Ahora en primeng-overrides.css global */
 
 /* Contenedor de Búsqueda con Botón */
 .contenedor-busqueda {
@@ -464,9 +463,7 @@
   }
 }
 
-/* Estilos para PrimeNG InputText (Barra de Búsqueda) - Ahora en primeng-overrides.css global */
 
-/* Estilos para PrimeNG Button (Botón Buscar) - Ahora en primeng-overrides.css global */
 
 /* ============================================
    GRID SYSTEM OVERRIDES
@@ -476,7 +473,6 @@
 /* Tailwind grid ya maneja el layout con grid-cols-* */
 /* Los estilos específicos están más abajo */
 
-/* Ajustar gap según breakpoint - ahora manejado por Tailwind gap-6 */
 @media (min-width: 768px) and (max-width: 991.98px) {
   .programas-grid {
     gap: 1.25rem;

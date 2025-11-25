@@ -43,22 +43,22 @@ export class HomeComponent {
   incentives = [
     {
       icon: 'pi pi-book',
-      title: 'Paso 1: Revisa las bases',
+      title: 'Paso 1: Revisa las Bases',
       description: 'Lee los requisitos del fondo, verifica la eligibilidad de tu institución y los plazos de postulación.'
     },
     {
       icon: 'pi pi-pencil',
-      title: 'Paso 2: Diseña tu proyecto',
+      title: 'Paso 2: Diseña tu Proyecto',
       description: 'Define objetivo, beneficiarios, actividades y presupuesto según el formato solicitado.'
     },
     {
       icon: 'pi pi-upload',
-      title: 'Paso 3: Sube tu postulación',
+      title: 'Paso 3: Sube tu Postulación',
       description: 'Completa el formulario en línea y adjunta toda la documentación requerida antes del cierre.'
     },
     {
       icon: 'pi pi-chart-line',
-      title: 'Paso 4: Haz seguimiento',
+      title: 'Paso 4: Haz Seguimiento',
       description: 'Revisa el estado de tu proyecto, responde observaciones y consulta los resultados de la evaluación.'
     }
   ];

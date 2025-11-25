@@ -172,7 +172,6 @@
     flex-shrink: 0;
 }
 
-/* Estilos para PrimeNG Button - Ahora en primeng-overrides.css global */
 
 .carrusel-controles {
     position: absolute;
@@ -270,6 +269,5 @@
         margin-top: 0.5rem;
     }
     
-    /* Estilos responsive para botón - Ahora en primeng-overrides.css global */
 }
 

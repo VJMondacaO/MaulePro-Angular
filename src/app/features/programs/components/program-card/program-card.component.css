@@ -25,7 +25,6 @@
   width: 6px;
 }
 
-/* Estilos para PrimeNG Card - Ahora en primeng-overrides.css global */
 /* Los estilos se aplican directamente a .program-card-wrapper */
 
 .program-card-content {
@@ -114,7 +113,6 @@
   align-items: center;
 }
 
-/* Estilos para PrimeNG Tags - Ahora en primeng-overrides.css global */
 /* Los estilos se aplican directamente a .status-badge y .dias-restantes-badge */
 
 .program-card-body {
@@ -221,13 +219,15 @@
 }
 
 .plazo-content span {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #334155;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.4;
   max-width: 100%;
+  display: block;
 }
 
 .program-card-features {
@@ -348,7 +348,6 @@
   align-items: center;
 }
 
-/* Estilos para PrimeNG Button - Ahora en primeng-overrides.css global */
 /* Los estilos se aplican directamente a .btn-details */
 
 /* Responsive */

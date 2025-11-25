@@ -33,7 +33,7 @@
             </div>
             <div class="plazo-content">
               <strong>Plazo de postulación</strong>
-              <span>{{ program.fechaInicio }} - {{ program.fechaFin }}</span>
+              <span>{{ formatearRangoFechas() }}</span>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
               <i class="pi pi-users"></i>
             </div>
             <div class="feature-content">
-              <strong>Beneficiarios</strong>
+              <strong>Beneficiarios:</strong>
               <div class="beneficiarios-text">
                 <span *ngFor="let linea of getBeneficiariosDivididos()">{{ linea }}</span>
               </div>

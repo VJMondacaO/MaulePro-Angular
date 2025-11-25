@@ -778,7 +778,6 @@
 /* ============================================
    FAQ - PrimeNG Card Overrides (Tarjeta de Ayuda)
    ============================================ */
-/* Estilos de tarjeta-ayuda ahora se manejan con Tailwind en el HTML */
 
 .boton-centro-ayuda.p-button,
 .p-component.p-button.boton-centro-ayuda,
@@ -954,7 +953,6 @@
 /* ============================================
    FAQ - Estilos específicos adicionales
    ============================================ */
-/* Accordion específico para FAQ - Estilos duplicados eliminados, ver arriba */
 
 .respuesta-contenido strong {
   color: var(--gobierno-azul-principal, #0066CC);
@@ -965,7 +963,6 @@
   font-style: italic;
 }
 
-/* Estilos duplicados eliminados - ver sección FAQ - PrimeNG Card Overrides arriba */
 
 @media (max-width: 767.98px) {
   .pregunta-encabezado {
