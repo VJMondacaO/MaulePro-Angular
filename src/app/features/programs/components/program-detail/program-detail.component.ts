@@ -85,8 +85,16 @@ export class ProgramDetailComponent implements OnInit {
   }
 
   onPostularClick(): void {
-    // TODO: Implementar redirección a login o postulación
-    this.router.navigate(['/login']);
+    // Obtener el ID de la ruta actual
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        // Redirigir a la página de postulación con el ID del programa
+        this.router.navigate(['/postulacion', id]);
+      } else {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
   toggleAccordion(type: 'modalidad' | 'tipoPostulante' | 'tipoFinanciamiento'): void {

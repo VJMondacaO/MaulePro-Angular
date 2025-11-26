@@ -6,6 +6,7 @@ import { ProgramDetailComponent } from './features/programs/components/program-d
 import { FaqComponent } from './features/faq/faq.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';
+import { PostulacionComponent } from './features/postulacion/postulacion.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'preguntas-frecuentes', component: FaqComponent },
   { path: 'programas/:id', component: ProgramDetailComponent },
+  { path: 'postulacion/:id', component: PostulacionComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '**', component: NotFoundComponent },
 ];

@@ -1,0 +1,115 @@
+/* ============================================
+   Postulación Component Styles
+   ============================================ */
+
+/* Evitar que el texto se corte en el subtítulo del hero */
+/* En web, las palabras largas no se dividen, solo se ajustan en espacios */
+section p {
+  word-wrap: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  word-break: normal;
+}
+
+/* Contenido Principal - Estilo igual a página de nosotros */
+.contenido-principal {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .contenido-principal {
+    padding: 0 2rem 5rem;
+  }
+}
+
+/* Estilos para PrimeNG Components */
+::ng-deep .p-inputtext,
+::ng-deep .p-dropdown,
+::ng-deep .p-calendar,
+::ng-deep .p-inputtextarea,
+::ng-deep .p-inputnumber-input {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+::ng-deep .p-inputtext:focus,
+::ng-deep .p-dropdown:focus,
+::ng-deep .p-calendar:focus,
+::ng-deep .p-inputtextarea:focus,
+::ng-deep .p-inputnumber-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+  outline: none;
+}
+
+/* Estilos para dropdowns */
+::ng-deep .p-dropdown-panel {
+  z-index: 9999 !important;
+}
+
+::ng-deep .p-dropdown-items-wrapper {
+  z-index: 9999 !important;
+}
+
+/* Estilos para calendarios */
+::ng-deep .p-datepicker {
+  z-index: 9999 !important;
+}
+
+/* Estilos para diálogos */
+::ng-deep .p-dialog {
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+::ng-deep .p-dialog-header {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  color: white;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 1rem 1.5rem;
+}
+
+::ng-deep .p-dialog-content {
+  padding: 1.5rem;
+}
+
+/* Estilos para el mapa de Google Maps */
+#map {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border-radius: 0.5rem;
+}
+
+/* Estilos para InputNumber con borde destacado */
+::ng-deep .entrada-monto-financiamiento .p-inputnumber-input {
+  border: 4px solid #2563eb !important;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+::ng-deep .entrada-monto-financiamiento .p-inputnumber-input:focus {
+  border-color: #1d4ed8 !important;
+  box-shadow: 0 0 0 0.3rem rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Transiciones suaves para el acordeón */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Estilos para tablas */
+table {
+  border-collapse: collapse;
+}
+
+/* Asegurar que los iconos de PrimeNG se muestren correctamente */
+.pi {
+  font-family: 'primeicons' !important;
+}
