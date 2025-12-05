@@ -4,6 +4,12 @@ import { RouterModule } from '@angular/router';
 import { MeterGroupModule } from 'primeng/metergroup';
 import { ButtonModule } from 'primeng/button';
 
+interface MeterItem {
+    label: string;
+    value: number;
+    color: string;
+}
+
 @Component({
     selector: 'app-dashboard',
     standalone: true,
@@ -326,7 +332,7 @@ import { ButtonModule } from 'primeng/button';
     `
 })
 export class DashboardComponent {
-    meterItems: any[] = [
+    meterItems: MeterItem[] = [
         {
             label: 'Salud',
             value: 23.5,

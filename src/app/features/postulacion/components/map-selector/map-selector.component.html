@@ -1,0 +1,48 @@
+<div class="map-selector-container">
+  <div class="mb-4">
+    <label class="block text-sm font-semibold text-gray-700 mb-2">
+      Dirección del Proyecto
+    </label>
+    <div class="flex gap-2">
+      <input
+        id="addressmap-input"
+        type="text"
+        [(ngModel)]="direccion"
+        placeholder="Ingrese una dirección o use el mapa para seleccionar"
+        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+        (keyup.enter)="buscarDireccion()"
+      />
+      <button
+        pButton
+        type="button"
+        label="Buscar"
+        icon="pi pi-search"
+        (click)="buscarDireccion()"
+        [disabled]="loading"
+        class="p-button-primary"
+      ></button>
+    </div>
+    <small class="text-gray-500 text-xs mt-1 block">
+      Puede escribir una dirección o hacer clic en el mapa para seleccionar una ubicación
+    </small>
+  </div>
+
+  <div class="map-container">
+    <div
+      id="map"
+      class="w-full h-96 rounded-lg border border-gray-300"
+      [class.opacity-50]="loading"
+    ></div>
+    <div *ngIf="loading" class="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-75 rounded-lg">
+      <div class="text-center">
+        <i class="pi pi-spin pi-spinner text-4xl text-blue-600 mb-2"></i>
+        <p class="text-gray-700">Cargando mapa...</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+    <p class="text-red-800 text-sm">{{ error }}</p>
+  </div>
+</div>
+

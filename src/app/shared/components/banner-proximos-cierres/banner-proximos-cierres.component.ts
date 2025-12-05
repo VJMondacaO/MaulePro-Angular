@@ -16,7 +16,7 @@ import { getEstadoReal, parseFechaCierre, getDiasRestantes } from '../../../feat
 export class BannerProximosCierresComponent implements OnInit, OnDestroy {
     proyectos: ProgramCardData[] = [];
     proyectoActual: number = 0;
-    intervalo: any;
+    intervalo: ReturnType<typeof setInterval> | null = null;
     bannerCerrado: boolean = false;
 
     constructor(

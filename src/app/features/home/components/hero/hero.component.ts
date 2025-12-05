@@ -5,6 +5,15 @@ import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { GalleriaModule } from 'primeng/galleria';
 
+interface HeroImage {
+  itemImageSrc: string;
+}
+
+interface ResponsiveOption {
+  breakpoint: string;
+  numVisible: number;
+}
+
 @Component({
   selector: 'app-hero',
   standalone: true,
@@ -17,8 +26,8 @@ import { GalleriaModule } from 'primeng/galleria';
   styleUrl: './hero.component.css'
 })
 export class HeroComponent {
-  images: any[] = [];
-  responsiveOptions: any[] = [
+  images: HeroImage[] = [];
+  responsiveOptions: ResponsiveOption[] = [
     {
       breakpoint: '1024px',
       numVisible: 5

@@ -136,16 +136,16 @@ export class HomeComponent {
   }
 
   onSearchClick(): void {
-    const queryParams: any = {};
+    const queryParams: { [key: string]: string } = {};
     
     if (this.searchTerm && this.searchTerm.trim() !== '') {
-      queryParams.q = this.searchTerm.trim();
+      queryParams['q'] = this.searchTerm.trim();
     }
     if (this.selectedEstado) {
-      queryParams.estado = this.selectedEstado;
+      queryParams['estado'] = this.selectedEstado;
     }
     if (this.selectedTipoFondo) {
-      queryParams.tipo = this.selectedTipoFondo;
+      queryParams['tipo'] = this.selectedTipoFondo;
     }
     
     this.router.navigate(['/buscar'], { queryParams });
