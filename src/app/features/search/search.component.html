@@ -90,7 +90,7 @@
     </div>
 
     <!-- Grid de Cards de Programa -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-6 md:gap-5 xl:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 md-large:grid-cols-3 xl-large:grid-cols-4 gap-6 md:gap-5 xl:gap-8">
       @for (programa of filteredPrograms(); track programa.id) {
         <div class="flex flex-col items-stretch box-border h-[560px] max-h-[560px]">
           <app-program-card [program]="programa" class="w-full flex flex-auto items-stretch h-full"></app-program-card>
