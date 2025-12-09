@@ -1,73 +1,80 @@
 <div *ngIf="mostrarBanner" class="banner-proximos-cierres" [style.background]="obtenerColorBanner()">
   <div class="banner-contenedor">
     <!-- Controles del carrusel (izquierda) -->
-    <div class="carrusel-controles" *ngIf="proyectos.length > 1">
-      <button 
-        type="button" 
-        class="boton-control anterior"
-        (click)="proyectoAnterior()"
-        aria-label="Proyecto anterior">
-        <i class="pi pi-chevron-left"></i>
-      </button>
-      
-      <div class="indicadores">
+    @if (proyectos.length > 1) {
+      <div class="carrusel-controles">
         <button 
-          *ngFor="let proyecto of proyectos; let i = index"
-          type="button"
-          class="indicador"
-          [class.activo]="i === proyectoActual"
-          [style.background-color]="i === proyectoActual ? 'white' : 'rgba(255, 255, 255, 0.4)'"
-          (click)="proyectoActual = i; detenerCarrusel(); iniciarCarrusel()"
-          [attr.aria-label]="'Ir al proyecto ' + (i + 1)">
+          type="button" 
+          class="boton-control anterior"
+          (click)="proyectoAnterior()"
+          aria-label="Proyecto anterior">
+          <i class="pi pi-chevron-left"></i>
+        </button>
+        
+        <div class="indicadores">
+          @for (proyecto of proyectos; track proyecto.id; let i = $index) {
+            <button 
+              type="button"
+              class="indicador"
+              [class.activo]="i === proyectoActual"
+              [style.background-color]="i === proyectoActual ? 'white' : 'rgba(255, 255, 255, 0.4)'"
+              (click)="proyectoActual = i; detenerCarrusel(); iniciarCarrusel()"
+              [attr.aria-label]="'Ir al proyecto ' + (i + 1)">
+            </button>
+          }
+        </div>
+        
+        <button 
+          type="button" 
+          class="boton-control siguiente"
+          (click)="irAlSiguiente()"
+          aria-label="Siguiente proyecto">
+          <i class="pi pi-chevron-right"></i>
         </button>
       </div>
-      
-      <button 
-        type="button" 
-        class="boton-control siguiente"
-        (click)="irAlSiguiente()"
-        aria-label="Siguiente proyecto">
-        <i class="pi pi-chevron-right"></i>
-      </button>
-    </div>
+    }
 
     <!-- Contenido del carrusel -->
     <div class="carrusel-contenedor">
       <div class="carrusel-items" [style.transform]="'translateX(-' + (proyectoActual * 100) + '%)'">
-        <div 
-          *ngFor="let proyecto of proyectos; let i = index" 
-          class="carrusel-item"
-          [class.activo]="i === proyectoActual">
-          
-          <div class="item-contenido">
-            <div class="item-icono">
-              <i class="pi pi-calendar-times"></i>
-            </div>
+        @for (proyecto of proyectos; track proyecto.id; let i = $index) {
+          <div 
+            class="carrusel-item"
+            [class.activo]="i === proyectoActual">
             
-            <div class="item-texto">
-              <div class="item-etiqueta">Próximo a cerrar</div>
-              <h3 class="item-titulo">{{ proyecto.titulo }}</h3>
-              <div class="item-info">
-                <span class="item-fecha">Cierre: {{ proyecto.fechaFin }}</span>
-                <span class="item-dias" *ngIf="proyecto.fechaCierre">
-                  <i class="pi pi-clock"></i>
-                  {{ obtenerDiasRestantes(proyecto.fechaCierre!) }} días restantes
-                </span>
+            <div class="item-contenido">
+              <div class="item-icono">
+                <i class="pi pi-calendar-times"></i>
               </div>
-            </div>
+              
+              <div class="item-texto">
+                <div class="item-etiqueta">Próximo a cerrar</div>
+                <h3 class="item-titulo">{{ proyecto.titulo }}</h3>
+                <div class="item-info">
+                  <span class="item-fecha">Cierre: {{ proyecto.fechaFin }}</span>
+                  @if (proyecto.fechaCierre) {
+                    <span class="item-dias">
+                      <i class="pi pi-clock"></i>
+                      {{ obtenerDiasRestantes(proyecto.fechaCierre!) }} días restantes
+                    </span>
+                  }
+                </div>
+              </div>
 
-            <button 
-              pButton 
-              type="button"
-              label="Ver detalles" 
-              icon="pi pi-arrow-right"
-              iconPos="right"
-              class="boton-detalles"
-              (click)="irADetalle(proyecto.rutaDetalles)"
-              *ngIf="proyecto.rutaDetalles">
-            </button>
+              @if (proyecto.rutaDetalles) {
+                <button 
+                  pButton 
+                  type="button"
+                  label="Ver detalles" 
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                  class="boton-detalles"
+                  (click)="irADetalle(proyecto.rutaDetalles)">
+                </button>
+              }
+            </div>
           </div>
-        </div>
+        }
       </div>
     </div>
 

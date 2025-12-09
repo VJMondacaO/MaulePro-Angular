@@ -2,37 +2,13 @@
    Program Detail Page Styles - Tailwind + PrimeNG
    ============================================ */
 
-/* Hero Section con imagen de fondo o fondo azul oscuro por defecto */
-.hero-programa {
-  background: linear-gradient(135deg, #000d1f 0%, #001a3d 50%, #002244 100%);
-}
-
-.hero-with-image {
-  position: relative;
-}
-
-.hero-with-image .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 20, 60, 0.9) 0%, rgba(0, 30, 80, 0.85) 50%, rgba(0, 40, 100, 0.8) 100%);
-  z-index: 1;
-}
-
-.hero-with-image > div {
-  position: relative;
-  z-index: 2;
-}
-
-
 /* Animación para cards expandidas */
 @keyframes slideDown {
   from {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

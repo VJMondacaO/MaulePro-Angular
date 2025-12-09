@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -25,22 +25,10 @@ interface ResponsiveOption {
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })
-export class HeroComponent {
+export class HeroComponent implements OnInit, OnDestroy {
   images: HeroImage[] = [];
-  responsiveOptions: ResponsiveOption[] = [
-    {
-      breakpoint: '1024px',
-      numVisible: 5
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 3
-    },
-    {
-      breakpoint: '560px',
-      numVisible: 1
-    }
-  ];
+  currentImageIndex = signal(0);
+  private intervalId: any;
 
   features = [
     {
@@ -65,43 +53,35 @@ export class HeroComponent {
 
   constructor(private router: Router) {
     this.images = [
-      {
-        itemImageSrc: 'assets/images/Carrusel/bomberos.webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/cortecinta.webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/cortecinta2.webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/cortecinta3.webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/deportistas.webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/deportistas2.webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/discurso.webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/entregallaves.webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/resonador .webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/resonancia.webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/sedesocial.webp'
-      },
-      {
-        itemImageSrc: 'assets/images/Carrusel/vinculacion comunidad.webp'
-      }
+      { itemImageSrc: 'assets/images/Carrusel/bomberos.webp' },
+      { itemImageSrc: 'assets/images/Carrusel/cortecinta.webp' },
+      { itemImageSrc: 'assets/images/Carrusel/cortecinta2.webp' },
+      { itemImageSrc: 'assets/images/Carrusel/cortecinta3.webp' },
+      { itemImageSrc: 'assets/images/Carrusel/deportistas.webp' },
+      { itemImageSrc: 'assets/images/Carrusel/deportistas2.webp' },
+      { itemImageSrc: 'assets/images/Carrusel/discurso.webp' },
+      { itemImageSrc: 'assets/images/Carrusel/entregallaves.webp' },
+      { itemImageSrc: 'assets/images/Carrusel/resonador .webp' },
+      { itemImageSrc: 'assets/images/Carrusel/resonancia.webp' },
+      { itemImageSrc: 'assets/images/Carrusel/sedesocial.webp' },
+      { itemImageSrc: 'assets/images/Carrusel/vinculacion comunidad.webp' }
     ];
+  }
+
+  ngOnInit() {
+    this.startCarousel();
+  }
+
+  ngOnDestroy() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+
+  startCarousel() {
+    this.intervalId = setInterval(() => {
+      this.currentImageIndex.update(index => (index + 1) % this.images.length);
+    }, 5000);
   }
 
   scrollToPrograms(): void {
@@ -109,7 +89,7 @@ export class HeroComponent {
     if (fondosSection) {
       const elementPosition = fondosSection.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -118,6 +98,5 @@ export class HeroComponent {
   }
 
   onClaveUnicaClick(): void {
-    // TODO: Implementar redirección a ClaveÚnica
   }
 }

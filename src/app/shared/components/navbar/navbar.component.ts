@@ -13,12 +13,10 @@ export class NavbarComponent {
   mobileMenuOpen = false;
 
   onClaveUnicaClick(): void {
-    // TODO: Implementar redirección a ClaveÚnica
     this.closeMobileMenu();
   }
 
   onAccesibilidadClick(): void {
-    // TODO: Implementar funcionalidad de accesibilidad
     this.closeMobileMenu();
   }
 

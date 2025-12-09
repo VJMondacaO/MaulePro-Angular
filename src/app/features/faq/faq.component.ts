@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -13,7 +13,8 @@ import { ButtonModule } from 'primeng/button';
     ButtonModule
   ],
   templateUrl: './faq.component.html',
-  styleUrl: './faq.component.css'
+  styleUrl: './faq.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FaqComponent implements OnInit {
   expandedIndex: number | null = null;

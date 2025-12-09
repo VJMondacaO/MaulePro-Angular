@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProgramsService } from '../../../features/programs/components/services/programs.service';
@@ -11,7 +11,8 @@ import { getEstadoReal, parseFechaCierre, getDiasRestantes } from '../../../feat
     standalone: true,
     imports: [CommonModule, ButtonModule],
     templateUrl: './banner-proximos-cierres.component.html',
-    styleUrl: './banner-proximos-cierres.component.css'
+    styleUrl: './banner-proximos-cierres.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BannerProximosCierresComponent implements OnInit, OnDestroy {
     proyectos: ProgramCardData[] = [];
@@ -21,8 +22,9 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
 
     constructor(
         private programsService: ProgramsService,
-        private router: Router
-    ) {}
+        private router: Router,
+        private cdr: ChangeDetectorRef
+    ) { }
 
     ngOnInit(): void {
         const cerrado = localStorage.getItem('bannerProximosCierresCerrado');
@@ -30,12 +32,8 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
             this.bannerCerrado = true;
             return;
         }
-        
+
         this.cargarProyectosProximosACerrar();
-        
-        if (this.proyectos.length > 0) {
-            this.iniciarCarrusel();
-        }
     }
 
     ngOnDestroy(): void {
@@ -47,48 +45,54 @@ export class BannerProximosCierresComponent implements OnInit, OnDestroy {
     }
 
     cargarProyectosProximosACerrar(): void {
-        const todosLosProgramas = this.programsService.getPrograms();
+        this.programsService.getPrograms().subscribe(todosLosProgramas => {
+            let proyectosFiltrados = todosLosProgramas
+                .filter(programa => {
+                    const estadoReal = this.getEstadoReal(programa);
+                    if (estadoReal !== 'open' || !programa.fechaCierre) {
+                        return false;
+                    }
 
-        let proyectosFiltrados = todosLosProgramas
-            .filter(programa => {
-                const estadoReal = this.getEstadoReal(programa);
-                if (estadoReal !== 'open' || !programa.fechaCierre) {
-                    return false;
-                }
-                
-                const diasRestantes = getDiasRestantes(programa.fechaCierre);
-                
-                return diasRestantes !== null && diasRestantes >= 0 && diasRestantes <= 90;
-            })
-            .sort((a, b) => {
-                if (!a.fechaCierre || !b.fechaCierre) {
-                    return 0;
-                }
-                
-                const fechaA = parseFechaCierre(a.fechaCierre);
-                const fechaB = parseFechaCierre(b.fechaCierre);
-                
-                if (!fechaA || !fechaB) {
-                    return 0;
-                }
-                
-                return fechaA.getTime() - fechaB.getTime();
-            });
-        
-        if (proyectosFiltrados.length === 0) {
-            proyectosFiltrados = todosLosProgramas
-                .filter(programa => this.getEstadoReal(programa) === 'open')
-                .slice(0, 3);
-        }
-        
-        this.proyectos = proyectosFiltrados.slice(0, 3);
+                    const diasRestantes = getDiasRestantes(programa.fechaCierre);
+
+                    return diasRestantes !== null && diasRestantes >= 0 && diasRestantes <= 90;
+                })
+                .sort((a, b) => {
+                    if (!a.fechaCierre || !b.fechaCierre) {
+                        return 0;
+                    }
+
+                    const fechaA = parseFechaCierre(a.fechaCierre);
+                    const fechaB = parseFechaCierre(b.fechaCierre);
+
+                    if (!fechaA || !fechaB) {
+                        return 0;
+                    }
+
+                    return fechaA.getTime() - fechaB.getTime();
+                });
+
+            if (proyectosFiltrados.length === 0) {
+                proyectosFiltrados = todosLosProgramas
+                    .filter(programa => this.getEstadoReal(programa) === 'open')
+                    .slice(0, 3);
+            }
+
+            this.proyectos = proyectosFiltrados.slice(0, 3);
+
+            if (this.proyectos.length > 0) {
+                this.iniciarCarrusel();
+            }
+
+            this.cdr.markForCheck();
+        });
     }
 
     iniciarCarrusel(): void {
         if (this.proyectos.length <= 1) {
             return;
         }
-        
+
         this.intervalo = setInterval(() => {
             this.siguienteProyecto();
         }, 5000);

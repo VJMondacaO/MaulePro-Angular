@@ -1,107 +1,109 @@
-<div class="container-busqueda">
-  <div class="w-full">
-    <!-- Sección de Búsqueda -->
-    <div class="w-full">
-      <!-- Botón Volver -->
-      <div class="contenedor-volver">
-        <button 
-          type="button"
-          class="boton-volver"
-          (click)="goBack()">
-          <i class="pi pi-arrow-left"></i>
-          Volver
-        </button>
-      </div>
+<div class="min-h-screen px-6 py-8 bg-gradient-to-br from-slate-50 to-slate-200 md:px-8 md:py-12 lg:px-10 lg:py-16">
+  <div class="max-w-7xl mx-auto w-full">
+    
+    <!-- Botón Volver -->
+    <div class="mb-6">
+      <button 
+        class="inline-flex items-center gap-2.5 px-6 py-3 bg-white border-2 border-gray-200 text-slate-600 rounded-xl font-semibold text-[0.95rem] cursor-pointer transition-all duration-300 shadow-sm hover:bg-slate-50 hover:border-[#0066CC] hover:text-[#0066CC] hover:-translate-x-1 hover:shadow-md active:-translate-x-0.5"
+        (click)="goBack()">
+        <i class="pi pi-arrow-left text-base transition-transform duration-300 group-hover:-translate-x-0.5"></i>
+        Volver al inicio
+      </button>
+    </div>
 
-      <!-- Título de la página -->
-      <div class="encabezado-busqueda">
-        <h1 class="titulo-busqueda">Buscar Programas</h1>
-        <p class="descripcion-busqueda">
-          Encuentra programas y fondos que se ajusten a tus necesidades utilizando los filtros disponibles
-        </p>
-      </div>
+    <!-- Encabezado -->
+    <div class="mb-8 text-center md:mb-10">
+      <h1 class="text-3xl font-bold text-[#0C1B41] mb-3 leading-[1.3] tracking-tight md:text-4xl lg:text-5xl">Buscador de Programas</h1>
+      <p class="text-base text-slate-500 m-0 max-w-[700px] mx-auto leading-relaxed md:text-lg">
+        Encuentra el fondo ideal para tu proyecto filtrando por estado, tipo de fondo o palabras clave.
+      </p>
+    </div>
 
-      <!-- Panel de Filtros y Búsqueda -->
-      <div class="panel-busqueda">
-        <div class="panel-header">
-          <h2 class="section-title">Filtros de búsqueda</h2>
-          <button 
-            type="button"
-            class="boton-limpiar"
-            (click)="clearFilters()"
-            *ngIf="searchTerm || selectedEstado || selectedTipoFondo">
-            <i class="pi pi-times"></i>
-            Limpiar filtros
-          </button>
+    <!-- Panel de Búsqueda -->
+    <div class="bg-white rounded-2xl p-8 mb-10 shadow-md border border-gray-200 md:p-10 lg:p-12">
+      <div class="flex flex-col gap-4 mb-8 pb-6 border-b-2 border-gray-100 md:flex-row md:items-center md:justify-between">
+        <div class="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
+          <h2 class="text-2xl font-bold text-[#1C1C1C] m-0 leading-[1.3] tracking-tight md:text-3xl">Filtros de búsqueda</h2>
+          @if (searchTerm() || selectedEstado() || selectedTipoFondo()) {
+            <button 
+              type="button"
+              class="flex items-center gap-2 px-5 py-2.5 bg-transparent border-2 border-gray-200 text-slate-500 rounded-lg font-semibold text-sm cursor-pointer transition-all duration-300 whitespace-nowrap hover:bg-slate-50 hover:border-slate-300 hover:text-slate-600 hover:-translate-y-px"
+              (click)="clearFilters()">
+              <i class="pi pi-times text-base"></i>
+              Limpiar filtros
+            </button>
+          }
         </div>
         
-        <div class="panel-filters">
-          <div class="filters-row">
+        <div class="w-full">
+          <div class="flex flex-col gap-4 w-full md:flex-row md:items-center lg:gap-5">
             <p-dropdown 
               [options]="estadoOptions" 
-              [(ngModel)]="selectedEstado"
-              (onChange)="filterPrograms()"
+              [ngModel]="selectedEstado()"
+              (ngModelChange)="selectedEstado.set($event)"
               placeholder="Estado"
               optionLabel="label"
               optionValue="value"
               [showClear]="true"
-              styleClass="filter-dropdown estado-filter">
+              styleClass="w-full md:w-48">
             </p-dropdown>
             
             <p-dropdown 
-              [options]="tipoFondoOptions" 
-              [(ngModel)]="selectedTipoFondo"
-              (onChange)="filterPrograms()"
+              [options]="tipoFondoOptions()" 
+              [ngModel]="selectedTipoFondo()"
+              (ngModelChange)="selectedTipoFondo.set($event)"
               placeholder="Tipo de Fondo"
               optionLabel="label"
               optionValue="value"
               [showClear]="true"
-              styleClass="filter-dropdown tipo-fondo-filter">
+              styleClass="w-full md:w-64">
             </p-dropdown>
             
-            <div class="contenedor-busqueda">
+            <div class="flex-1 min-w-[200px] flex items-center gap-3 md:flex-[1.5] md:min-w-[250px] md:gap-4">
               <input 
                 type="text" 
                 pInputText 
-                [(ngModel)]="searchTerm"
-                (input)="filterPrograms()"
+                [ngModel]="searchTerm()"
+                (ngModelChange)="searchTerm.set($event)"
                 (keyup.enter)="onSearchClick()"
                 placeholder="Buscar programas..." 
-                class="barra-busqueda w-full" />
+                class="w-full" />
               <button 
                 pButton
                 type="button"
                 label="Buscar"
                 icon="pi pi-search"
-                (click)="onSearchClick()"
-                class="boton-buscar">
+                (click)="onSearchClick()">
               </button>
             </div>
           </div>
         </div>
-
-        <!-- Contador de resultados -->
-        <div class="resultados-info">
-          <p class="programs-count">
-            <i class="pi pi-filter"></i>
-            Mostrando <strong>{{ filteredPrograms.length }}</strong> de <strong>{{ programas.length }}</strong> programas
-          </p>
-        </div>
       </div>
 
-      <!-- Grid de Cards de Programa -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-6 programas-grid">
-        <div 
-          *ngFor="let programa of filteredPrograms">
-          <app-program-card [program]="programa"></app-program-card>
-        </div>
+      <!-- Contador de resultados -->
+      <div class="mt-6 pt-6 border-t border-gray-100">
+        <p class="flex items-center gap-2 m-0 text-gray-500 text-[0.95rem]">
+          <i class="pi pi-filter text-[#0066CC] text-base"></i>
+          Mostrando <strong class="text-[#1C1C1C] font-semibold">{{ filteredPrograms().length }}</strong> de <strong class="text-[#1C1C1C] font-semibold">{{ programas().length }}</strong> programas
+        </p>
       </div>
+    </div>
 
-      <!-- Mensaje cuando no hay resultados -->
-      <div class="sin-resultados" *ngIf="filteredPrograms.length === 0">
-        <i class="pi pi-search"></i>
-        <h3>No se encontraron programas</h3>
-        <p>Intenta ajustar los filtros o busca con otros términos</p>
+    <!-- Grid de Cards de Programa -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-6 md:gap-5 xl:gap-8">
+      @for (programa of filteredPrograms(); track programa.id) {
+        <div class="flex flex-col items-stretch box-border h-[560px] max-h-[560px]">
+          <app-program-card [program]="programa" class="w-full flex flex-auto items-stretch h-full"></app-program-card>
+        </div>
+      }
+    </div>
+
+    <!-- Mensaje cuando no hay resultados -->
+    @if (filteredPrograms().length === 0) {
+      <div class="text-center py-16 px-8 bg-white rounded-2xl shadow-md">
+        <i class="pi pi-search text-6xl text-slate-300 mb-6"></i>
+        <h3 class="text-2xl font-bold text-[#1C1C1C] mb-3">No se encontraron programas</h3>
+        <p class="text-base text-slate-500 mb-8">Intenta ajustar los filtros o busca con otros términos</p>
         <button 
           pButton
           type="button"
@@ -111,7 +113,6 @@
           class="p-button-outlined">
         </button>
       </div>
-    </div>
+    }
   </div>
 </div>
-

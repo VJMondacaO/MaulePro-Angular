@@ -261,7 +261,6 @@ html {
     outline-offset: 2px;
 }
 
-/* Mejoras de responsividad para móvil */
 @media (max-width: 575.98px) {
     /* Reducir padding en secciones generales */
     .section-header {

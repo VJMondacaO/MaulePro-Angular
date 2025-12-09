@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MeterGroupModule } from 'primeng/metergroup';
 import { ButtonModule } from 'primeng/button';
@@ -14,6 +14,7 @@ interface MeterItem {
     selector: 'app-dashboard',
     standalone: true,
     imports: [CommonModule, MeterGroupModule, RouterModule, ButtonModule],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         <div class="min-h-screen bg-surface-100 dark:bg-surface-950 py-8 lg:py-12">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">

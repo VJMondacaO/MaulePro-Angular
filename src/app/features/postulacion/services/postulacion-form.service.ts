@@ -41,19 +41,22 @@ export class PostulacionFormService {
       item_seia: [''],
       justificacion_proyecto: ['', Validators.required],
       descripcion_proyecto: ['', Validators.required],
+      item_obj_general: [''],
+      item_obj_especifico: [''],
       item_des_indigena: ['', Validators.required],
       addressmap: [''],
       lat: [''],
       lng: [''],
-      
+
       // Financiamiento
       presup1: [0],
-      
+      item_aportes: [''],
+
       // Instituciones
       item_insti_formuladora: [''],
       item_insti_financiera: [''],
       institucion_tecnica_a_cargo: [''],
-      
+
       // Resultados del Proyecto
       duracion_proyecto: [0],
       benef_hombres: [0],
@@ -61,22 +64,25 @@ export class PostulacionFormService {
       benef_total: [0],
       item_magnitud_valor: [''],
       item_magnitud: [''],
-      
+
       // Información de Contacto
       nombre_responsable: ['', Validators.required],
       responsable_email: ['', [Validators.required, Validators.email]],
       responsable_fono: ['', Validators.required],
-      
+
       // Ordinario u Oficio
       num_ordinal: [''],
       ordinal_fecha: [''],
       remitente: [''],
-      remite_comuna: ['']
+      remite_comuna: [''],
+
+      // Declaración
+      declaracion_jurada: [false, Validators.requiredTrue]
     });
 
     // Configurar listeners para cambios
     this.setupFormListeners(form);
-    
+
     this.formSubject.next(form);
     return form;
   }

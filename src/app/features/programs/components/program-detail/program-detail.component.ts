@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
@@ -28,12 +28,13 @@ import { TableModule } from 'primeng/table';
     TableModule
   ],
   templateUrl: './program-detail.component.html',
-  styleUrl: './program-detail.component.css'
+  styleUrl: './program-detail.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProgramDetailComponent implements OnInit {
   program: ProgramDetailData | undefined;
   loading = true;
-  
+
   // Estado de los accordions (cards expandibles)
   expandedModalidad = false;
   expandedTipoPostulante = false;
@@ -43,12 +44,13 @@ export class ProgramDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private programsService: ProgramsService,
-    private sanitizer: DomSanitizer
-  ) {}
+    private sanitizer: DomSanitizer,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    
+
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id) {
@@ -62,16 +64,17 @@ export class ProgramDetailComponent implements OnInit {
   private loadProgram(id: string): void {
     this.loading = true;
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    
-    const program = this.programsService.getProgramDetailById(id);
-    
-    if (!program) {
-      this.router.navigate(['/home']);
-      return;
-    }
 
-    this.program = program;
-    this.loading = false;
+    this.programsService.getProgramDetailById(id).subscribe(program => {
+      if (!program) {
+        this.router.navigate(['/home']);
+        return;
+      }
+
+      this.program = program;
+      this.loading = false;
+      this.cdr.markForCheck();
+    });
   }
 
   getEstadoTagSeverity(): 'success' | 'warning' | 'danger' | 'info' {
@@ -106,11 +109,11 @@ export class ProgramDetailComponent implements OnInit {
     } else {
       isCurrentlyOpen = this.expandedTipoFinanciamiento;
     }
-    
+
     this.expandedModalidad = false;
     this.expandedTipoPostulante = false;
     this.expandedTipoFinanciamiento = false;
-    
+
     if (!isCurrentlyOpen) {
       if (type === 'modalidad') {
         this.expandedModalidad = true;

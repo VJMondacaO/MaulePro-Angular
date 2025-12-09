@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ import { getEstadoReal } from '../programs/components/utils/program.utils';
   imports: [
     CommonModule,
     FormsModule,
-    HeroComponent, 
+    HeroComponent,
     ProgramCardComponent,
     InputTextModule,
     DropdownModule,
@@ -25,13 +25,13 @@ import { getEstadoReal } from '../programs/components/utils/program.utils';
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent {
-  programas: ProgramCardData[] = [];
-  filteredPrograms: ProgramCardData[] = [];
-  searchTerm: string = '';
-  selectedEstado: string | null = null;
-  selectedTipoFondo: string | null = null;
+export class HomeComponent implements OnInit {
+  programas = signal<ProgramCardData[]>([]);
+  searchTerm = signal<string>('');
+  selectedEstado = signal<string | null>(null);
+  selectedTipoFondo = signal<string | null>(null);
 
   estadoOptions = [
     { label: 'Abierto', value: 'open' },
@@ -39,7 +39,39 @@ export class HomeComponent {
     { label: 'Cerrado', value: 'closed' }
   ];
 
-  tipoFondoOptions: { label: string; value: string }[] = [];
+  tipoFondoOptions = computed(() => {
+    const tipos = new Set<string>();
+    this.programas().forEach(p => {
+      if (p.tipoFondo) tipos.add(p.tipoFondo);
+    });
+    return Array.from(tipos).sort().map(t => ({ label: t, value: t }));
+  });
+
+  filteredPrograms = computed(() => {
+    let filtered = [...this.programas()];
+    const term = this.searchTerm().toLowerCase().trim();
+    const estado = this.selectedEstado();
+    const tipo = this.selectedTipoFondo();
+
+    if (term) {
+      filtered = filtered.filter(p => {
+        const titulo = p.titulo?.toLowerCase() || '';
+        const descripcion = p.descripcion?.toLowerCase() || '';
+        const beneficiarios = p.beneficiarios?.toLowerCase() || '';
+        return titulo.includes(term) || descripcion.includes(term) || beneficiarios.includes(term);
+      });
+    }
+
+    if (estado) {
+      filtered = filtered.filter(p => this.getEstadoReal(p) === estado);
+    }
+
+    if (tipo) {
+      filtered = filtered.filter(p => p.tipoFondo === tipo);
+    }
+
+    return this.ordenarProgramasPorEstado(filtered);
+  });
 
   incentives = [
     {
@@ -67,21 +99,17 @@ export class HomeComponent {
 
   constructor(
     private programsService: ProgramsService,
-    private router: Router
-  ) {
-    this.programas = this.programsService.getPrograms();
-    this.programas = this.ordenarProgramasPorEstado(this.programas);
-    this.filteredPrograms = this.programas;
-    
-    const tiposFondo = new Set<string>();
-    this.programas.forEach(programa => {
-      if (programa.tipoFondo) {
-        tiposFondo.add(programa.tipoFondo);
-      }
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) { }
+
+  ngOnInit() {
+    this.programsService.getPrograms().subscribe(data => {
+      this.programas.set(data);
+      // No need to call markForCheck explicitly for signals if used in template, 
+      // but since we are in OnPush and might have some async timing, it's safe to keep it or rely on signal updates.
+      // Signals usually trigger CD in OnPush components.
     });
-    this.tipoFondoOptions = Array.from(tiposFondo)
-      .sort()
-      .map(tipo => ({ label: tipo, value: tipo }));
   }
 
   getEstadoReal(programa: ProgramCardData): 'open' | 'soon' | 'closed' {
@@ -90,64 +118,38 @@ export class HomeComponent {
 
   ordenarProgramasPorEstado(programas: ProgramCardData[]): ProgramCardData[] {
     const ordenEstado = { 'open': 1, 'soon': 2, 'closed': 3 };
-    
+
     return [...programas].sort((a, b) => {
       const estadoA = this.getEstadoReal(a);
       const estadoB = this.getEstadoReal(b);
-      
+
       const ordenA = ordenEstado[estadoA] || 4;
       const ordenB = ordenEstado[estadoB] || 4;
-      
+
       if (ordenA === ordenB) {
         return 0;
       }
-      
+
       return ordenA - ordenB;
     });
   }
 
-  filterPrograms(): void {
-    let filtered = [...this.programas];
-
-    if (this.searchTerm && this.searchTerm.trim() !== '') {
-      const term = this.searchTerm.toLowerCase().trim();
-      filtered = filtered.filter(programa => {
-        const titulo = programa.titulo?.toLowerCase() || '';
-        const descripcion = programa.descripcion?.toLowerCase() || '';
-        const beneficiarios = programa.beneficiarios?.toLowerCase() || '';
-        
-        return titulo.includes(term) || 
-               descripcion.includes(term) || 
-               beneficiarios.includes(term);
-      });
-    }
-
-    if (this.selectedEstado) {
-      filtered = filtered.filter(programa => this.getEstadoReal(programa) === this.selectedEstado);
-    }
-
-    if (this.selectedTipoFondo) {
-      filtered = filtered.filter(programa => programa.tipoFondo === this.selectedTipoFondo);
-    }
-
-    filtered = this.ordenarProgramasPorEstado(filtered);
-
-    this.filteredPrograms = filtered;
-  }
-
   onSearchClick(): void {
     const queryParams: { [key: string]: string } = {};
-    
-    if (this.searchTerm && this.searchTerm.trim() !== '') {
-      queryParams['q'] = this.searchTerm.trim();
+    const term = this.searchTerm();
+    const estado = this.selectedEstado();
+    const tipo = this.selectedTipoFondo();
+
+    if (term && term.trim() !== '') {
+      queryParams['q'] = term.trim();
     }
-    if (this.selectedEstado) {
-      queryParams['estado'] = this.selectedEstado;
+    if (estado) {
+      queryParams['estado'] = estado;
     }
-    if (this.selectedTipoFondo) {
-      queryParams['tipo'] = this.selectedTipoFondo;
+    if (tipo) {
+      queryParams['tipo'] = tipo;
     }
-    
+
     this.router.navigate(['/buscar'], { queryParams });
   }
 }

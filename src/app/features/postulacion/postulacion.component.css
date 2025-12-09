@@ -113,3 +113,59 @@ table {
 .pi {
   font-family: 'primeicons' !important;
 }
+
+/* Animación para el efecto shimmer en la barra de progreso */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* Estilos para la barra de progreso */
+.border-3 {
+  border-width: 3px;
+}
+
+.group:hover .text-gray-500 {
+  color: #6b7280;
+}
+
+.group:hover .text-gray-400 {
+  color: #9ca3af;
+}
+
+/* Ajustes de proporción para la barra de progreso */
+@media (max-width: 1024px) {
+  /* En tablets y móviles, usar menos columnas para mejor visualización */
+  .grid.grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* En móviles, ajustar el tamaño de círculos */
+  .w-12.h-12 {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  /* Ajustar espaciado en móviles */
+  .grid.grid-cols-6 {
+    gap: 0.125rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* En móviles pequeños, reducir aún más el tamaño */
+  .grid.grid-cols-6 {
+    gap: 0;
+  }
+}

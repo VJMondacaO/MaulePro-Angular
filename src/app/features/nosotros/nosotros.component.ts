@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { GalleriaModule } from 'primeng/galleria';
@@ -16,7 +16,8 @@ interface ProyectoImagen {
   standalone: true,
   imports: [CommonModule, GalleriaModule, RouterModule, ButtonModule],
   templateUrl: './nosotros.component.html',
-  styleUrl: './nosotros.component.css'
+  styleUrl: './nosotros.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NosotrosComponent implements OnInit {
   proyectoImages: ProyectoImagen[] = [];
